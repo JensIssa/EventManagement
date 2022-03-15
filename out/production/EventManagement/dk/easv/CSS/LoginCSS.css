@@ -1,0 +1,54 @@
+*{
+    primary-color: #feb287;
+    secondary-color: lightpink;
+    secondary-color-dark:#fa8899;
+    secondary-color-light:#ffe2e6;
+}
+
+.borderPane{
+    -fx-font-family: "Lucida Sans";
+}
+.label{
+    -fx-font-size: 18;
+}
+#header{
+    -fx-font-family: "Lucida Sans";
+    -fx-font-size: 25;
+}
+#underheader{
+    -fx-text-fill: primary-color;
+    -fx-font-size: 15;
+}
+
+.pane{
+    -fx-background-color: primary-color;
+ -fx-effect: dropshadow(gaussian, black, 10, 0, 0, 0);
+}
+
+.button{
+    -fx-font-size: 15;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: secondary-color;
+    -fx-border-width: 2;
+    -fx-background-color: secondary-color;
+
+}
+.button:hover{
+    -fx-border-color:secondary-color-dark ;
+}
+.button:pressed{
+    -fx-text-fill: white;
+    -fx-background-color:secondary-color-dark;
+}
+
+.text-field{
+    -fx-background-color: transparent;
+    -fx-border-color: black;
+    -fx-border-style: solid;
+    -fx-border-width: 0 0 1 0;
+    -fx-font-size: 20;
+}
+.text-field:focused{
+    -fx-background-color: lightgray;
+}

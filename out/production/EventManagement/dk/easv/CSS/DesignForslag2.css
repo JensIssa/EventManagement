@@ -1,0 +1,4 @@
+.borderPane {
+    -fx-background-image: url("/images/blurry3Resize.png");
+    -fx-background-size: 500, 500;-fx-background-repeat: no-repeat;")
+}
