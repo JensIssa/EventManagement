@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="497.0" prefWidth="840.0" styleClass="borderPane" stylesheets="@../../CSS/LoginCSS.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="497.0" prefWidth="840.0" styleClass="borderPane" stylesheets="@../../CSS/LoginCSS.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.LoginViewController">
    <center>
       <VBox alignment="TOP_CENTER" prefHeight="497.0" prefWidth="394.0" spacing="20.0" BorderPane.alignment="TOP_CENTER">
          <children>
@@ -35,7 +35,7 @@
                               <Image url="@../../../../images/icons8_person_128px_1.png" />
                            </image>
                         </ImageView>
-                        <TextField promptText="E-mail" />
+                        <TextField fx:id="emailInput" promptText="E-mail" />
                      </children>
                   </HBox>
                   <HBox alignment="BOTTOM_LEFT">
@@ -45,10 +45,10 @@
                               <Image url="@../../../../images/icons8_key_64px_1.png" />
                            </image>
                         </ImageView>
-                        <PasswordField promptText="Password" />
+                        <PasswordField fx:id="passwordInput" promptText="Password" />
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" text="Login">
+                  <Button mnemonicParsing="false" onAction="#handleLoginButton" text="Login">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

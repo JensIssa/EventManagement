@@ -72,6 +72,13 @@ public class PersonDAO {
     }
 
 
+    /**
+     * skaber en person i databasen med de givne oplysninger
+     * @param name
+     * @param email
+     * @param password
+     * @param usertype
+     */
     public void createPerson(String name, String email, String password, PersonType usertype) {
         try (Connection con = dc.getConnection()) {
             String sql = "INSERT INTO Person(Email,Password,roleID,Name) VALUES (?,?,?,?)";
@@ -100,49 +107,41 @@ public class PersonDAO {
         }
     }
 
-    //TODO FIX
-    public PersonType getPersonType(String email, String password) {
-        if (loginUser(email, password)) {
-            try (Connection con = dc.getConnection()) {
-                String sql =
-                        "Select UserType " +
-                                "from [User]" +
-                                "where Email = ? and Password = ?";
 
-                PreparedStatement ps = con.prepareStatement(sql);
-                ps.setString(1, email);
-                ps.setString(2, password);
-
-                ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
-                    String type = rs.getString("UserType");
-                    return PersonType.valueOf(type);
-                }
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
-        return null;
-    }
-
-    public boolean loginUser(String email, String password) {
+    /**
+     * finder den bruger i databasen der passer med de givne login informationer
+     * @param email
+     * @param password
+     * @return En person hvis der er et match i databasen. null hvis der ikke er et match
+     */
+    public Person loginUser(String email, String password) {
         try (Connection con = dc.getConnection()) {
             String sql =
-                    "Select UserType " +
-                            "from [User]" +
-                            "where Email = ? and Password = ?";
+                    "Select Person.id, email, password, type, phonenumber, [name]"+
+                            "from Person INNER JOIN Role ON Person.RoleID = Role.ID where email = ? and password = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, email);
             ps.setString(2, password);
 
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                return true;
+                PersonType type = PersonType.valueOf(rs.getString("type"));
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String mail = rs.getString("email");
+                String pass = rs.getString("password");
+                int phoneNumber = rs.getInt("phoneNumber");
+                switch (type){
+                    case USER: return new User(id,name,mail,pass,type,phoneNumber);
+                    case ADMIN: return new Admin(id,name,mail,pass,type);
+                    case EVENTMANAGER: return new EventManager(id,name,mail,pass,type);
+                    default: System.out.println("fuck");
+                }
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return false;
+        return null;
     }
 
     public static void main(String[] args) throws IOException {
