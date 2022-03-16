@@ -49,7 +49,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="50.0" prefWidth="408.0">
                            <children>
-                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../../images/emailEdit.png" />
                                  </image>
@@ -63,7 +63,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="49.0" prefWidth="398.0">
                            <children>
-                              <ImageView fitHeight="50.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../../images/keyEdit.png" />
                                  </image>
@@ -75,13 +75,16 @@
                               </PasswordField>
                            </children>
                         </HBox>
-                        <CheckBox mnemonicParsing="false" text="Remember me">
+                        <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="399.0" text="Remember me">
                            <font>
-                              <Font name="Britannic Bold" size="14.0" />
+                              <Font name="Britannic Bold" size="13.0" />
                            </font>
                            <padding>
                               <Insets right="300.0" />
                            </padding>
+                           <VBox.margin>
+                              <Insets left="5.0" />
+                           </VBox.margin>
                         </CheckBox>
                         <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleLoginBtn" prefHeight="50.0" prefWidth="400.0" text="Login">
                            <VBox.margin>
