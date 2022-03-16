@@ -1,9 +1,0 @@
-#Border {
-    -fx-background-color: whitesmoke;
-    -fx-opacity: 0.25;
-    -fx-background-radius: 30;
-}
-
-#Anchor {
-    -fx-background-image: url("/images/blurry3Resize.png");
-}
