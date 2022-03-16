@@ -5,7 +5,7 @@
 
 .button{
     -fx-background-color: #8d90e4;
-    -fx-text-fill: white;
+    -fx-text-fill: black;
     -fx-opacity: 100;
     -fx-border-radius: 90;
     -fx-background-radius: 90;
