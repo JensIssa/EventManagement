@@ -1,5 +1,4 @@
 .backgroundColor {
-    -fx-background-color: rgb(251,156,240);
     -fx-background-color: linear-gradient( rgba(251,156,240,0.6) 0%, rgba(122,134,255,0.6) 100);
 }
 
@@ -68,7 +67,7 @@
 .table-view .column-header, table-view .filler{
     -fx-size: 40;
     -fx-border-width: 0 0 10 0;
-    -fx-background-color: transparant;
+    -fx-background-color: transparent;
 }
 
 .table-row-cell{
@@ -80,3 +79,4 @@
 
     -fx-text-fill: whitesmoke;
 }
+
