@@ -11,10 +11,10 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/dk/easv/GUI/View/AdminView.fxml")));
+        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/dk/easv/GUI/View/DesignForslag.fxml")));
         Scene scene = new Scene(parent);
         primaryStage.setTitle("Login");
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(true);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

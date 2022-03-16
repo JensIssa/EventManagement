@@ -45,9 +45,9 @@
                                         <Font name="Britannic Bold" size="14.0" />
                                     </font>
                                     <graphic>
-                                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="32.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../../../../images/addIMG.png" />
+                                                <Image url="@../../../../images/icons8-add-64.png" />
                                             </image>
                                         </ImageView>
                                     </graphic>

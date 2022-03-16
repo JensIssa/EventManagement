@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="750.0" styleClass="backgroundColor" type="BorderPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.LoginScreen">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="750.0" styleClass="backgroundColor" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.LoginScreen">
     <center>
         <VBox id="VBox" alignment="CENTER" maxWidth="-Infinity" prefHeight="0.0" prefWidth="553.0" styleClass="transparant" stylesheets="@../../CSS/DesignForslag2.css" BorderPane.alignment="CENTER">
             <opaqueInsets>
@@ -87,7 +87,7 @@
                                         <Insets left="5.0" />
                                     </VBox.margin>
                                 </CheckBox>
-                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleLoginBtn" prefHeight="50.0" prefWidth="400.0" text="Login">
+                                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="400.0" text="Login">
                                     <VBox.margin>
                                         <Insets />
                                     </VBox.margin>
@@ -106,4 +106,4 @@
       <URL value="@../../CSS/DesignForslag2.css" />
       <URL value="@../../CSS/Login2CSS.css" />
    </stylesheets>
-</fx:root>
+</BorderPane>

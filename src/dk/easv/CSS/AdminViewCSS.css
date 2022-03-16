@@ -4,7 +4,7 @@
 
 .button{
     -fx-background-color: #8d90e4;
-    -fx-text-fill: black;
+    -fx-text-fill: white;
     -fx-opacity: 100;
     -fx-border-radius: 90;
     -fx-background-radius: 90;
@@ -34,10 +34,10 @@
 
 .text-field {
     -fx-background-color: transparent;
-    -fx-border-color: black;
+    -fx-border-color: white;
     -fx-border-style: solid;
     -fx-border-width: 0 0 1 0;
-    -fx-text-fill: black;
+    -fx-text-fill: white;
 }
 
 .text-field:hover {
@@ -80,3 +80,6 @@
     -fx-text-fill: whitesmoke;
 }
 
+.label {
+    -fx-text-fill: white;
+}
