@@ -6,6 +6,11 @@ public class User extends Person {
 
     private int phoneNumber;
 
+    public User(int id, String name,String email, String password, PersonType type, int phoneNumber) {
+        super(id, name ,email, password, type);
+        phoneNumber = this.phoneNumber;
+    }
+
 
     public int getPhoneNumber() {
         return phoneNumber;

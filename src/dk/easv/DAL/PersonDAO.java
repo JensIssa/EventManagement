@@ -1,8 +1,7 @@
 package dk.easv.DAL;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
-import dk.easv.BE.Person;
-import dk.easv.BE.PersonType;
+import dk.easv.BE.*;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -20,15 +19,59 @@ public class PersonDAO {
     }
 
 
-
-    public List<Person> getAllPersons() throws SQLException {
+    /**
+     * Generisk metode til at hente alle personer af den ønskede persontype
+     * @param personType - Persontypen, hvori informationer ønskes hentet fra
+     * @return - Liste af den persontype der er blevet valgt
+     */
+    private List<Person> getAllPerson(PersonType personType){
         ArrayList<Person> allPersons = new ArrayList<>();
         try (Connection connection = dc.getConnection()){
-            String sqlStatement = "SELECT * FROM Person";
+            String sqlStatement = "SELECT Person.ID, Person.email, Person.[name], Person.[password], Person.phoneNumber, [Role].[type]\n" +
+                    "FROM Person\n" +
+                    "INNER JOIN [Role] ON Person.roleID = [Role].ID WHERE roleID = ? ";
             PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement);
-            
+           preparedStatement.setInt(1, personType.getI());
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()){
+                    int id =resultSet.getInt("id");
+                    String name = resultSet.getString("name");
+                    String email = resultSet.getString("email");
+                    String password = resultSet.getString("password");
+                    int phoneNumber = resultSet.getInt("phoneNumber");
+                    switch (personType){
+                        case USER ->
+                            allPersons.add(new User(id, name,email, password, personType, phoneNumber));
+                        case EVENTMANAGER ->
+                            allPersons.add(new EventManager(id, name,email, password, personType));
+                        case ADMIN ->
+                            allPersons.add(new Admin(id, name,email, password, personType));
+                }
+            }
         }
+        catch (SQLException exception){
+            exception.printStackTrace();
+        }
+        return allPersons;
     }
+
+
+    //Henter alle users
+    public List<Person> getAllUsers(){
+        return getAllPerson(PersonType.USER);
+    }
+    
+    //Henter alle EventManagers
+    public List<Person> getAllEventManagers(){
+        return getAllPerson(PersonType.EVENTMANAGER);
+    }
+
+    //Henter alle Admins
+    public List<Person> getAllAdmins(){
+        return getAllPerson(PersonType.ADMIN);
+    }
+
+
     public void createPerson(String name, String email, String password, PersonType usertype) {
         try (Connection con = dc.getConnection()) {
             String sql = "INSERT INTO Person(Email,Password,roleID,Name) VALUES (?,?,?,?)";
@@ -105,7 +148,7 @@ public class PersonDAO {
     public static void main(String[] args) throws IOException {
         PersonDAO eventManagerDAO = new PersonDAO();
 
-        eventManagerDAO.createPerson("userman","usermail","password",PersonType.USER,1234567);
+        System.out.println(eventManagerDAO.getAllAdmins());
 
     }
 

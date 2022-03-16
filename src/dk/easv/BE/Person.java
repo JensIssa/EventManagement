@@ -4,17 +4,17 @@ import java.util.List;
 
 public abstract class Person {
     private int id;
+    private String name;
     private String email;
     private String password;
     private PersonType type;
-    private List<Event> events;
 
-    public List<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<Event> events) {
-        this.events = events;
+    public Person(int id,String name  ,String email, String password, PersonType type) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.type = type;
     }
 
     public int getId() {
@@ -23,6 +23,14 @@ public abstract class Person {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -47,5 +55,12 @@ public abstract class Person {
 
     public void setType(PersonType type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }

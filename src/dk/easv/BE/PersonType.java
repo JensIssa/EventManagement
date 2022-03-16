@@ -12,4 +12,5 @@ public enum PersonType {
     public int getI() {
         return i;
     }
+
 }
