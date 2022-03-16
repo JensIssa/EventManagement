@@ -13,7 +13,7 @@
 
 .text-field {
     -fx-background-color: transparent;
-    -fx-border-color: black;
+    -fx-border-color: white;
     -fx-border-style: solid;
     -fx-border-width: 0 0 1 0;
 }
@@ -31,12 +31,12 @@
 }
 
 .label {
-    -fx-text-fill: black;
+    -fx-text-fill: white;
 }
 
 .check-box{
     -fx-highlight-fill: #8d90e4;
-    -fx-text-fill: Black;
+    -fx-text-fill: white;
     -fx-cursor: hand;
     -fx-border-radius: 90;
 }
