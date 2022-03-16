@@ -11,7 +11,7 @@ import java.util.Properties;
 
 public class DatabaseConnector {
 
-    private static final String PROP_FILE = "src/database.txt";
+    private static final String PROP_FILE = "src/databasesettings.txt";
     private SQLServerDataSource ds;
 
     /**
