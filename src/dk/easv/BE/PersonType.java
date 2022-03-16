@@ -1,7 +1,15 @@
 package dk.easv.BE;
 
 public enum PersonType {
-    USER,
-    ADMIN,
-    EVENTMANAGER
+    USER(1),
+    EVENTMANAGER(2),
+    ADMIN(3);
+
+    private final int i;
+    PersonType(int i) {
+        this.i = i;
+    }
+    public int getI() {
+        return i;
+    }
 }
