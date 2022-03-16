@@ -1,14 +1,14 @@
 package dk.easv.BLL;
 
 import dk.easv.BE.PersonType;
-import dk.easv.DAL.EventManagerDAO;
+import dk.easv.DAL.PersonDAO;
 
 import java.io.IOException;
 
 public class EventManagerManager {
-    EventManagerDAO eventManagerDAO;
+    PersonDAO eventManagerDAO;
     public EventManagerManager() throws IOException {
-        eventManagerDAO = new EventManagerDAO();
+        eventManagerDAO = new PersonDAO();
     }
 
 

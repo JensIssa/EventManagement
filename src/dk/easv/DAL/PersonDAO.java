@@ -1,5 +1,7 @@
 package dk.easv.DAL;
 
+import com.microsoft.sqlserver.jdbc.SQLServerException;
+import dk.easv.BE.Person;
 import dk.easv.BE.PersonType;
 
 import java.io.IOException;
@@ -7,14 +9,26 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class EventManagerDAO {
+public class PersonDAO {
     private DatabaseConnector dc;
 
-    public EventManagerDAO() throws IOException {
+    public PersonDAO() throws IOException {
         dc = new DatabaseConnector();
     }
 
+
+
+    public List<Person> getAllPersons() throws SQLException {
+        ArrayList<Person> allPersons = new ArrayList<>();
+        try (Connection connection = dc.getConnection()){
+            String sqlStatement = "SELECT * FROM Person";
+            PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement);
+            
+        }
+    }
     public void createPerson(String name, String email, String password, PersonType usertype) {
         try (Connection con = dc.getConnection()) {
             String sql = "INSERT INTO Person(Email,Password,roleID,Name) VALUES (?,?,?,?)";
@@ -89,7 +103,7 @@ public class EventManagerDAO {
     }
 
     public static void main(String[] args) throws IOException {
-        EventManagerDAO eventManagerDAO = new EventManagerDAO();
+        PersonDAO eventManagerDAO = new PersonDAO();
 
         eventManagerDAO.createPerson("userman","usermail","password",PersonType.USER,1234567);
 
