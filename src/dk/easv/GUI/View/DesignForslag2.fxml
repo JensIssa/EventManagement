@@ -13,8 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="750.0" styleClass="backgroundColor" stylesheets="@../../CSS/DesignForslag2.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="750.0" styleClass="backgroundColor" stylesheets="@../../CSS/DesignForslag2.css" type="BorderPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.LoginScreen">
    <center>
       <VBox id="VBox" alignment="CENTER" prefHeight="0.0" prefWidth="553.0" styleClass="transparant" stylesheets="@../../CSS/DesignForslag2.css" BorderPane.alignment="CENTER">
          <opaqueInsets>
@@ -46,7 +45,7 @@
                         </Label>
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="244.0" prefWidth="383.0" spacing="20.0">
+                  <VBox fx:id="" alignment="CENTER" prefHeight="244.0" prefWidth="383.0" spacing="20.0">
                      <children>
                         <HBox alignment="CENTER" prefHeight="50.0" prefWidth="408.0">
                            <children>
@@ -55,7 +54,7 @@
                                     <Image url="@../../../../images/emailEdit.png" />
                                  </image>
                               </ImageView>
-                              <TextField alignment="CENTER" prefHeight="50.0" prefWidth="367.0" promptText="E-mail">
+                              <TextField fx:id="emailTxtField" alignment="CENTER" prefHeight="50.0" prefWidth="367.0" promptText="E-mail">
                                  <font>
                                     <Font name="Britannic Bold" size="22.0" />
                                  </font>
@@ -69,7 +68,7 @@
                                     <Image url="@../../../../images/keyEdit.png" />
                                  </image>
                               </ImageView>
-                              <PasswordField alignment="CENTER" prefHeight="55.0" prefWidth="373.0" promptText="Password">
+                              <PasswordField fx:id="passwordTxtField" alignment="CENTER" prefHeight="55.0" prefWidth="373.0" promptText="Password">
                                  <font>
                                     <Font name="Britannic Bold" size="22.0" />
                                  </font>
@@ -84,7 +83,7 @@
                               <Insets right="300.0" />
                            </padding>
                         </CheckBox>
-                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="400.0" text="Login">
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleLoginBtn" prefHeight="50.0" prefWidth="400.0" text="Login">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
@@ -99,4 +98,4 @@
          </children>
       </VBox>
    </center>
-</BorderPane>
+</fx:root>
