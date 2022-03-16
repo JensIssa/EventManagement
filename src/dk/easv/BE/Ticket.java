@@ -3,18 +3,17 @@ package dk.easv.BE;
 import java.sql.Timestamp;
 
 public class Ticket {
-    private String nameOfUser;
     private Timestamp startDateTime;
     private Timestamp endDateTime;
     private Event event;
-    private int numberOfAttendees;
+    private User user;
 
-    public String getNameOfUser() {
-        return nameOfUser;
+    public User getUser() {
+        return user;
     }
 
-    public void setNameOfUser(String nameOfUser) {
-        this.nameOfUser = nameOfUser;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Timestamp getStartDateTime() {
@@ -41,11 +40,4 @@ public class Ticket {
         this.event = event;
     }
 
-    public int getNumberOfAttendees() {
-        return numberOfAttendees;
-    }
-
-    public void setNumberOfAttendees(int numberOfAttendees) {
-        this.numberOfAttendees = numberOfAttendees;
-    }
 }
