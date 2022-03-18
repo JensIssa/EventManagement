@@ -1,4 +1,4 @@
 package dk.easv.GUI.Controller;
 
-public class AdminView {
+public class UserViewController {
 }

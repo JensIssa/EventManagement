@@ -41,9 +41,9 @@ public class LoginViewController {
             if (person!= null){
                 PersonType type = person.getType();
                 switch (type) {
-                    case EVENTMANAGER -> openNewScene("/dk/easv/GUI/View/EventManagerView.fxml", "Title", actionEvent);
-                    case ADMIN -> openNewScene("/dk/easv/GUI/View/AdminView.fxml", "Title", actionEvent);
-                    case USER -> openNewScene("/dk/easv/GUI/View/UserView.fxml", "Title", actionEvent);
+                    case EVENTMANAGER -> openNewScene(person,"/dk/easv/GUI/View/EventManagerView.fxml", "EventManager", actionEvent);
+                    case ADMIN -> openNewScene(person,"/dk/easv/GUI/View/AdminView.fxml", "Admin", actionEvent);
+                    case USER -> openNewScene(person, "/dk/easv/GUI/View/UserView.fxml", "User", actionEvent);
                 }
             }else{
                 System.out.println("person is null");
@@ -61,11 +61,16 @@ public class LoginViewController {
      * @param actionEvent
      * @throws IOException
      */
-    private void openNewScene(String fxmlPath, String Title, ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlPath));
-        Parent root = fxmlLoader.load();
+    private void openNewScene(Person person,String fxmlPath, String Title, ActionEvent actionEvent) throws IOException {
+        FXMLLoader root = new FXMLLoader(getClass().getResource(fxmlPath));
+        Scene scene = new Scene(root.load());
+
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
+        stage.setScene(scene);
+
+        SuperController controller = root.getController();
+        controller.setPersonInfo(person);
+
         stage.setTitle(Title);
         stage.centerOnScreen();
         stage.setResizable(false);

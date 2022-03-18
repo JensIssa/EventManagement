@@ -15,6 +15,7 @@ public class PersonManager {
     }
 
     public Person loginPerson(String email, String password){
+        //return en manager / admin / user
         return personDAO.loginUser(email,password);
     }
     public List<Person> getAllUsers(){
