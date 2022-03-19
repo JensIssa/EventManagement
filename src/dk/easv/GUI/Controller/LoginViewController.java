@@ -42,7 +42,7 @@ public class LoginViewController {
                 PersonType type = person.getType();
                 switch (type) {
                     case EVENTMANAGER -> openNewScene(person,"/dk/easv/GUI/View/EventManagerView.fxml", "EventManager", actionEvent);
-                    case ADMIN -> openNewScene(person,"/dk/easv/GUI/View/AdminView.fxml", "Admin", actionEvent);
+                    case ADMIN -> openNewScene(person,"/dk/easv/GUI/View2/AdminView2.fxml", "Admin", actionEvent);
                     case USER -> openNewScene(person, "/dk/easv/GUI/View/UserView.fxml", "User", actionEvent);
                 }
             }else{
