@@ -29,7 +29,7 @@ public class PersonModel {
         return pM.getAllEventManagers();
     }
 
-    public ObservableList<Person> getObservableMovies() throws IOException {
+    public ObservableList<Person> getObservablePersons() throws IOException {
         eventmanagerList.clear();
         eventmanagerList.addAll(getAllEventmanagers());
         return eventmanagerList;

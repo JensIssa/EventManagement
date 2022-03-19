@@ -93,7 +93,7 @@
                     <children>
                         <TableView fx:id="eventmanagerTable" prefHeight="400.0" prefWidth="700.0" stylesheets="@../../CSS/AdminViewCSS.css">
                             <columns>
-                                <TableColumn prefWidth="233.0" text="Name">
+                                <TableColumn fx:id="eventmanagersNames" prefWidth="233.0" text="Name">
                                     <graphic>
                                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -101,7 +101,7 @@
                                             </image>
                                         </ImageView>
                                     </graphic></TableColumn>
-                                <TableColumn prefWidth="233.0" text="E-mail">
+                                <TableColumn fx:id="eventmanagersEmail" prefWidth="233.0" text="E-mail">
                                     <graphic>
                                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -109,7 +109,7 @@
                                             </image>
                                         </ImageView>
                                     </graphic></TableColumn>
-                                <TableColumn prefWidth="233.0" text="Events attending">
+                                <TableColumn fx:id="eventsAttended" prefWidth="233.0" text="Events attending">
                                     <graphic>
                                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
