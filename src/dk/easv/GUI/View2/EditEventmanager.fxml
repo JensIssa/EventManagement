@@ -13,7 +13,7 @@
     <center>
         <VBox alignment="CENTER" prefHeight="380.0" prefWidth="300.0" BorderPane.alignment="CENTER">
             <children>
-                <HBox alignment="CENTER" prefHeight="120.0" prefWidth="200.0">
+                <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
                     <children>
                         <VBox alignment="CENTER" prefHeight="210.0" prefWidth="300.0" spacing="15.0">
                             <children>
@@ -37,7 +37,7 @@
                         </VBox>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER" prefHeight="120.0" prefWidth="200.0">
+                <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
                     <children>
                         <VBox alignment="CENTER" prefHeight="210.0" prefWidth="300.0" spacing="15.0">
                             <children>
@@ -61,7 +61,7 @@
                         </VBox>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER" prefHeight="120.0" prefWidth="200.0">
+                <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
                     <children>
                         <VBox alignment="CENTER" prefHeight="230.0" prefWidth="300.0" spacing="15.0">
                             <children>
@@ -82,29 +82,50 @@
                         </VBox>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER" prefHeight="80.0" prefWidth="300.0" spacing="15.0">
-                    <children>
-                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleSaveBtn" text="Save">
+                <HBox alignment="CENTER" prefHeight="110.0" prefWidth="300.0" spacing="15.0">
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+               <children>
+                  <VBox alignment="CENTER" prefHeight="230.0" prefWidth="300.0" spacing="15.0">
+                     <children>
+                        <Label prefWidth="200.0" text="Password">
+                           <font>
+                              <Font name="Britannic Bold" size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets right="70.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="passwordTxtfield">
+                           <VBox.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+               </children>
+                </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                        <Button fx:id="saveBtn" alignment="CENTER" mnemonicParsing="false" onAction="#handleSaveBtn" text="Save">
                             <font>
                                 <Font size="16.0" />
                             </font>
+                     <HBox.margin>
+                        <Insets left="120.0" top="10.0" />
+                     </HBox.margin>
                         </Button>
-                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleCancelBtn" text="Cancel">
+                        <Button fx:id="cancelBtn" alignment="CENTER" mnemonicParsing="false" onAction="#handleCancelBtn" text="Cancel">
                             <font>
                                 <Font size="16.0" />
                             </font>
                             <HBox.margin>
-                                <Insets left="10.0" />
+                                <Insets left="10.0" top="10.0" />
                             </HBox.margin>
                         </Button>
-                    </children>
-                    <padding>
-                        <Insets left="130.0" />
-                    </padding>
-                    <VBox.margin>
-                        <Insets />
-                    </VBox.margin>
-                </HBox>
+               </children>
+            </HBox>
             </children>
         </VBox>
     </center>
