@@ -93,7 +93,7 @@
                     <children>
                         <TableView fx:id="eventmanagerTable" prefHeight="400.0" prefWidth="700.0" stylesheets="@../../CSS/AdminViewCSS.css">
                             <columns>
-                                <TableColumn fx:id="eventmanagersNames" prefWidth="233.0" text="Name">
+                                <TableColumn fx:id="eventmanagersNames" prefWidth="175.0" text="Name">
                                     <graphic>
                                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -101,7 +101,7 @@
                                             </image>
                                         </ImageView>
                                     </graphic></TableColumn>
-                                <TableColumn fx:id="eventmanagersEmail" prefWidth="233.0" text="E-mail">
+                                <TableColumn fx:id="eventmanagersEmail" prefWidth="175.0" text="E-mail">
                                     <graphic>
                                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -109,7 +109,7 @@
                                             </image>
                                         </ImageView>
                                     </graphic></TableColumn>
-                                <TableColumn fx:id="eventsAttended" prefWidth="233.0" text="Events attending">
+                                <TableColumn fx:id="eventsAttended" prefWidth="175.0" text="Events attending">
                                     <graphic>
                                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -118,6 +118,15 @@
                                         </ImageView>
                                     </graphic>
                                 </TableColumn>
+                        <TableColumn fx:id="eventmanagersPassword" prefWidth="175.0" text="Password">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../images/keyEdit.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </TableColumn>
                             </columns>
                             <HBox.margin>
                                 <Insets />

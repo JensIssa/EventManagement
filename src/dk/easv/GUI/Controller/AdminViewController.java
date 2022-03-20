@@ -21,6 +21,8 @@ import java.util.ResourceBundle;
 
 public class AdminViewController extends SuperController implements Initializable {
     @FXML
+    private TableColumn eventmanagersPassword;
+    @FXML
     private TableColumn eventmanagersNames;
     @FXML
     private TableColumn eventmanagersEmail;
@@ -36,11 +38,15 @@ public class AdminViewController extends SuperController implements Initializabl
         // FIXME: 3/19/2022
     }
 
+    public AdminViewController() throws IOException {
+        personModel = new PersonModel();
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         eventmanagersNames.setCellValueFactory(new PropertyValueFactory<Person, String>("Name"));
-        eventmanagersEmail.setCellValueFactory(new PropertyValueFactory<Person, String>("E-mail"));
+        eventmanagersEmail.setCellValueFactory(new PropertyValueFactory<Person, String>("Email"));
+        eventmanagersPassword.setCellValueFactory(new PropertyValueFactory<Person, String>("Password"));
 
         try {
             eventmanagerTable.setItems(personModel.getObservablePersons());

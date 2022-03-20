@@ -18,6 +18,11 @@ public class PersonManager {
         //return en manager / admin / user
         return personDAO.loginUser(email,password);
     }
+
+    public void create(String name, String email, String password, PersonType usertype) {
+         personDAO.createPerson(name, email, password, usertype);
+    }
+
     public List<Person> getAllUsers(){
         return personDAO.getAllUsers();
     }

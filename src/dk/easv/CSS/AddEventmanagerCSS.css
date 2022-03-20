@@ -9,6 +9,8 @@
     -fx-border-style: solid;
     -fx-border-width: 0 0 1 0;
     -fx-text-fill: white;
+    -fx-font-family: "Britannic Bold";
+    -fx-font-size: 18;
 }
 
 .text-field:hover {
@@ -25,6 +27,8 @@
 
 .label {
     -fx-text-fill: white;
+    -fx-font-family: "Britannic Bold";
+    -fx-font-size: 24;
 }
 
 .button:pressed{

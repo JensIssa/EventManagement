@@ -38,4 +38,8 @@ public class PersonModel {
     public Person loginPerson(String email, String password){
         return pM.loginPerson(email,password);
     }
+
+    public void createEventmanager(String name, String email, String password, PersonType usertype) {
+         pM.create(name, email, password, usertype);
+    }
 }
