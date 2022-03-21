@@ -30,10 +30,11 @@
                   </VBox>
                   <HBox prefHeight="100.0" prefWidth="150.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="350.0" prefWidth="150.0" spacing="40.0">
+                        <VBox alignment="CENTER" prefHeight="350.0" prefWidth="150.0" spacing="30.0">
                            <children>
                               <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#handleAddUserToEvent" text="Add user to event" />
                               <Button mnemonicParsing="false" onAction="#handleInspect" text="Inspect" />
+                              <Button mnemonicParsing="false" onAction="#handleAddEvent" text="Add event" />
                            </children>
                            <padding>
                               <Insets bottom="175.0" />

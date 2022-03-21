@@ -20,4 +20,7 @@ public class EventManagerViewController extends SuperController {
 
     public void handleAddUserToEvent(ActionEvent actionEvent) {
     }
+
+    public void handleAddEvent(ActionEvent actionEvent) {
+    }
 }
