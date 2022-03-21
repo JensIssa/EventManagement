@@ -144,17 +144,30 @@ public class PersonDAO {
         return null;
     }
 
-    public void deletePerson(Person personToBeDelated) throws SQLException {
+    public void deletePerson(Person personToBeDeleted, PersonType personType) {
         try (Connection connection = dc.getConnection()){
             String sql = "DELETE FROM Person" +
-                    "INNER JOIN Role ON Person.Role.ID = Role.ID";
+                    "INNER JOIN Role ON Person.Role.ID = Role.ID" +
+                    "WHERE Person.ID = ? AND Person.RoleID = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1 , personToBeDelated.getId());
-            preparedStatement.executeUpdate();
+            preparedStatement.setInt(1 , personToBeDeleted.getId());
+            preparedStatement.setInt(2, personType.getI());
+            preparedStatement.execute();
 
+            String sqlTicket = "DELETE FROM Ticket WHERE personID = ? ";
+            PreparedStatement preparedStatementTicket = connection.prepareStatement(sqlTicket);
+            preparedStatementTicket.setInt(1, personToBeDeleted.getId());
+            preparedStatementTicket.execute();
         } catch (SQLException ex) {
             System.out.println(ex);
         }
+        }
+
+        public void deleteUser(Person person) {
+            deletePerson(person, PersonType.USER);
+        }
+        public void deleteEventManager(Person person){
+            deletePerson(person, PersonType.EVENTMANAGER);
         }
 
     public static void main(String[] args) throws IOException {
