@@ -1,5 +1,6 @@
 package dk.easv.BE;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -7,8 +8,8 @@ public class Event {
     private int id;
     private String name;
     private List<User> users;
-    private Timestamp startDateTime;
-    private Timestamp endDateTime;
+    private Date startDateTime;
+    private Date endDateTime;
 
     public int getId() {
         return id;
@@ -33,19 +34,19 @@ public class Event {
         this.users = users;
     }
 
-    public Timestamp getStartDateTime() {
+    public Date getStartDateTime() {
         return startDateTime;
     }
 
-    public void setStartDateTime(Timestamp startDateTime) {
+    public void setStartDateTime(Date startDateTime) {
         this.startDateTime = startDateTime;
     }
 
-    public Timestamp getEndDateTime() {
+    public Date getEndDateTime() {
         return endDateTime;
     }
 
-    public void setEndDateTime(Timestamp endDateTime) {
+    public void setEndDateTime(Date endDateTime) {
         this.endDateTime = endDateTime;
     }
 }
