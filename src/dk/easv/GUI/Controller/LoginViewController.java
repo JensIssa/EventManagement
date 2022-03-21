@@ -7,16 +7,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
-import static dk.easv.BE.PersonType.ADMIN;
-import static dk.easv.BE.PersonType.EVENTMANAGER;
 
 public class LoginViewController {
     @FXML
@@ -41,7 +37,7 @@ public class LoginViewController {
             if (person!= null){
                 PersonType type = person.getType();
                 switch (type) {
-                    case EVENTMANAGER -> openNewScene(person,"/dk/easv/GUI/View/EventManagerView.fxml", "EventManager", actionEvent);
+                    case EVENTMANAGER -> openNewScene(person, "/dk/easv/GUI/View2/EventManagerView.fxml", "EventManager", actionEvent);
                     case ADMIN -> openNewScene(person,"/dk/easv/GUI/View2/AdminView2.fxml", "Admin", actionEvent);
                     case USER -> openNewScene(person, "/dk/easv/GUI/View/UserView.fxml", "User", actionEvent);
                 }
