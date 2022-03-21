@@ -2,9 +2,9 @@ package dk.easv.GUI.Controller;
 
 import dk.easv.BE.Person;
 
-public class UserViewManager extends SuperController{
+public class UserViewManager extends SuperController implements IController{
     @Override
-    void setPersonInfo(Person person) {
+    public void setPersonInfo(Person person) {
 
     }
 }

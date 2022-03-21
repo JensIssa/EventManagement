@@ -22,7 +22,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class AdminViewController extends SuperController implements Initializable {
+public class AdminViewController extends SuperController implements Initializable, IController {
     @FXML
     private TableColumn eventmanagersPassword;
     @FXML
@@ -37,7 +37,7 @@ public class AdminViewController extends SuperController implements Initializabl
     private PersonModel personModel;
 
     @Override
-    void setPersonInfo(Person person) {
+    public void setPersonInfo(Person person) {
         // FIXME: 3/19/2022
     }
 
