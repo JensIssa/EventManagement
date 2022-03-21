@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8.0.171 "  xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EventManagerViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EventManagerViewController">
    <center>
       <VBox prefHeight="376.0" prefWidth="650.0" BorderPane.alignment="CENTER">
          <children>
@@ -30,16 +30,15 @@
                   </VBox>
                   <HBox prefHeight="100.0" prefWidth="150.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Inspect">
-                           <HBox.margin>
-                              <Insets left="15.0" top="70.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" text="add">
-                           <HBox.margin>
-                              <Insets left="30.0" top="35.0" />
-                           </HBox.margin>
-                        </Button>
+                        <VBox alignment="CENTER" prefHeight="350.0" prefWidth="150.0" spacing="40.0">
+                           <children>
+                              <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#handleAddUserToEvent" text="Add user to event" />
+                              <Button mnemonicParsing="false" onAction="#handleInspect" text="Inspect" />
+                           </children>
+                           <padding>
+                              <Insets bottom="175.0" />
+                           </padding>
+                        </VBox>
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="250.0">
@@ -73,8 +72,8 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="325.0" spacing="15.0">
                <children>
-                  <Button mnemonicParsing="false" text="Add guest" />
-                  <Button mnemonicParsing="false" text="Edit guest" />
+                  <Button mnemonicParsing="false" onAction="#handleAddGuest" text="Add guest" />
+                  <Button mnemonicParsing="false" onAction="#handleEditGuest" text="Edit guest" />
                </children>
             </HBox>
          </children>
