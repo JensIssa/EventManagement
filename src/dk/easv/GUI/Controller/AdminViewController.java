@@ -2,6 +2,7 @@ package dk.easv.GUI.Controller;
 
 import dk.easv.BE.EventManager;
 import dk.easv.BE.Person;
+import dk.easv.BE.PersonType;
 import dk.easv.GUI.Model.PersonModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,6 +20,7 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -104,5 +106,19 @@ public class AdminViewController extends SuperController implements Initializabl
         eventmanagerTable.setItems(personModel.getObservablePersons());
     }
 
+
+    public void handleRemove(ActionEvent actionEvent) {
+        if (eventmanagerTable.getSelectionModel().getSelectedItem() == null) {
+            error("Please choose an Eventmanager to delete");
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this eventmanager", ButtonType.YES, ButtonType.NO);
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.YES) {
+                EventManager eventManager = (EventManager) eventmanagerTable.getSelectionModel().getSelectedItem();
+                personModel.deleteEventmanager(eventManager, PersonType.EVENTMANAGER);
+                eventmanagerTable.getItems().remove(eventManager);
+            }
+        }
+    }
 }
 

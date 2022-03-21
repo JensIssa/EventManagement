@@ -1,5 +1,6 @@
 package dk.easv.BLL;
 
+import dk.easv.BE.EventManager;
 import dk.easv.BE.Person;
 import dk.easv.BE.PersonType;
 import dk.easv.DAL.PersonDAO;
@@ -21,6 +22,10 @@ public class PersonManager {
 
     public void create(String name, String email, String password, PersonType usertype) {
          personDAO.createPerson(name, email, password, usertype);
+    }
+
+    public void delete(EventManager eventManager, PersonType usertype) {
+        personDAO.deleteEventManager(eventManager, PersonType.EVENTMANAGER);
     }
 
     public List<Person> getAllUsers(){
