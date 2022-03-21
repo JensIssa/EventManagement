@@ -145,6 +145,24 @@ public class PersonDAO {
     }
 
     /**
+     * Opdaterer eventManagers oplysninger
+     * @param eventManager - eventManagaren der bliver opdateret
+     */
+    public void updateEventManagers(EventManager eventManager){
+        try (Connection connection = dc.getConnection()){
+            String sql = "UPDATE Person SET Name=?, email=? WHERE ID=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, eventManager.getName());
+            preparedStatement.setString(2, eventManager.getEmail());
+            preparedStatement.setInt(3, eventManager.getId());
+            preparedStatement.executeUpdate();
+        }
+        catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    /**
      * Sletter eventManagers og de events de er tilknyttet til
      * @param personToBeDeleted - EventManageren der skal slettes
      * @param personType - typen af useren
@@ -188,6 +206,24 @@ public class PersonDAO {
         }
     }
 
+    /**
+     * Opdaterer userens oplsyninger
+     * @param user - useren der bliver opdateret
+     */
+    public void updateUser(User user){
+        try (Connection connection = dc.getConnection()){
+            String sql = "UPDATE Person SET Name=?, email=?, phoneNumber=? WHERE ID=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, user.getName());
+            preparedStatement.setString(2, user.getEmail());
+            preparedStatement.setInt(3, user.getPhoneNumber());
+            preparedStatement.setInt(4, user.getId());
+            preparedStatement.executeUpdate();
+        }
+        catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
     /**
      * Sletter en user fra en event
      * @param event - Eventen useren deltager i
