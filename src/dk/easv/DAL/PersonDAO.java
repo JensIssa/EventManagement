@@ -144,6 +144,19 @@ public class PersonDAO {
         return null;
     }
 
+    public void deletePerson(Person personToBeDelated) throws SQLException {
+        try (Connection connection = dc.getConnection()){
+            String sql = "DELETE FROM Person" +
+                    "INNER JOIN Role ON Person.Role.ID = Role.ID";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1 , personToBeDelated.getId());
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        }
+
     public static void main(String[] args) throws IOException {
         PersonDAO eventManagerDAO = new PersonDAO();
 
