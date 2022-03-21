@@ -3,16 +3,13 @@ package dk.easv.GUI.Controller;
 import dk.easv.BE.Person;
 import javafx.event.ActionEvent;
 
-public class EventManagerViewController extends SuperController {
+import java.io.IOException;
+
+ 
+public class EventManagerViewController extends SuperController  implements IController{
     @Override
-    void setPersonInfo(Person person) {
+    public void setPersonInfo(Person person) {
 
-    }
-
-    public void handleAddGuest(ActionEvent actionEvent) {
-    }
-
-    public void handleEditGuest(ActionEvent actionEvent) {
     }
 
     public void handleInspect(ActionEvent actionEvent) {
@@ -23,4 +20,15 @@ public class EventManagerViewController extends SuperController {
 
     public void handleAddEvent(ActionEvent actionEvent) {
     }
+
+    public void handleAddGuest(ActionEvent actionEvent) throws IOException {
+        openScene("dk/easv/GUI/View2/AddGuestView.fxml", true, "Add guest", true);
+    }
+
+    public void handleEditGuest(ActionEvent actionEvent) throws IOException {
+        openScene("dk/easv/GUI/View2/EditGuestView.fxml", true, "Add guest", true);
+
+    }
+
+
 }

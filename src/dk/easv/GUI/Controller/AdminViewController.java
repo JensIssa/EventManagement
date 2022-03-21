@@ -2,6 +2,7 @@ package dk.easv.GUI.Controller;
 
 import dk.easv.BE.EventManager;
 import dk.easv.BE.Person;
+import dk.easv.BE.PersonType;
 import dk.easv.GUI.Model.PersonModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,25 +20,22 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
-public class AdminViewController extends SuperController implements Initializable {
-    @FXML
-    private TableColumn eventmanagersPassword;
+public class AdminViewController extends SuperController implements Initializable, IController {
     @FXML
     private TableColumn eventmanagersNames;
     @FXML
     private TableColumn eventmanagersEmail;
-    @FXML
-    private TableColumn eventsAttended;
     @FXML
     private TableView eventmanagerTable;
 
     private PersonModel personModel;
 
     @Override
-    void setPersonInfo(Person person) {
+    public void setPersonInfo(Person person) {
         // FIXME: 3/19/2022
     }
 
@@ -49,7 +47,7 @@ public class AdminViewController extends SuperController implements Initializabl
     public void initialize(URL location, ResourceBundle resources) {
         eventmanagersNames.setCellValueFactory(new PropertyValueFactory<Person, String>("Name"));
         eventmanagersEmail.setCellValueFactory(new PropertyValueFactory<Person, String>("Email"));
-        eventmanagersPassword.setCellValueFactory(new PropertyValueFactory<Person, String>("Password"));
+
 
         try {
             eventmanagerTable.setItems(personModel.getObservablePersons());
@@ -103,44 +101,24 @@ public class AdminViewController extends SuperController implements Initializabl
      * @throws IOException
      */
     public void handleOpenAdd(ActionEvent actionEvent) throws IOException {
-        openScene("/dk/easv/GUI/View2/AddEventManager.fxml", false, true,"Add Eventmanager", true);
+        openScene("/dk/easv/GUI/View2/AddEventManager.fxml",  true,"Add Eventmanager", true);
         eventmanagerTable.getItems().clear();
         eventmanagerTable.setItems(personModel.getObservablePersons());
     }
 
-    /**
-     * Method used to open a new fxml scene
-     * @param pathToFXML
-     * @param undecorated
-     * @param showAndWait
-     * @param title
-     * @param resizable
-     * @throws IOException
-     */
 
-    private void openScene(String pathToFXML, boolean undecorated, boolean showAndWait, String title, boolean resizable) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(pathToFXML));
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        if(undecorated){
-            stage.initStyle(StageStyle.UNDECORATED);
-        }
-        if(!undecorated){
-            stage.initStyle(StageStyle.DECORATED);
-        }
-
-        stage.setTitle(title);
-        stage.setResizable(resizable);
-
-        stage.setScene(scene);
-        if(showAndWait){
-            stage.showAndWait();
-        }
-
-        if(!showAndWait){
-            stage.show();
+    public void handleRemove(ActionEvent actionEvent) {
+        if (eventmanagerTable.getSelectionModel().getSelectedItem() == null) {
+            error("Please choose an Eventmanager to delete");
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this eventmanager", ButtonType.YES, ButtonType.NO);
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.YES) {
+                EventManager eventManager = (EventManager) eventmanagerTable.getSelectionModel().getSelectedItem();
+                personModel.deleteEventmanager(eventManager, PersonType.EVENTMANAGER);
+                eventmanagerTable.getItems().remove(eventManager);
+            }
         }
     }
-
 }
 

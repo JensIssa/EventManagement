@@ -42,4 +42,7 @@ public class PersonModel {
     public void createEventmanager(String name, String email, String password, PersonType usertype) {
          pM.create(name, email, password, usertype);
     }
+    public void deleteEventmanager(EventManager eventManager, PersonType usertype) {
+        pM.delete(eventManager, PersonType.EVENTMANAGER);}
+
 }

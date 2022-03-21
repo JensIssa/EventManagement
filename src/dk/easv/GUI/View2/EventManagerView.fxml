@@ -21,9 +21,9 @@
                         <Label text="Event list" />
                         <TableView prefHeight="350.0" prefWidth="250.0">
                           <columns>
-                            <TableColumn prefWidth="83.0" text="Navn" />
-                            <TableColumn prefWidth="83.0" text="Dato start" />
-                              <TableColumn prefWidth="83.0" text="Dato slut" />
+                            <TableColumn prefWidth="83.0" text="Name" />
+                            <TableColumn prefWidth="83.0" text="Date start" />
+                              <TableColumn prefWidth="83.0" text="Date end" />
                           </columns>
                         </TableView>
                      </children>
@@ -50,7 +50,7 @@
                               <TextField />
                               <TableView prefHeight="325.0" prefWidth="250.0">
                                 <columns>
-                                  <TableColumn prefWidth="125.0" text="Navn" />
+                                  <TableColumn prefWidth="125.0" text="Name" />
                                   <TableColumn prefWidth="125.0" text="Email" />
                                 </columns>
                               </TableView>

@@ -144,31 +144,102 @@ public class PersonDAO {
         return null;
     }
 
-    public void deletePerson(Person personToBeDeleted, PersonType personType) {
+    /**
+     * Opdaterer eventManagers oplysninger
+     * @param eventManager - eventManagaren der bliver opdateret
+     */
+    public void updateEventManagers(EventManager eventManager){
         try (Connection connection = dc.getConnection()){
-            String sql = "DELETE FROM Person" +
-                    "INNER JOIN Role ON Person.Role.ID = Role.ID" +
-                    "WHERE Person.ID = ? AND Person.RoleID = ?";
+            String sql = "UPDATE Person SET Name=?, email=? WHERE ID=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1 , personToBeDeleted.getId());
-            preparedStatement.setInt(2, personType.getI());
-            preparedStatement.execute();
+            preparedStatement.setString(1, eventManager.getName());
+            preparedStatement.setString(2, eventManager.getEmail());
+            preparedStatement.setInt(3, eventManager.getId());
+            preparedStatement.executeUpdate();
+        }
+        catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
 
-            String sqlTicket = "DELETE FROM Ticket WHERE personID = ? ";
-            PreparedStatement preparedStatementTicket = connection.prepareStatement(sqlTicket);
-            preparedStatementTicket.setInt(1, personToBeDeleted.getId());
-            preparedStatementTicket.execute();
+    /**
+     * Sletter eventManagers og de events de er tilknyttet til
+     * @param personToBeDeleted - EventManageren der skal slettes
+     * @param personType - typen af useren
+     */
+    public void deleteEventManager(EventManager personToBeDeleted, PersonType personType) {
+        try (Connection connection = dc.getConnection()){
+            String deleteFromEvent = "DELETE FROM Event WHERE personID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(deleteFromEvent);
+            preparedStatement.setInt(1,personToBeDeleted.getId());
+          String sql = "DELETE p FROM Person AS p INNER JOIN Role ON p.RoleID = Role.ID WHERE p.ID = ? AND p.RoleID = ?";
+          preparedStatement = connection.prepareStatement(sql);
+          preparedStatement.setInt(1 , personToBeDeleted.getId());
+          preparedStatement.setInt(2, personType.getI());
+          preparedStatement.execute();
+
         } catch (SQLException ex) {
             System.out.println(ex);
         }
         }
 
-        public void deleteUser(Person person) {
-            deletePerson(person, PersonType.USER);
+    /**
+     * Sletter en user fra hele systemet - inklusiv alle sine billeter
+     * @param personToBeDeleted - Useren der skal slettes
+     * @param personType - typen af useren
+     */
+    public void deleteUser(User personToBeDeleted, PersonType personType) {
+        try (Connection connection = dc.getConnection()){
+            String sql = "DELETE FROM Ticket WHERE personID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1 , personToBeDeleted.getId());
+            preparedStatement.execute();
+            String sqlUser = "DELETE p\n" +
+                    "FROM Person AS p\n" +
+                    "INNER JOIN Role ON p.RoleID = Role.ID\n" +
+                    "WHERE p.ID = ? AND p.RoleID = ?";
+            preparedStatement = connection.prepareStatement(sqlUser);
+            preparedStatement.setInt(1, personToBeDeleted.getId());
+            preparedStatement.setInt(2, personType.getI());
+        } catch (SQLException ex) {
+            System.out.println(ex);
         }
-        public void deleteEventManager(Person person){
-            deletePerson(person, PersonType.EVENTMANAGER);
+    }
+
+    /**
+     * Opdaterer userens oplsyninger
+     * @param user - useren der bliver opdateret
+     */
+    public void updateUser(User user){
+        try (Connection connection = dc.getConnection()){
+            String sql = "UPDATE Person SET Name=?, email=?, phoneNumber=? WHERE ID=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, user.getName());
+            preparedStatement.setString(2, user.getEmail());
+            preparedStatement.setInt(3, user.getPhoneNumber());
+            preparedStatement.setInt(4, user.getId());
+            preparedStatement.executeUpdate();
         }
+        catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
+    /**
+     * Sletter en user fra en event
+     * @param event - Eventen useren deltager i
+     * @param person - useren der skal fjernes fra eventen
+     */
+    public void deleteUserFromEvent(Event event, Person person){
+        try (Connection connection = dc.getConnection()) {
+            String sql = "DELETE FROM Ticket WHERE personID = ? AND eventID = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, person.getId());
+            ps.setInt(2, event.getId());
+            ps.execute();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) throws IOException {
         PersonDAO eventManagerDAO = new PersonDAO();
