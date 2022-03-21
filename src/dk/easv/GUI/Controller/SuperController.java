@@ -2,10 +2,16 @@ package dk.easv.GUI.Controller;
 
 import dk.easv.BE.Person;
 import dk.easv.BE.PersonType;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+import java.io.IOException;
 
 public abstract class SuperController {
     abstract void setPersonInfo(Person person);
@@ -78,4 +84,34 @@ public abstract class SuperController {
         alert.setHeaderText(errorTxt);
         alert.showAndWait();
     }
+
+    /**
+     * Metode anvendt til at åbne de forskellige vinduer i programmet
+     * @param pathToFXML - Stien til FXML vinduet
+     * @param undecorated - et boolean parameter, der bestemmer hverenten der skal være dekorationer i et FXML vindue (dekorationer = forstørrrelse knappen, minimer knappen og exit krydset)
+     * @param showAndWait - et boolean parameter der bestemmer om der skal anvendes showAndWait() eller show() metoden
+     * @param title - titlen på FXML vinduet
+     * @param resizable - et boolean parameter der bestemmer om et vindue kan redigeres i størrelsen
+     * @throws IOException
+     */
+    public void openScene(String pathToFXML, boolean showAndWait, String title, boolean resizable) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(pathToFXML));
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+
+
+        stage.setTitle(title);
+        stage.setResizable(resizable);
+
+        stage.setScene(scene);
+        if(showAndWait){
+            stage.showAndWait();
+        }
+
+        if(!showAndWait){
+            stage.show();
+        }
+    }
+
+
 }
