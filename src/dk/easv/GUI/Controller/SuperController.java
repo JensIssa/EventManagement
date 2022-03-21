@@ -14,7 +14,7 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public abstract class SuperController {
-    abstract void setPersonInfo(Person person);
+
 
 
     /**

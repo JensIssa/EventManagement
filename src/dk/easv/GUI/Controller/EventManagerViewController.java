@@ -5,10 +5,11 @@ import javafx.event.ActionEvent;
 
 import java.io.IOException;
 
-public class EventManagerViewController extends SuperController {
+ 
+public class EventManagerViewController extends SuperController  implements IController{
     @Override
-    void setPersonInfo(Person person) {
-        
+    public void setPersonInfo(Person person) {
+
     }
 
     public void handleInspect(ActionEvent actionEvent) {

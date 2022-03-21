@@ -54,9 +54,4 @@ public class AddEventmanagerController extends SuperController {
             closeWindow(saveBtn);
         }
     }
-
-    @Override
-    void setPersonInfo(Person person) {
-        // FIXME: 3/19/2022 
-    }
 }
