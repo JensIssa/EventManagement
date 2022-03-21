@@ -1,15 +1,23 @@
 package dk.easv.BE;
 
 import java.sql.Date;
-import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Event {
     private int id;
+    private int managerId;
     private String name;
-    private List<User> users;
-    private Date startDateTime;
-    private Date endDateTime;
+    private LocalDate startDate;
+    private String startTime;
+
+    public Event(int id,int managerId, String name, LocalDate startDate, String startTime) {
+        this.id = id;
+        this.managerId = managerId;
+        this.name = name;
+        this.startDate = startDate;
+        this.startTime = startTime;
+    }
 
     public int getId() {
         return id;
@@ -26,27 +34,30 @@ public class Event {
         this.name = name;
     }
 
-    public List<User> getUsers() {
-        return users;
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
     }
 
-    public Date getStartDateTime() {
-        return startDateTime;
+    public String getStartTime() {
+        return startTime;
     }
 
-    public void setStartDateTime(Date startDateTime) {
-        this.startDateTime = startDateTime;
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
     }
 
-    public Date getEndDateTime() {
-        return endDateTime;
-    }
-
-    public void setEndDateTime(Date endDateTime) {
-        this.endDateTime = endDateTime;
+    @Override
+    public String toString() {
+        return "Event{" +
+                "id=" + id +
+                ", managerId=" + managerId +
+                ", name='" + name + '\'' +
+                ", startDate=" + startDate +
+                ", startTime='" + startTime + '\'' +
+                '}';
     }
 }
