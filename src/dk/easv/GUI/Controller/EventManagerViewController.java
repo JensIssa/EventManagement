@@ -9,18 +9,6 @@ public class EventManagerViewController extends SuperController {
 
     }
 
-    public void handleAddGuest(ActionEvent actionEvent) {
-    }
-
-    public void handleEditGuest(ActionEvent actionEvent) {
-    }
-
     public void handleInspect(ActionEvent actionEvent) {
-    }
-
-    public void handleAddUserToEvent(ActionEvent actionEvent) {
-    }
-
-    public void handleAddEvent(ActionEvent actionEvent) {
     }
 }
