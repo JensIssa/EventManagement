@@ -13,9 +13,9 @@
    <center>
       <VBox alignment="CENTER" prefHeight="380.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="120.0" prefWidth="200.0">
                <children>
-                  <VBox alignment="CENTER" prefHeight="210.0" prefWidth="300.0" spacing="5.0">
+                  <VBox alignment="CENTER" prefHeight="0.0" prefWidth="300.0" spacing="5.0">
                      <children>
                         <Label text="Name">
                            <font>
@@ -40,7 +40,7 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="120.0" prefWidth="200.0">
                <children>
                   <VBox alignment="CENTER" prefHeight="210.0" prefWidth="300.0" spacing="5.0">
                      <children>
@@ -67,33 +67,12 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
-               <children>
-                  <VBox alignment="CENTER" prefHeight="230.0" prefWidth="300.0" spacing="5.0">
-                     <children>
-                        <Label prefWidth="200.0" text="Event(s) Attending">
-                           <font>
-                              <Font name="Britannic Bold" size="24.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets right="70.0" />
-                           </VBox.margin>
-                        </Label>
-                        <TextField fx:id="eventTxtField" alignment="CENTER">
-                           <VBox.margin>
-                              <Insets left="15.0" right="15.0" />
-                           </VBox.margin>
-                        </TextField>
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="110.0" prefWidth="300.0" spacing="5.0">
+            <HBox alignment="CENTER" prefHeight="120.0" prefWidth="300.0" spacing="5.0">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
                <children>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0">
+                  <VBox alignment="CENTER" prefHeight="210.0" prefWidth="300.0">
                      <children>
                         <Label alignment="CENTER" text="Password">
                            <VBox.margin>
@@ -109,7 +88,7 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
                <children>
                   <Button fx:id="saveBtn" alignment="CENTER" mnemonicParsing="false" onAction="#handleSaveBtn" text="Save">
                      <font>

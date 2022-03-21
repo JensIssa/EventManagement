@@ -13,20 +13,20 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="800.0" styleClass="backgroundColor" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.AdminViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="1200.0" styleClass="backgroundColor" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.AdminViewController">
     <center>
-        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
             <children>
-                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                <HBox alignment="CENTER" prefHeight="90.0" prefWidth="799.0">
                     <children>
-                        <HBox alignment="CENTER" prefHeight="30.0" prefWidth="302.0" spacing="5.0">
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="348.0">
                             <children>
                                 <ImageView fitHeight="25.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@../../../../images/searchIconEdit.png" />
                                     </image>
                                 </ImageView>
-                                <TextField alignment="CENTER" prefHeight="25.0" prefWidth="217.0" promptText="Search here">
+                                <TextField alignment="CENTER" prefHeight="40.0" prefWidth="478.0" promptText="Search here">
                                     <HBox.margin>
                                         <Insets />
                                     </HBox.margin>
@@ -35,12 +35,12 @@
                                     </font></TextField>
                             </children>
                             <HBox.margin>
-                                <Insets bottom="5.0" top="45.0" />
+                                <Insets bottom="5.0" right="250.0" top="45.0" />
                             </HBox.margin>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="30.0" prefWidth="370.0" spacing="15.0">
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="328.0" spacing="15.0">
                             <children>
-                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleOpenAdd" prefHeight="40.0" prefWidth="105.0" text="Add">
+                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleOpenAdd" prefHeight="40.0" prefWidth="79.0" text="Add">
                                     <font>
                                         <Font name="Britannic Bold" size="14.0" />
                                     </font>
@@ -81,7 +81,7 @@
                                 </Button>
                             </children>
                             <HBox.margin>
-                                <Insets bottom="5.0" left="20.0" right="20.0" top="45.0" />
+                                <Insets bottom="5.0" left="20.0" top="45.0" />
                             </HBox.margin>
                         </HBox>
                     </children>
@@ -89,11 +89,51 @@
                         <Insets left="50.0" right="50.0" />
                     </VBox.margin>
                 </HBox>
-                <HBox alignment="CENTER" prefHeight="460.0" prefWidth="800.0">
+                <HBox alignment="CENTER" prefHeight="460.0" prefWidth="967.0" spacing="50.0">
                     <children>
-                        <TableView fx:id="eventmanagerTable" prefHeight="400.0" prefWidth="700.0" stylesheets="@../../CSS/AdminViewCSS.css">
+                  <TableView prefHeight="420.0" prefWidth="570.0">
+                    <columns>
+                      <TableColumn prefWidth="150.0" text="Event name">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../images/event2.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </TableColumn>
+                      <TableColumn prefWidth="150.0" text="Eventmanager">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../images/Eventmanager.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </TableColumn>
+                        <TableColumn prefWidth="135.0" text="Date start">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../images/date.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </TableColumn>
+                        <TableColumn prefWidth="135.0" text="Date end">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../images/date.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </TableColumn>
+                    </columns>
+                  </TableView>
+                        <TableView fx:id="eventmanagerTable" prefHeight="420.0" prefWidth="480.0" stylesheets="@../../CSS/AdminViewCSS.css">
                             <columns>
-                                <TableColumn fx:id="eventmanagersNames" prefWidth="175.0" text="Name">
+                                <TableColumn fx:id="eventmanagersNames" prefWidth="240.0" text="Name">
                                     <graphic>
                                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -101,7 +141,7 @@
                                             </image>
                                         </ImageView>
                                     </graphic></TableColumn>
-                                <TableColumn fx:id="eventmanagersEmail" prefWidth="175.0" text="E-mail">
+                                <TableColumn fx:id="eventmanagersEmail" prefWidth="240.0" text="E-mail">
                                     <graphic>
                                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -109,24 +149,6 @@
                                             </image>
                                         </ImageView>
                                     </graphic></TableColumn>
-                                <TableColumn fx:id="eventsAttended" prefWidth="175.0" text="Events attending">
-                                    <graphic>
-                                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../../../../images/kalenderIMG.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                </TableColumn>
-                        <TableColumn fx:id="eventmanagersPassword" prefWidth="175.0" text="Password">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../images/keyEdit.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </TableColumn>
                             </columns>
                             <HBox.margin>
                                 <Insets />

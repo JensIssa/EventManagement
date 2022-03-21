@@ -78,5 +78,4 @@ public abstract class SuperController {
         alert.setHeaderText(errorTxt);
         alert.showAndWait();
     }
-
 }
