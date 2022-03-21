@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class EditEventmanagerController extends SuperController {
+public class EditEventmanagerController extends SuperController implements IController{
     @FXML
     private Button saveBtn;
     @FXML
@@ -37,7 +37,7 @@ public class EditEventmanagerController extends SuperController {
     }
 
     @Override
-    void setPersonInfo(Person person) {
+    public void setPersonInfo(Person person) {
         // FIXME: 3/20/2022
     }
 }

@@ -64,7 +64,7 @@ public class LoginViewController {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(scene);
 
-        SuperController controller = root.getController();
+        IController controller = root.getController();
         controller.setPersonInfo(person);
 
         stage.setTitle(Title);

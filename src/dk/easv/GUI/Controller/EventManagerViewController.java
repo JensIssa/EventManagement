@@ -3,9 +3,9 @@ package dk.easv.GUI.Controller;
 import dk.easv.BE.Person;
 import javafx.event.ActionEvent;
 
-public class EventManagerViewController extends SuperController {
+public class EventManagerViewController extends SuperController  implements IController{
     @Override
-    void setPersonInfo(Person person) {
+    public void setPersonInfo(Person person) {
 
     }
 
