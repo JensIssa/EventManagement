@@ -103,43 +103,9 @@ public class AdminViewController extends SuperController implements Initializabl
      * @throws IOException
      */
     public void handleOpenAdd(ActionEvent actionEvent) throws IOException {
-        openScene("/dk/easv/GUI/View2/AddEventManager.fxml", false, true,"Add Eventmanager", true);
+        openScene("/dk/easv/GUI/View2/AddEventManager.fxml",  true,"Add Eventmanager", true);
         eventmanagerTable.getItems().clear();
         eventmanagerTable.setItems(personModel.getObservablePersons());
-    }
-
-    /**
-     * Method used to open a new fxml scene
-     * @param pathToFXML
-     * @param undecorated
-     * @param showAndWait
-     * @param title
-     * @param resizable
-     * @throws IOException
-     */
-
-    private void openScene(String pathToFXML, boolean undecorated, boolean showAndWait, String title, boolean resizable) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(pathToFXML));
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        if(undecorated){
-            stage.initStyle(StageStyle.UNDECORATED);
-        }
-        if(!undecorated){
-            stage.initStyle(StageStyle.DECORATED);
-        }
-
-        stage.setTitle(title);
-        stage.setResizable(resizable);
-
-        stage.setScene(scene);
-        if(showAndWait){
-            stage.showAndWait();
-        }
-
-        if(!showAndWait){
-            stage.show();
-        }
     }
 
 }
