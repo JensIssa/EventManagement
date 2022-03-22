@@ -10,13 +10,15 @@ public class Event {
     private String name;
     private LocalDate startDate;
     private String startTime;
+    private String managerName;
 
-    public Event(int id,int managerId, String name, LocalDate startDate, String startTime) {
+    public Event(int id,int managerId, String name, LocalDate startDate, String startTime, String managerName) {
         this.id = id;
         this.managerId = managerId;
         this.name = name;
         this.startDate = startDate;
         this.startTime = startTime;
+        this.managerName = managerName;
     }
 
     public int getId() {
@@ -58,6 +60,7 @@ public class Event {
                 ", name='" + name + '\'' +
                 ", startDate=" + startDate +
                 ", startTime='" + startTime + '\'' +
+                ", managerName='" + managerName + '\'' +
                 '}';
     }
 }

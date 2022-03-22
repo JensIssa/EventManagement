@@ -40,7 +40,14 @@ public class EventDAO {
                 Date startDate = resultSet.getDate("startDate");
                 String startTime = resultSet.getString("startTime");
 
-                Event event = new Event(id, personId, name, startDate.toLocalDate(), startTime);
+                String sqlGetManagerName = "SELECT name FROM Person WHERE ID = ?";
+                PreparedStatement psGetMName = connection.prepareStatement(sqlGetManagerName);
+                psGetMName.setInt(1,personId);
+                ResultSet rsGetMName = psGetMName.executeQuery();
+                rsGetMName.next();
+                String managerName = rsGetMName.getString("name");
+
+                Event event = new Event(id, personId, name, startDate.toLocalDate(), startTime, managerName);
                 allEvents.add(event);
             }
 
@@ -79,5 +86,4 @@ public class EventDAO {
 
     }
     
-
 }
