@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class EditEventmanagerController extends SuperController {
+public class EditEventmanagerController extends SuperController implements IController {
     @FXML
     private Button saveBtn;
     @FXML
@@ -22,29 +22,35 @@ public class EditEventmanagerController extends SuperController {
     private TextField emailTxtField;
     @FXML
     private TextField nameTxtField;
-    @FXML
-    private TextField eventTxtField;
 
     private PersonModel personModel;
 
-    private int id;
+    EventManager eventManager=null;
 
     public EditEventmanagerController() throws IOException {
         personModel = new PersonModel();
     }
 
+    @Override
+    public void setPersonInfo(Person person) {
+        this.eventManager = (EventManager) person;
+        nameTxtField.setText(eventManager.getName());
+        emailTxtField.setText(eventManager.getEmail());
+        passwordTxtfield.setText(eventManager.getPassword());
+    }
+
+    /**
+     * Håndtere save knappens funktion til at læse tekstfelternes indhold og opdatere databasen
+     * @param actionEvent
+     */
     public void handleSaveBtn(ActionEvent actionEvent) {
-
-
         String name = getName(nameTxtField);
         String email = getEmail(emailTxtField);
         String password = getPassword(passwordTxtfield);
-
-
         if (name != null && email != null && password != null)
         {
+            int id = eventManager.getId();
             EventManager eventManager = new EventManager(id, name, email, password, PersonType.EVENTMANAGER);
-            System.out.println(eventManager);
             personModel.updateEventmanager(eventManager);
             closeWindow(saveBtn);
         }
@@ -54,10 +60,5 @@ public class EditEventmanagerController extends SuperController {
         closeWindow(cancelBtn);
     }
 
-    public void setEventmanager(EventManager eventmanager) {
-        id = eventmanager.getId();
-        nameTxtField.setText(eventmanager.getName());
-        emailTxtField.setText(eventmanager.getEmail());
-        passwordTxtfield.setText(eventmanager.getPassword());
-    }
+
 }

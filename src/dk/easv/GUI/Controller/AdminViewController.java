@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
 
 public class AdminViewController extends SuperController implements Initializable, IController {
     @FXML
-    private TableColumn<Person,String> eventmanagersNames;
+    private TableColumn<Person, String> eventmanagersNames;
     @FXML
     private TableColumn<Person, String> eventmanagersEmail;
     @FXML
@@ -60,33 +60,10 @@ public class AdminViewController extends SuperController implements Initializabl
         System.out.println(person); //temp. måske ikke nødtvendigt til admin siden det måske er ligemeget hvilken admin der er logget ind
     }
 
-    /**
-     * Opens the fxml scene where you can edit an eventmanager
-     *
-     * @param actionEvent
-     */
-    public void handleOpenEdit(ActionEvent actionEvent) throws IOException {
-        EventManager selectedEventmanager = (EventManager) eventmanagerTable.getSelectionModel().getSelectedItem();
-        if (selectedEventmanager != null) {
-            FXMLLoader root = new FXMLLoader(getClass().getResource("/dk/easv/GUI/View2/EditEventManager.fxml"));
-            Scene mainWindowScene = new Scene(root.load());
-
-            Stage editEventmanagerStage = new Stage();
-            editEventmanagerStage.setScene(mainWindowScene);
-            EditEventmanagerController editEventmanagerController = root.getController();
-            editEventmanagerController.setEventmanager(selectedEventmanager);
-            editEventmanagerStage.setResizable(false);
-            editEventmanagerStage.showAndWait();
-            eventmanagerTable.getItems().clear();
-            eventmanagerTable.setItems(personModel.getObservablePersons());
-        } else {
-            error("Select an eventmanager and try again");
-        }
-    }
-
 
     /**
      * Viser en error besked
+     *
      * @param text den error tekst der skal vises til brugeren
      */
     private void error(String text) {
@@ -96,6 +73,7 @@ public class AdminViewController extends SuperController implements Initializabl
 
     /**
      * Håndterer remove knappen
+     *
      * @param actionEvent
      */
     public void handleRemoveButton(ActionEvent actionEvent) {
@@ -113,12 +91,19 @@ public class AdminViewController extends SuperController implements Initializabl
     }
 
     public void handleAddManagerButton(ActionEvent actionEvent) throws IOException {
-        openScene("/dk/easv/GUI/View2/AddEventManager.fxml",  true,"Add Eventmanager", true);
+        openScene("/dk/easv/GUI/View2/AddEventManager.fxml", true, "Add Eventmanager", true);
         eventmanagerTable.getItems().clear();
         eventmanagerTable.setItems(personModel.getObservablePersons());
     }
 
-    public void handleEditButton(ActionEvent actionEvent) {
+    public void handleEditButton(ActionEvent actionEvent) throws IOException {
+        EventManager eventmanager = (EventManager) eventmanagerTable.getSelectionModel().getSelectedItem();
+        if (eventmanager != null) {
+            openNewSceneWithPerson(eventmanager, "/dk/easv/GUI/View2/EditEventManager.fxml", "Rediger event manager");
+        }else{
+            error("Vælg en event manager og prøv igen");
+        }
     }
+
 }
 
