@@ -2,7 +2,9 @@ package dk.easv.GUI.Controller;
 
 import dk.easv.BE.Person;
 import dk.easv.BE.PersonType;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -112,5 +114,45 @@ public abstract class SuperController {
         }
     }
 
+    /**
+     * åbner en nu scene i det nuværende vindue
+     * @param fxmlPath path til den fxml fil der skal åbnes
+     * @param Title
+     * @throws IOException
+     */
+    public void openNewSceneWithPerson(Person person,String fxmlPath, String Title) throws IOException {
+        FXMLLoader root = new FXMLLoader(getClass().getResource(fxmlPath));
+        Scene scene = new Scene(root.load());
+        Stage stage = new Stage();
+        stage.setScene(scene);
 
+        IController controller = root.getController();
+        controller.setPersonInfo(person);
+
+        stage.setTitle(Title);
+        stage.centerOnScreen();
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    /**
+     * Giver en listener til et tekstfelt der sikre at
+     * tekstfeltet kun kan modtage tal
+     * @param textField
+     */
+    public void addNumbersOnlyListener(TextField textField) {
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("[0-2]?[0-9]?([\\:][0-5]?[0-9]?)?")) {
+                textField.setText(oldValue);
+            }
+        });
+    }
+
+    public void maxLenghtListener(TextField textField){
+        textField.textProperty().addListener((observable, oldValue, newValue) ->{
+            if (newValue.length()>=101){
+                textField.setText(oldValue);
+            }
+        } );
+    }
 }

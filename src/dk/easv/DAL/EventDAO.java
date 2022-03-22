@@ -27,7 +27,7 @@ public class EventDAO {
      * @return en liste af alle events
      * @throws SQLException
      */
-    private List<Event> getAllEvents() throws SQLException {
+    public List<Event> getAllEvents() throws SQLException {
         ArrayList<Event> allEvents = new ArrayList<>();
         try (Connection connection = dc.getConnection()) {
             String sqlStatement = "SELECT * FROM Event";
@@ -39,6 +39,7 @@ public class EventDAO {
                 String name = resultSet.getString("name");
                 Date startDate = resultSet.getDate("startDate");
                 String startTime = resultSet.getString("startTime");
+                String info = resultSet.getString("info");
 
                 String sqlGetManagerName = "SELECT name FROM Person WHERE ID = ?";
                 PreparedStatement psGetMName = connection.prepareStatement(sqlGetManagerName);
@@ -47,7 +48,7 @@ public class EventDAO {
                 rsGetMName.next();
                 String managerName = rsGetMName.getString("name");
 
-                Event event = new Event(id, personId, name, startDate.toLocalDate(), startTime, managerName);
+                Event event = new Event(id, personId, name, startDate.toLocalDate(), startTime, managerName, info);
                 allEvents.add(event);
             }
 
@@ -67,14 +68,15 @@ public class EventDAO {
      * @param startTime    Tiden på starten af eventet
      * @throws SQLServerException
      */
-    public void createEvent(EventManager eventManager, String name, LocalDate startDate, String startTime) throws SQLServerException {
-        String sql = "INSERT INTO Event(personID, name, startDate, startTime) VALUES (?,?,?, ?)";
+    public void createEvent(EventManager eventManager, String name, LocalDate startDate, String startTime, String info) throws SQLServerException {
+        String sql = "INSERT INTO Event(personID, name, startDate, startTime, info) VALUES (?,?,?,?,?)";
         try (Connection connection = dc.getConnection()) {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, eventManager.getId());
             ps.setString(2, name);
             ps.setDate(3, Date.valueOf(startDate));
             ps.setString(4, startTime);
+            ps.setString(5, info);
             ps.addBatch();
             ps.executeBatch();
 
@@ -85,5 +87,5 @@ public class EventDAO {
 
 
     }
-    
+
 }
