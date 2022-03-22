@@ -5,6 +5,7 @@ import dk.easv.BE.Event;
 import dk.easv.BE.EventManager;
 import dk.easv.DAL.EventDAO;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -22,4 +23,25 @@ public class EventBusinessManager {
     }
 
     public List<Event> getAllEvents() throws SQLException {return eventDAO.getAllEvents();}
+
+
+    public void createEmailDocFromEvent(Event event) throws IOException {
+        //manger connect til knap
+        FileWriter writer = new FileWriter(event.getName() + " EmailListe.txt");//måske .csv???
+        for(String str: eventDAO.getEmailListFromEvent(event)) {
+            writer.write(str + System.lineSeparator());
+        }
+        writer.close();
+    }
+
+
+    //test main til at lave en email list fil
+    public static void main(String[] args) throws IOException, SQLException {
+        EventBusinessManager eventBusinessManager = new EventBusinessManager();
+        List<Event> eventlist = eventBusinessManager.getAllEvents();
+        Event event = eventlist.get(2);
+
+        eventBusinessManager.createEmailDocFromEvent(event);
+        System.out.println("Event ID: " + event.getId());
+    }
 }

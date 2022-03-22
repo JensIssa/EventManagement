@@ -84,8 +84,28 @@ public class EventDAO {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
-
     }
 
+    /**
+     * laver en liste af Strings af emails fra alle users der er tilknyttet det valgte event
+     * @param event eventet du vil ha gæste emails fra
+     * @return  en liste af strings
+     */
+    public List<String> getEmailListFromEvent(Event event){
+        ArrayList<String> emailList = new ArrayList<>();
+        try(Connection connection = dc.getConnection()){
+            /*make selecte distinct when testing is done*/
+            String sql = "SELECt  email from person inner join ticket on personID = Person.id where eventID = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1,event.getId());
+            ResultSet resultSet = ps.executeQuery();
+            while (resultSet.next()){
+                String email = resultSet.getString("email");
+                emailList.add(email);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return emailList;
+    }
 }
