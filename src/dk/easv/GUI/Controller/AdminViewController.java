@@ -1,5 +1,6 @@
 package dk.easv.GUI.Controller;
 
+import dk.easv.BE.Admin;
 import dk.easv.BE.EventManager;
 import dk.easv.BE.Person;
 import dk.easv.BE.PersonType;
@@ -24,7 +25,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 
-public class AdminViewController extends SuperController implements Initializable {
+public class AdminViewController extends SuperController implements Initializable, IController {
     @FXML
     private TableColumn<Person,String> eventmanagersNames;
     @FXML
@@ -32,6 +33,7 @@ public class AdminViewController extends SuperController implements Initializabl
     @FXML
     private TableView<Person> eventmanagerTable;
 
+    private Admin admin;
     private PersonModel personModel;
 
 
@@ -50,6 +52,12 @@ public class AdminViewController extends SuperController implements Initializabl
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void setPersonInfo(Person person) {
+        this.admin = (Admin) person;
+        System.out.println(person); //temp. måske ikke nødtvendigt til admin siden det måske er ligemeget hvilken admin der er logget ind
     }
 
     /**
