@@ -164,17 +164,17 @@ public class PersonDAO {
 
     /**
      * Sletter eventManagers og de events de er tilknyttet til
-     * @param personToBeDeleted - EventManageren der skal slettes
+     * @param eventManagerToBeDeleted - EventManageren der skal slettes
      * @param personType - typen af useren
      */
-    public void deleteEventManager(EventManager personToBeDeleted, PersonType personType) {
+    public void deleteEventManager(EventManager eventManagerToBeDeleted, PersonType personType) {
         try (Connection connection = dc.getConnection()){
             String deleteFromEvent = "DELETE FROM Event WHERE personID = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(deleteFromEvent);
-            preparedStatement.setInt(1,personToBeDeleted.getId());
+            preparedStatement.setInt(1,eventManagerToBeDeleted.getId());
           String sql = "DELETE p FROM Person AS p INNER JOIN Role ON p.RoleID = Role.ID WHERE p.ID = ? AND p.RoleID = ?";
           preparedStatement = connection.prepareStatement(sql);
-          preparedStatement.setInt(1 , personToBeDeleted.getId());
+          preparedStatement.setInt(1 , eventManagerToBeDeleted.getId());
           preparedStatement.setInt(2, personType.getI());
           preparedStatement.execute();
 
@@ -185,21 +185,21 @@ public class PersonDAO {
 
     /**
      * Sletter en user fra hele systemet - inklusiv alle sine billeter
-     * @param personToBeDeleted - Useren der skal slettes
+     * @param userToBeDeleted - Useren der skal slettes
      * @param personType - typen af useren
      */
-    public void deleteUser(User personToBeDeleted, PersonType personType) {
+    public void deleteUser(User userToBeDeleted, PersonType personType) {
         try (Connection connection = dc.getConnection()){
             String sql = "DELETE FROM Ticket WHERE personID = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1 , personToBeDeleted.getId());
+            preparedStatement.setInt(1 , userToBeDeleted.getId());
             preparedStatement.execute();
             String sqlUser = "DELETE p\n" +
                     "FROM Person AS p\n" +
                     "INNER JOIN Role ON p.RoleID = Role.ID\n" +
                     "WHERE p.ID = ? AND p.RoleID = ?";
             preparedStatement = connection.prepareStatement(sqlUser);
-            preparedStatement.setInt(1, personToBeDeleted.getId());
+            preparedStatement.setInt(1, userToBeDeleted.getId());
             preparedStatement.setInt(2, personType.getI());
         } catch (SQLException ex) {
             System.out.println(ex);
@@ -227,13 +227,13 @@ public class PersonDAO {
     /**
      * Sletter en user fra en event
      * @param event - Eventen useren deltager i
-     * @param person - useren der skal fjernes fra eventen
+     * @param user - useren der skal fjernes fra eventen
      */
-    public void deleteUserFromEvent(Event event, Person person){
+    public void deleteUserFromEvent(Event event, User user){
         try (Connection connection = dc.getConnection()) {
             String sql = "DELETE FROM Ticket WHERE personID = ? AND eventID = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, person.getId());
+            ps.setInt(1, user.getId());
             ps.setInt(2, event.getId());
             ps.execute();
         } catch (SQLException throwables) {
