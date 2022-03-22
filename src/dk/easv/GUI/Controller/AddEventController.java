@@ -46,34 +46,19 @@ public class AddEventController extends SuperController implements IController, 
     }
 
     public void handleSaveBtn(ActionEvent actionEvent) throws SQLServerException {
-        String eventName = nameTxtField.getText();
-        LocalDate eventDate = datePicker.getValue();
-        String eventStart = eventStartTxtfield.getText();
+        String eventName = getName(nameTxtField);
+        LocalDate eventDate = getLocalDate(datePicker);
+        String eventStart = getTime(eventStartTxtfield);
         String info = informationTxtfield.getText();
 
-        //String eventInfo = informationTxtfield.getText(); // gør ikke noget, men burde blive addet
-
-
-        if (eventName != null && eventDate != null && validTime(eventStartTxtfield)) {
+        if (eventName != null && eventDate != null && eventStart != null) {
             eventModel.createEvent(eventManager, eventName, eventDate, eventStart, info);
             closeWindow(saveBtn);
         }
-
-    }
-
-    private boolean validTime(TextField textField){
-        if (!textField.getText().isEmpty() && textField.getText().length() == 5) {
-            String[] splitString = textField.getText().split(":");
-            int[] intArray = {Integer.parseInt(splitString[0]), Integer.parseInt(splitString[1])};
-            if (intArray[0] <= 24 && intArray[1] <= 59) {
-                return true;
-            }
-        }
-        System.out.println("Invalid time");
-        return false;
     }
 
     public void handleCancelBtn(ActionEvent actionEvent) {
+        closeWindow(saveBtn);
     }
 
     @Override

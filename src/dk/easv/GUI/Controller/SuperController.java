@@ -9,11 +9,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.regex.Pattern;
 
 public abstract class SuperController {
@@ -32,6 +35,14 @@ public abstract class SuperController {
         else{
             errorMessage("Indtast et gyldigt navn");
         }
+        return null;
+    }
+
+    public LocalDate getLocalDate(DatePicker datePicker){
+        if (datePicker.getValue() != null){
+            return datePicker.getValue();
+        }else
+            errorMessage("Vælg en dato for dit event.");
         return null;
     }
 
@@ -84,6 +95,31 @@ public abstract class SuperController {
             errorMessage("Indtast et password");
         }
         return null;
+    }
+
+    public String getTime(TextField textField){
+        if (validateTime(textField)){
+            return textField.getText();
+        }
+        else return null;
+    }
+
+    /**
+     * Validere om den indtastede tid er et reelt tidspunkt
+     * @param textField feltet der skal tjekkes.
+     *                  Den valide pattern er "xx:xx" hvor x er tal der ikke overstiger et 24-timers ur
+     * @return true hvis tiden findes, else false
+     */
+    private boolean validateTime(TextField textField){
+        if (!textField.getText().isEmpty() && textField.getText().length() == 5) {
+            String[] splitString = textField.getText().split(":");
+            int[] intArray = {Integer.parseInt(splitString[0]), Integer.parseInt(splitString[1])};
+            if (intArray[0] <= 24 && intArray[1] <= 59) {
+                return true;
+            }
+        }
+        System.out.println("Invalid time");
+        return false;
     }
 
     /**
