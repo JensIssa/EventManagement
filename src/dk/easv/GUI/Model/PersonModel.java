@@ -45,4 +45,8 @@ public class PersonModel {
     public void deleteEventmanager(EventManager eventManager, PersonType usertype) {
         pM.delete(eventManager, PersonType.EVENTMANAGER);}
 
+    public void updateEventmanager(EventManager eventManager) {
+        pM.updateEventmanager(eventManager);
+    }
+
 }

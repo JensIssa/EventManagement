@@ -28,6 +28,10 @@ public class PersonManager {
         personDAO.deleteEventManager(eventManager, PersonType.EVENTMANAGER);
     }
 
+    public void updateEventmanager(EventManager eventManager) {
+        personDAO.updateEventManagers(eventManager);
+    }
+
     public List<Person> getAllUsers(){
         return personDAO.getAllUsers();
     }
