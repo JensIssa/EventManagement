@@ -45,8 +45,6 @@ public class AdminViewController extends SuperController implements Initializabl
     public void initialize(URL location, ResourceBundle resources) {
         eventmanagersNames.setCellValueFactory(new PropertyValueFactory<Person, String>("Name"));
         eventmanagersEmail.setCellValueFactory(new PropertyValueFactory<Person, String>("Email"));
-
-
         try {
             eventmanagerTable.setItems(personModel.getObservablePersons());
         } catch (IOException e) {
@@ -92,7 +90,6 @@ public class AdminViewController extends SuperController implements Initializabl
 
     public void handleAddManagerButton(ActionEvent actionEvent) throws IOException {
         openScene("/dk/easv/GUI/View2/AddEventManager.fxml", true, "Add Eventmanager", true);
-        eventmanagerTable.getItems().clear();
         eventmanagerTable.setItems(personModel.getObservablePersons());
     }
 

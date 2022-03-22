@@ -47,10 +47,8 @@ public class AddEventmanagerController extends SuperController {
         String name = getName(nameTxtField);
         String email = getEmail(emailTxtField);
         String password = getPassword(passwordTxtField);
-
-
         if (name != null && email != null && password != null) {
-            personModel.createEventmanager(name, email, password, PersonType.EVENTMANAGER);
+            personModel.createEventmanager(name, email, password);
             closeWindow(saveBtn);
         }
     }

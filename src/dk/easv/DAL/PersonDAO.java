@@ -72,6 +72,8 @@ public class PersonDAO {
     }
 
 
+
+
     /**
      * skaber en person i databasen med de givne oplysninger
      * @param name
@@ -80,6 +82,7 @@ public class PersonDAO {
      * @param usertype
      */
     public void createPerson(String name, String email, String password, PersonType usertype) {
+
         try (Connection con = dc.getConnection()) {
             String sql = "INSERT INTO Person(Email,Password,roleID,Name) VALUES (?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
@@ -107,7 +110,6 @@ public class PersonDAO {
         }
     }
 
-
     /**
      * finder den bruger i databasen der passer med de givne login informationer
      * @param email
@@ -131,12 +133,11 @@ public class PersonDAO {
                 String mail = rs.getString("email");
                 String pass = rs.getString("password");
                 int phoneNumber = rs.getInt("phoneNumber");
-                switch (type){
-                    case USER: return new User(id,name,mail,pass,type,phoneNumber);
-                    case ADMIN: return new Admin(id,name,mail,pass,type);
-                    case EVENTMANAGER: return new EventManager(id,name,mail,pass,type);
-                    default: System.out.println("fuck");
-                }
+                return switch (type) {
+                    case USER -> new User(id, name, mail, pass, type, phoneNumber);
+                    case ADMIN -> new Admin(id, name, mail, pass, type);
+                    case EVENTMANAGER -> new EventManager(id, name, mail, pass, type);
+                };
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();

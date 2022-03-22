@@ -4,9 +4,7 @@ import dk.easv.BE.EventManager;
 import dk.easv.BE.Person;
 import dk.easv.BE.PersonType;
 import dk.easv.BLL.PersonManager;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 
 import java.io.IOException;
@@ -17,11 +15,10 @@ public class PersonModel {
     private PersonManager pM;
     private ObservableList<Person> eventmanagerList;
 
-
     public PersonModel() throws IOException {
         pM = new PersonManager();
         eventmanagerList = FXCollections.observableArrayList();
-        eventmanagerList.addAll(pM.getAllEventManagers());
+        eventmanagerList.addAll(getAllEventmanagers());
     }
 
     private List<Person> getAllEventmanagers()
@@ -30,8 +27,7 @@ public class PersonModel {
     }
 
     public ObservableList<Person> getObservablePersons() throws IOException {
-        eventmanagerList.clear();
-        eventmanagerList.addAll(getAllEventmanagers());
+        eventmanagerList.setAll(getAllEventmanagers());
         return eventmanagerList;
     }
 
@@ -39,9 +35,11 @@ public class PersonModel {
         return pM.loginPerson(email,password);
     }
 
-    public void createEventmanager(String name, String email, String password, PersonType usertype) {
-         pM.create(name, email, password, usertype);
+    public void createEventmanager(String name, String email, String password) {
+        pM.createEventManager(name,email,password);
     }
+
+
     public void deleteEventmanager(EventManager eventManager, PersonType usertype) {
         pM.delete(eventManager, PersonType.EVENTMANAGER);}
 

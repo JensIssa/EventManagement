@@ -1,5 +1,6 @@
 package dk.easv.BLL;
 
+import dk.easv.BE.Event;
 import dk.easv.BE.EventManager;
 import dk.easv.BE.Person;
 import dk.easv.BE.PersonType;
@@ -20,9 +21,21 @@ public class PersonManager {
         return personDAO.loginUser(email,password);
     }
 
-    public void create(String name, String email, String password, PersonType usertype) {
-         personDAO.createPerson(name, email, password, usertype);
+
+
+    public void createEventManager(String name, String email, String password){
+        personDAO.createPerson(name,email,password,PersonType.EVENTMANAGER);
     }
+
+    public void createAdmin(String name, String email, String password){
+        personDAO.createPerson(name,email,password,PersonType.ADMIN);
+    }
+
+    public void createUser(String name, String email, String password,int phoneNumber){
+        personDAO.createPerson(name,email,password,PersonType.USER,phoneNumber);
+    }
+
+
 
     public void delete(EventManager eventManager, PersonType usertype) {
         personDAO.deleteEventManager(eventManager, PersonType.EVENTMANAGER);
