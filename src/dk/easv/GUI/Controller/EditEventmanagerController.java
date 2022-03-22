@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class EditEventmanagerController extends SuperController implements IController{
+public class EditEventmanagerController extends SuperController {
     @FXML
     private Button saveBtn;
     @FXML
@@ -34,15 +34,17 @@ public class EditEventmanagerController extends SuperController implements ICont
     }
 
     public void handleSaveBtn(ActionEvent actionEvent) {
-        /**
+
 
         String name = getName(nameTxtField);
         String email = getEmail(emailTxtField);
+        String password = getPassword(passwordTxtfield);
 
 
         if (name != null && email != null && password != null)
         {
             EventManager eventManager = new EventManager(id, name, email, password, PersonType.EVENTMANAGER);
+            System.out.println(eventManager);
             personModel.updateEventmanager(eventManager);
             closeWindow(saveBtn);
         }
@@ -57,11 +59,5 @@ public class EditEventmanagerController extends SuperController implements ICont
         nameTxtField.setText(eventmanager.getName());
         emailTxtField.setText(eventmanager.getEmail());
         passwordTxtfield.setText(eventmanager.getPassword());
-         */
-    }
-
-    @Override
-    public void setPersonInfo(Person person) {
-
     }
 }

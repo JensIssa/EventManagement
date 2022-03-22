@@ -24,20 +24,16 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 
-public class AdminViewController extends SuperController implements Initializable, IController {
+public class AdminViewController extends SuperController implements Initializable {
     @FXML
-    private TableColumn eventmanagersNames;
+    private TableColumn<Person,String> eventmanagersNames;
     @FXML
-    private TableColumn eventmanagersEmail;
+    private TableColumn<Person, String> eventmanagersEmail;
     @FXML
-    private TableView eventmanagerTable;
+    private TableView<Person> eventmanagerTable;
 
     private PersonModel personModel;
 
-    @Override
-    public void setPersonInfo(Person person) {
-        // FIXME: 3/19/2022
-    }
 
     public AdminViewController() throws IOException {
         personModel = new PersonModel();

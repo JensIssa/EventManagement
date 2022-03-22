@@ -150,11 +150,12 @@ public class PersonDAO {
      */
     public void updateEventManagers(EventManager eventManager){
         try (Connection connection = dc.getConnection()){
-            String sql = "UPDATE Person SET Name=?, email=? WHERE ID=?";
+            String sql = "UPDATE Person SET Name=?, email=?, password=? WHERE ID=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, eventManager.getName());
             preparedStatement.setString(2, eventManager.getEmail());
-            preparedStatement.setInt(3, eventManager.getId());
+            preparedStatement.setString(3, eventManager.getPassword());
+            preparedStatement.setInt(4, eventManager.getId());
             preparedStatement.executeUpdate();
         }
         catch (SQLException ex) {
