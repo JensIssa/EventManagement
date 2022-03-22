@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="1200.0" styleClass="backgroundColor" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.AdminViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="1200.0" styleClass="backgroundColor" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.AdminViewController">
     <center>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
             <children>
@@ -40,7 +40,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="40.0" prefWidth="328.0" spacing="15.0">
                             <children>
-                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleOpenAdd" prefHeight="40.0" prefWidth="79.0" text="Add">
+                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleAddManagerButton" prefHeight="40.0" prefWidth="79.0" text="Add">
                                     <font>
                                         <Font name="Britannic Bold" size="14.0" />
                                     </font>
@@ -52,7 +52,7 @@
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleRemove" prefHeight="40.0" prefWidth="105.0" text="Remove">
+                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleRemoveButton" prefHeight="40.0" prefWidth="105.0" text="Remove">
                                     <font>
                                         <Font name="Britannic Bold" size="14.0" />
                                     </font>
@@ -67,7 +67,7 @@
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleOpenEdit" prefHeight="40.0" prefWidth="105.0" text="Edit">
+                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleEditButton" prefHeight="40.0" prefWidth="105.0" text="Edit">
                                     <font>
                                         <Font name="Britannic Bold" size="14.0" />
                                     </font>

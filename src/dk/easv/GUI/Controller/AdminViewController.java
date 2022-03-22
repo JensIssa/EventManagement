@@ -65,9 +65,7 @@ public class AdminViewController extends SuperController implements Initializabl
      *
      * @param actionEvent
      */
-
     public void handleOpenEdit(ActionEvent actionEvent) throws IOException {
-
         EventManager selectedEventmanager = (EventManager) eventmanagerTable.getSelectionModel().getSelectedItem();
         if (selectedEventmanager != null) {
             FXMLLoader root = new FXMLLoader(getClass().getResource("/dk/easv/GUI/View2/EditEventManager.fxml"));
@@ -88,39 +86,39 @@ public class AdminViewController extends SuperController implements Initializabl
 
 
     /**
-     * Shows error message
-     * @param text
+     * Viser en error besked
+     * @param text den error tekst der skal vises til brugeren
      */
-
     private void error(String text) {
         Alert alert = new Alert(Alert.AlertType.ERROR, text, ButtonType.OK);
         alert.showAndWait();
     }
 
     /**
-     * Opens the fxml scene where you can add a new eventManager from
+     * Håndterer remove knappen
      * @param actionEvent
-     * @throws IOException
      */
-    public void handleOpenAdd(ActionEvent actionEvent) throws IOException {
+    public void handleRemoveButton(ActionEvent actionEvent) {
+        if (eventmanagerTable.getSelectionModel().getSelectedItem() == null) {
+            error("Vælg hvilken person du vil slette");
+        } else {
+            EventManager eventManager = (EventManager) eventmanagerTable.getSelectionModel().getSelectedItem();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Er du sikker på at du vil slette " + eventManager.getName() + "?", ButtonType.YES, ButtonType.NO);
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.YES) {
+                personModel.deleteEventmanager(eventManager, PersonType.EVENTMANAGER);
+                eventmanagerTable.getItems().remove(eventManager);
+            }
+        }
+    }
+
+    public void handleAddManagerButton(ActionEvent actionEvent) throws IOException {
         openScene("/dk/easv/GUI/View2/AddEventManager.fxml",  true,"Add Eventmanager", true);
         eventmanagerTable.getItems().clear();
         eventmanagerTable.setItems(personModel.getObservablePersons());
     }
 
-
-    public void handleRemove(ActionEvent actionEvent) {
-        if (eventmanagerTable.getSelectionModel().getSelectedItem() == null) {
-            error("Please choose an Eventmanager to delete");
-        } else {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this eventmanager", ButtonType.YES, ButtonType.NO);
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.isPresent() && result.get() == ButtonType.YES) {
-                EventManager eventManager = (EventManager) eventmanagerTable.getSelectionModel().getSelectedItem();
-                personModel.deleteEventmanager(eventManager, PersonType.EVENTMANAGER);
-                eventmanagerTable.getItems().remove(eventManager);
-            }
-        }
+    public void handleEditButton(ActionEvent actionEvent) {
     }
 }
 
