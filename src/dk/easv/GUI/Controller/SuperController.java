@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 public abstract class SuperController {
 
@@ -24,13 +25,12 @@ public abstract class SuperController {
      * @param nameField The name-field associated with the person
      * @return
      */
-
     public String getName(TextField nameField) {
         if (!nameField.getText().isEmpty()) {
-            return nameField.getText();
+            return nameField.getText().trim();
         }
         else{
-            errorMessage("Please provide a name for the person");
+            errorMessage("Indtast et gyldigt navn");
         }
         return null;
     }
@@ -42,13 +42,32 @@ public abstract class SuperController {
      */
 
     public String getEmail(TextField emailField) {
-        if (!emailField.getText().isEmpty()) {
+        if (!emailField.getText().isEmpty() && isValid(emailField.getText())) {
             return emailField.getText();
         }
         else{
-            errorMessage("Please provide an email associated with the person");
+            errorMessage("Indtast en gyldig E-mail");
         }
         return null;
+    }
+
+    /**
+     * tjekker om en email opfylder krav som at have "@" og slutter med fx ".dk"
+     * @param email den email string du vil tjekke
+     * @return true hvis den givne string opfylder kravene. else false
+     */
+    private boolean isValid(String email)
+    {
+        String emailRegex =
+                "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+
+        Pattern pat = Pattern.compile(emailRegex);
+        if (email == null)
+            return false;
+        return pat.matcher(email).matches();
     }
 
     /**
@@ -62,7 +81,7 @@ public abstract class SuperController {
             return passwordField.getText();
         }
         else{
-            errorMessage("Please provide a password associated with the person");
+            errorMessage("Indtast et password");
         }
         return null;
     }
@@ -137,7 +156,7 @@ public abstract class SuperController {
 
     /**
      * Giver en listener til et tekstfelt der sikre at
-     * tekstfeltet kun kan modtage tal
+     * tekstfeltet kun kan modtage tal i formaten "xx:xx", hvor x er tal
      * @param textField
      */
     public void addNumbersOnlyListener(TextField textField) {
@@ -148,6 +167,11 @@ public abstract class SuperController {
         });
     }
 
+    /**
+     * Giver en listener der stopper et tekstfelt fra overskride
+     * en karakterbegrænsning på 100 tegn
+     * @param textField
+     */
     public void maxLenghtListener(TextField textField){
         textField.textProperty().addListener((observable, oldValue, newValue) ->{
             if (newValue.length()>=101){
@@ -155,4 +179,5 @@ public abstract class SuperController {
             }
         } );
     }
+
 }
