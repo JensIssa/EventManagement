@@ -39,7 +39,7 @@ public class LoginViewController {
                 switch (type) {
                     case EVENTMANAGER -> openNewScene(person, "/dk/easv/GUI/View2/EventManagerView.fxml", "EventManager", actionEvent);
                     case ADMIN -> openNewScene(person,"/dk/easv/GUI/View2/AdminView2.fxml", "Admin", actionEvent);
-                    case USER -> openNewScene(person, "/dk/easv/GUI/View/UserView.fxml", "User", actionEvent);
+                    case USER -> openNewScene(person, "/dk/easv/GUI/View2/UserView.fxml", "User", actionEvent);
                 }
             }else{
                 System.out.println("person is null");

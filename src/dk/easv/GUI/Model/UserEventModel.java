@@ -30,4 +30,6 @@ public class UserEventModel {
     public void deleteUserFromEvent(User user){
         eventBusinessManager.deleteUserFromEvent(user);
     }
+
+
 }
