@@ -24,7 +24,7 @@ public class EventManagerViewController extends SuperController  implements Init
     public TableColumn nameColumnuser;
     public TableColumn emailColumnUser;
     public TableView userTable;
-    public TableView eventTable;
+    public TableView<Event> eventTable;
     public TableColumn eventName;
     public TableColumn dateStart;
     public TableColumn timeStart;
@@ -105,4 +105,9 @@ public class EventManagerViewController extends SuperController  implements Init
     }
 
 
+    public void handleDeleteEvent(ActionEvent actionEvent) {
+        Event eventToDelete = eventTable.getSelectionModel().getSelectedItem();
+        eventModel.deleteEvent(eventToDelete);
+        eventTable.getItems().remove(eventToDelete);
+    }
 }

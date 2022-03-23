@@ -20,8 +20,11 @@ public class EventBusinessManager {
         eventDAO = new EventDAO();
     }
 
-    public void create(EventManager eventManager, String name, LocalDate startDate, String startTime, String info) throws SQLServerException {
+    public void createEvent(EventManager eventManager, String name, LocalDate startDate, String startTime, String info) throws SQLServerException {
         eventDAO.createEvent(eventManager, name, startDate, startTime, info);
+    }
+    public void deleteEvent(Event eventDelete){
+        eventDAO.deleteEvent(eventDelete);
     }
 
     public List<Event> getAllEvents() throws SQLException {return eventDAO.getAllEvents();}
