@@ -42,7 +42,8 @@ public class AddEventController extends SuperController implements IController, 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         addNumbersOnlyListener(eventStartTxtfield);
-        maxLenghtListener(informationTxtfield);
+        maxLenghtListener(informationTxtfield, 101);
+        maxLenghtListener(nameTxtField, 60);
     }
 
     public void handleSaveBtn(ActionEvent actionEvent) throws SQLServerException {

@@ -1,10 +1,8 @@
 package dk.easv.GUI.Controller;
 
-import dk.easv.BE.Event;
-import dk.easv.BE.Person;
-import dk.easv.BE.PersonType;
-import dk.easv.BE.User;
+import dk.easv.BE.*;
 import dk.easv.GUI.Model.EventModel;
+import dk.easv.GUI.Model.UserEventModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,7 +15,9 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class EditEventsController extends SuperController implements Initializable, IEventController {
+public class EditEventsController extends SuperController implements Initializable, IEventController{
+   @FXML
+    public TextArea infoTxtArea;
     @FXML
     private Button saveChanges;
     @FXML
@@ -26,57 +26,69 @@ public class EditEventsController extends SuperController implements Initializab
     private TextField nameTxtField;
     @FXML
     private TextField timeStartTxtField;
+
     @FXML
-    private TextField informationBoxTxtField;
+    private TableView<User> usersAtEventTable;
     @FXML
-    private TableView usersAtEventTable;
+    private TableColumn<User, String> nameColumn;
     @FXML
-    private TableColumn nameColumn;
-    @FXML
-    private TableColumn emailColumn;
+    private TableColumn<User, String> emailColumn;
 
     private EventModel eventModel;
+    private UserEventModel userEventModel;
+    private EventManager eventManager;
 
-    private Event event = null;
+    private Event event;
     public EditEventsController() throws SQLException, IOException {
         eventModel = new EventModel();
-   //     nameColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("Name"));
-     //   emailColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("Email"));
-       // usersAtEventTable.setItems(eventModel.getObservableUsersFromEvents(setEventInfo(event)));
 
     }
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         addNumbersOnlyListener(timeStartTxtField);
-
+        maxLenghtListenerTxtArea(infoTxtArea);
+        maxLenghtListener(nameTxtField, 60);
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<>("Email"));
     }
 
     @Override
-    public Event setEventInfo(Event event) {
+    public void setEventInfo(Event event) throws IOException {
+        userEventModel = new UserEventModel(event);
         this.event = event;
         nameTxtField.setText(event.getName());
-        dateStart.setUserData(event.getStartDate());
+        dateStart.setValue(event.getStartDate());
         timeStartTxtField.setText(event.getStartTime());
-      //  informationBoxTxtField.setText(event.getInfo());
-        return event;
+        infoTxtArea.setText(event.getInfo());
+        usersAtEventTable.setItems(userEventModel.getObservableUsersFromEvents(event));
     }
 
     public void handleDeleteUserFromEvent(ActionEvent actionEvent) {
+        User user = (User) usersAtEventTable.getSelectionModel().getSelectedItem();
+        userEventModel.deleteUserFromEvent(user);
+        usersAtEventTable.getItems().clear();
+        usersAtEventTable.setItems(userEventModel.getObservableUsersFromEvents(event));
     }
 
     public void handleSaveChanges(ActionEvent actionEvent) {
         String name = getName(nameTxtField);
         LocalDate startDate = getLocalDate(dateStart);
         String timeStart = getTime(timeStartTxtField);
-        String info = informationBoxTxtField.getText();
+        String info = infoTxtArea.getText();
 
         if (name != null && startDate != null && timeStart != null)
         {
             int id = event.getId();
-            Event event = new Event(id, name, startDate, timeStart, info);
+            Event event = new Event(id,eventManager.getId(), name, startDate, timeStart,eventManager.getName(), info);
             eventModel.updateEvent(event);
             closeWindow(saveChanges);
         }
+    }
+
+
+    @Override
+    public void setPersonInfo(Person person) {
+        this.eventManager = (EventManager) person;
     }
 }

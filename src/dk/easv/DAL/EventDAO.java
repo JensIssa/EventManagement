@@ -111,15 +111,13 @@ public class EventDAO {
     }
     /**
      * Sletter en user fra en event
-     * @param event - Eventen useren deltager i
      * @param user - useren der skal fjernes fra eventen
      */
-    public void deleteUserFromEvent(Event event, User user){
+    public void deleteUserFromEvent( User user){
         try (Connection connection = dc.getConnection()) {
-            String sql = "DELETE FROM Ticket WHERE personID = ? AND eventID = ?";
+            String sql = "DELETE FROM Ticket WHERE personID = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, user.getId());
-            ps.setInt(2, event.getId());
             ps.execute();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -142,29 +140,25 @@ public class EventDAO {
         }
     }
 
-    public List<User> getAllUsersFromEvent(Event event, PersonType personType){
+    public List<User> getAllUsersFromEvent(Event event){
         List<User> usersInEvent = new ArrayList<>();
         try (Connection connection = dc.getConnection()) {
-            String sql = "SELECT * FROM Ticket WHERE eventID = ?";
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, event.getId());
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                int userID = rs.getInt("id");
-                String userSQL = "SELECT top(1) * FROM Person INNER JOIN Role ON Person.RoleID = Role.ID WHERE ID = ? AND RoleID = ?";
-                PreparedStatement psUser = connection.prepareStatement(userSQL);
-                psUser.setInt(1, userID);
-                psUser.setInt(2, personType.getI());
-                ResultSet rSet = psUser.executeQuery();
-                rSet.next();
-                int id = rSet.getInt("ID");
-                String name = rSet.getString("Name");
-                String email = rSet.getString("email");
-                String password = rSet.getString("password");
-                int phoneNumber = rSet.getInt("phoneNumber");
-                User user = new User(id, name,email, password, PersonType.USER, phoneNumber);
-                usersInEvent.add(user);
-            }
+                String userSQL = "SELECT * FROM Person\n" +
+                        "INNER JOIN Ticket ON Person.ID = Ticket.personID\n" +
+                        "WHERE Ticket.eventID = ?";
+                PreparedStatement psUserEvent = connection.prepareStatement(userSQL);
+                psUserEvent.setInt(1, event.getId());
+                ResultSet rSet = psUserEvent.executeQuery();
+              while (rSet.next()){
+                  int id = rSet.getInt("ID");
+                  String name = rSet.getString("Name");
+                  String email = rSet.getString("email");
+                  String password = rSet.getString("password");
+                  int phoneNumber = rSet.getInt("phoneNumber");
+                  User user = new User(id, name,email, password, PersonType.USER, phoneNumber);
+                  usersInEvent.add(user);
+              }
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -174,7 +168,7 @@ public class EventDAO {
 
     public void updateEvent(Event event){
         try (Connection connection = dc.getConnection()){
-            String sql = "UPDATE Event SET Name=?, startDate=?,startTime = ?, info=? WHERE ID=?";
+            String sql = "UPDATE Event SET Name=?, startDate=?,startTime=?, info=? WHERE ID=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, event.getName());
             preparedStatement.setDate(2, Date.valueOf(event.getStartDate()));

@@ -1,6 +1,7 @@
 package dk.easv.GUI.Controller;
 
 import dk.easv.BE.Event;
+import dk.easv.BE.EventManager;
 import dk.easv.BE.Person;
 import dk.easv.BE.PersonType;
 import javafx.event.ActionEvent;
@@ -8,10 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.w3c.dom.Text;
@@ -202,18 +200,21 @@ public abstract class SuperController {
         stage.show();
     }
 
-    public void openNewSceneWithEvent(Event event, String fxmlPath, String Title) throws IOException {
+    public void openNewSceneWithEventPerson(Event event, EventManager eventManager, String fxmlPath, String Title) throws IOException {
         FXMLLoader root = new FXMLLoader(getClass().getResource(fxmlPath));
         Scene scene = new Scene(root.load());
         Stage stage = new Stage();
         stage.setScene(scene);
         IEventController iEventController = root.getController();
         iEventController.setEventInfo(event);
+        IController iController = root.getController();
+        iController.setPersonInfo(eventManager);
         stage.setTitle(Title);
         stage.centerOnScreen();
         stage.setResizable(false);
-        stage.show();
+        stage.showAndWait();
     }
+
     /**
      * Giver en listener til et tekstfelt der sikre at
      * tekstfeltet kun kan modtage tal i formaten "xx:xx", hvor x er tal
@@ -232,10 +233,20 @@ public abstract class SuperController {
      * en karakterbegrænsning på 100 tegn
      * @param textField
      */
-    public void maxLenghtListener(TextField textField){
+    public void maxLenghtListener(TextField textField, int characterLimit){
         textField.textProperty().addListener((observable, oldValue, newValue) ->{
-            if (newValue.length()>=101){
+            if (newValue.length()>characterLimit){
                 textField.setText(oldValue);
+            }
+        } );
+    }
+    public void maxLenghtListenerTxtArea(TextArea textArea){
+        textArea.textProperty().addListener((observable, oldValue, newValue) ->{
+
+            if (newValue != null){
+                if (newValue.length()>100){
+                    textArea.setText(oldValue);
+                }
             }
         } );
     }

@@ -16,7 +16,6 @@ import java.util.List;
 public class EventModel {
     private EventBusinessManager eBM;
     private ObservableList<Event> eventsList;
-    private ObservableList<User> usersInEventsList;
 
     public EventModel() throws IOException, SQLException {
         eBM = new EventBusinessManager();
@@ -37,19 +36,6 @@ public class EventModel {
 
     public void deleteEvent(Event eventDelete){
         eBM.deleteEvent(eventDelete);
-    }
-
-    public List<User> getAllUsersFromEvent(Event event){
-        List<User> tempUserList;
-        ObservableList<User> usersInEvent = FXCollections.observableArrayList();
-        tempUserList = this.eBM.getAllUsersFromEvent(event);
-        usersInEvent.addAll(tempUserList);
-        return usersInEvent;
-    }
-
-    public ObservableList<User> getObservableUsersFromEvents(Event event){
-        usersInEventsList.setAll(getAllUsersFromEvent(event));
-        return usersInEventsList;
     }
 
     public void addUserToEvent(Event event, User user){

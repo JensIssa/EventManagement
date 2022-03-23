@@ -63,7 +63,7 @@ public class EventManagerViewController extends SuperController  implements Init
     public void handleInspect(ActionEvent actionEvent) throws IOException, SQLException {
         Event event = (Event) eventTable.getSelectionModel().getSelectedItem();
         if (event != null){
-            openNewSceneWithEvent(event,"/dk/easv/GUI/View2/EditEventsView.fxml", "Edit events" );
+            openNewSceneWithEventPerson(event,eventManager ,"/dk/easv/GUI/View2/EditEventsView.fxml", "Edit events" );
         }
         else {
             errorMessage("Please select an Event to edit");
