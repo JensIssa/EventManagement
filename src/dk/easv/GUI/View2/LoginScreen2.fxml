@@ -50,7 +50,7 @@
                                     <children>
                                         <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../../../../images/emailEdit.png" />
+                                                <Image url="@../../../../images/Email.png" />
                                             </image>
                                         </ImageView>
                                         <TextField fx:id="emailTxtField" alignment="CENTER" prefHeight="50.0" prefWidth="367.0" promptText="E-mail">
@@ -64,7 +64,7 @@
                                     <children>
                                         <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../../../../images/keyEdit.png" />
+                                                <Image url="@../../../../images/password.png" />
                                             </image>
                                         </ImageView>
                                         <PasswordField fx:id="passwordTxtField" alignment="CENTER" prefHeight="55.0" prefWidth="373.0" promptText="Password">

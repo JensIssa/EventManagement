@@ -91,9 +91,9 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="460.0" prefWidth="967.0" spacing="50.0">
                     <children>
-                  <TableView prefHeight="420.0" prefWidth="570.0">
+                  <TableView fx:id="eventInformationTable" prefHeight="420.0" prefWidth="570.0">
                     <columns>
-                      <TableColumn prefWidth="150.0" text="Event name">
+                      <TableColumn fx:id="eventColumn" prefWidth="150.0" text="Event name">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -102,7 +102,7 @@
                               </ImageView>
                            </graphic>
                         </TableColumn>
-                      <TableColumn prefWidth="150.0" text="Eventmanager">
+                      <TableColumn fx:id="eventmanagerColumn" prefWidth="150.0" text="Eventmanager">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -111,7 +111,7 @@
                               </ImageView>
                            </graphic>
                         </TableColumn>
-                        <TableColumn prefWidth="135.0" text="Date start">
+                        <TableColumn fx:id="dateStartColumn" prefWidth="135.0" text="Date start">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -120,7 +120,7 @@
                               </ImageView>
                            </graphic>
                         </TableColumn>
-                        <TableColumn prefWidth="135.0" text="Date end">
+                        <TableColumn fx:id="startTimeColumn" prefWidth="135.0" text="Date end">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

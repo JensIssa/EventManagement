@@ -1,9 +1,7 @@
 package dk.easv.GUI.Controller;
 
-import dk.easv.BE.Admin;
-import dk.easv.BE.EventManager;
-import dk.easv.BE.Person;
-import dk.easv.BE.PersonType;
+import dk.easv.BE.*;
+import dk.easv.GUI.Model.EventModel;
 import dk.easv.GUI.Model.PersonModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,11 +19,23 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 
 public class AdminViewController extends SuperController implements Initializable, IController {
+    @FXML
+    private TableView<Event> eventInformationTable;
+    @FXML
+    private TableColumn<Event,String> eventColumn;
+    @FXML
+    private TableColumn<Event, String> eventmanagerColumn;
+    @FXML
+    private TableColumn<Event, LocalDate> dateStartColumn;
+    @FXML
+    private TableColumn<Event, String> startTimeColumn;
     @FXML
     private TableColumn<Person, String> eventmanagersNames;
     @FXML
@@ -35,22 +45,35 @@ public class AdminViewController extends SuperController implements Initializabl
 
     private Admin admin;
     private PersonModel personModel;
+    private EventModel eventModel;
 
 
-    public AdminViewController() throws IOException {
+    public AdminViewController() throws IOException, SQLException {
         personModel = new PersonModel();
+        eventModel = new EventModel();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         eventmanagersNames.setCellValueFactory(new PropertyValueFactory<Person, String>("Name"));
         eventmanagersEmail.setCellValueFactory(new PropertyValueFactory<Person, String>("Email"));
+
+        eventmanagerColumn.setCellValueFactory(new PropertyValueFactory<Event, String>("managerName"));
+        eventColumn.setCellValueFactory(new PropertyValueFactory<Event, String>("Name"));
+        dateStartColumn.setCellValueFactory(new PropertyValueFactory<Event, LocalDate>("startDate"));
+        startTimeColumn.setCellValueFactory(new PropertyValueFactory<Event, String>("startTime"));
+
+
         try {
             eventmanagerTable.setItems(personModel.getObservablePersons());
+            eventInformationTable.setItems(eventModel.getObservableEvents());
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 
     @Override
     public void setPersonInfo(Person person) {

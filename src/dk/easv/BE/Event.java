@@ -23,15 +23,6 @@ public class Event {
         this.info = info;
     }
 
-    public Event(int id, String name, LocalDate startDate, String timeStart, String info) {
-        this.id = id;
-        this.managerId = managerId;
-        this.name = name;
-        this.startDate = startDate;
-        this.startTime = startTime;
-        this.info = info;
-    }
-
     public int getId() {
         return id;
     }
@@ -51,16 +42,10 @@ public class Event {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
+    public String getManagerName() {return managerName;}
 
     public String getStartTime() {
         return startTime;
-    }
-
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
     }
 
     public String getInfo() {

@@ -1,0 +1,88 @@
+.backgroundColor {
+    -fx-background-color: rgb(251,156,240);
+    -fx-background-color: linear-gradient(rgba(250,172,63,0.6) 0%, rgba(253,72,179,0.6) 100);
+
+}
+
+.table-view {
+    -fx-background-color: linear-gradient(rgba(250,172,63,0.6) 0%, rgba(253,72,179,0.6) 100);
+    -fx-background-radius: 30;
+    -fx-fill: white;
+}
+
+
+.table-row-cell {
+    -fx-background-color: rgba(0,0,0,0.7);
+    -fx-font-weight:bold;
+    -fx-text-fill: whitesmoke;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(rgba(250,172,63,0.6) 0%, rgba(253,72,179,0.6) 100);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0 0 10 0;
+    -fx-padding: 0 0 10 0;
+}
+
+.table-view .column-header, table-view .filler{
+    -fx-size: 40;
+    -fx-border-width: 0 0 10 0;
+    -fx-background-color: transparent;
+}
+
+.table-row-cell{
+    -fx-background-color: rgba(0,0,0,0.7);
+    -fx-font-weight:bold;
+    -fx-text-fill: whitesmoke;
+}
+
+.table-column {
+
+    -fx-text-fill: whitesmoke;
+}
+
+.text-field {
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-border-style: solid;
+    -fx-border-width: 0 0 1 0;
+    -fx-text-fill: white;
+}
+
+.text-field:hover {
+    -fx-cursor: hand;
+}
+
+.button{
+    -fx-background-color: linear-gradient(to left bottom, rgba(250,172,63,255) 0%, rgba(253,72,179,255) 100);
+    -fx-text-fill: white;
+    -fx-opacity: 100;
+    -fx-border-radius: 90;
+    -fx-background-radius: 90;
+}
+
+.label {
+    -fx-text-fill: white;
+}
+
+.button:pressed{
+    -fx-background-color: linear-gradient(to left bottom, rgba(238,143,11,255) 0%, rgba(226,11,136,255) 100);
+    -fx-border-radius: 90;
+    -fx-background-radius: 90;
+    -fx-cursor: hand;
+}
+
+.button:focused {
+    -fx-background-color: linear-gradient(to left bottom, rgba(238,143,11,255) 0%, rgba(226,11,136,255) 100);
+    -fx-border-color: #CDD1D6;
+    -fx-border-radius: 90;
+    -fx-background-radius: 90;
+    -fx-cursor: hand;
+}
+
+.button:hover{
+    -fx-background-color: linear-gradient(to left bottom, rgba(238,143,11,255) 0%, rgba(226,11,136,255) 100);
+    -fx-border-radius: 90;
+    -fx-background-radius: 90;
+    -fx-cursor: hand;
+}
