@@ -5,6 +5,7 @@ import dk.easv.BE.Person;
 import dk.easv.BE.PersonType;
 import dk.easv.BE.User;
 import dk.easv.BLL.PersonManager;
+import dk.easv.BLL.util.SearchUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -16,6 +17,7 @@ public class PersonModel {
     private PersonManager pM;
     private ObservableList<Person> eventmanagerList;
     private ObservableList<Person> userList;
+    private SearchUtil searchUtil;
 
     public PersonModel() throws IOException {
         pM = new PersonManager();
@@ -23,6 +25,7 @@ public class PersonModel {
         eventmanagerList.addAll(getAllEventmanagers());
         userList = FXCollections.observableArrayList();
         userList.addAll(getAllUsers());
+        searchUtil = new SearchUtil();
     }
 
     private List<Person> getAllEventmanagers()
@@ -51,6 +54,11 @@ public class PersonModel {
     public void createEventmanager(String name, String email, String password) {
         pM.createEventManager(name,email,password);
     }
+
+    public List<User> searchUsers(List<User> users, String searchQuery){
+        return searchUtil.search(users, searchQuery);
+    }
+
 
 
     public void deleteEventmanager(EventManager eventManager, PersonType usertype) {
