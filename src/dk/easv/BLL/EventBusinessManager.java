@@ -61,4 +61,8 @@ public class EventBusinessManager {
     public void deleteUserFromEvent(User user){
         eventDAO.deleteUserFromEvent(user);
     }
+
+    public List<Event> getAllEventsFromUser(User user){
+        return eventDAO.getAllEventsFromUser(user);
+    }
 }

@@ -201,4 +201,39 @@ public class EventDAO {
             System.out.println(ex);
         }
     }
+
+    public List<Event> getAllEventsFromUser(User user){
+        List<Event> eventList = new ArrayList<>();
+        try (Connection connection = dc.getConnection()) {
+            String userSQL = "SELECT * FROM Event\n" +
+                    "INNER JOIN Ticket ON Event.ID = Ticket.eventID\n" +
+                    "WHERE Ticket.personID = ?";
+            PreparedStatement psUserEvent = connection.prepareStatement(userSQL);
+            psUserEvent.setInt(1, user.getId());
+            ResultSet resultSet = psUserEvent.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("ID");
+                int personId = resultSet.getInt("personID");
+                String name = resultSet.getString("name");
+                Date startDate = resultSet.getDate("startDate");
+                String startTime = resultSet.getString("startTime");
+                String info = resultSet.getString("info");
+
+                String sqlGetManagerName = "SELECT name FROM Person WHERE ID = ?";
+                PreparedStatement psGetMName = connection.prepareStatement(sqlGetManagerName);
+                psGetMName.setInt(1,personId);
+                ResultSet rsGetMName = psGetMName.executeQuery();
+                rsGetMName.next();
+                String managerName = rsGetMName.getString("name");
+
+                Event event = new Event(id, personId, name, startDate.toLocalDate(), startTime, managerName, info);
+                eventList.add(event);
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        System.out.println(eventList);
+        return eventList;
+    }
 }

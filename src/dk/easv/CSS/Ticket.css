@@ -1,0 +1,17 @@
+#Ticket{
+
+    -fx-background-color: #ffffff;
+    -fx-background-size: 1200 900;
+    -fx-background-radius: 18 18 18 18;
+    -fx-border-radius: 18 18 18 18;
+    -fx-border-color: red;
+
+}
+
+.label{
+    -fx-border-color: #73c2f8;
+    -fx-border-radius: 12px;
+    -fx-padding: 5px;
+
+}
+

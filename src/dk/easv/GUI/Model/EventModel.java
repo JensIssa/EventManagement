@@ -45,4 +45,8 @@ public class EventModel {
     public void updateEvent(Event event){
         eBM.updateEvent(event);
     }
+
+    public List<Event> getAllEventsFromUser(User user){
+        return eBM.getAllEventsFromUser(user);
+    }
 }
