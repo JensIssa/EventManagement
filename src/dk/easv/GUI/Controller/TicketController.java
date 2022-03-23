@@ -33,9 +33,9 @@ public class TicketController implements IEventController{
 
     public void setTicketInfo(){
         nameOfEventLabel.setText(event.getName());
-        infoOfEventLabel.setText(event.getInfo());
-        dateOfEventLabel.setText(event.getStartDate().toString());
-        timeOfEventLabel.setText(event.getStartTime());
+        infoOfEventLabel.setText("Info " + event.getInfo());
+        dateOfEventLabel.setText("Dato " + event.getStartDate().toString());
+        timeOfEventLabel.setText("Starter kl. " + event.getStartTime());
     }
 
     @Override
