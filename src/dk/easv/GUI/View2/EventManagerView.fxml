@@ -6,54 +6,124 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="463.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EventManagerViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1200.0" styleClass="backgroundColor" stylesheets="@../../CSS/EventManagerViewCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EventManagerViewController">
    <center>
       <VBox prefHeight="376.0" prefWidth="650.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="350.0" prefWidth="200.0">
+            <HBox prefHeight="402.0" prefWidth="1200.0">
                <children>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="250.0">
+                  <VBox alignment="CENTER" prefHeight="400.0" prefWidth="640.0">
                      <children>
-                        <Label text="Event list" />
-                        <TableView fx:id="eventTable" prefHeight="350.0" prefWidth="250.0">
+                        <Label prefHeight="50.0" prefWidth="50.0" text="Event list" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#handleAddEvent" text="Add event">
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../images/event2.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></Button>
+                              <Button mnemonicParsing="false" onAction="#handleDeleteEvent" text="Delete event">
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../images/removeIMG.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></Button>
+                              <Button mnemonicParsing="false" onAction="#handleInspect" text="Edit" />
+                           </children>
+                        </HBox>
+                        <TableView fx:id="eventTable" prefHeight="362.0" prefWidth="551.0">
                           <columns>
-                            <TableColumn fx:id="eventName" prefWidth="83.0" text="Name" />
-                            <TableColumn fx:id="dateStart" prefWidth="83.0" text="Date start" />
-                              <TableColumn fx:id="timeStart" prefWidth="83.0" text="Time start" />
+                            <TableColumn fx:id="eventName" prefWidth="230.0" text="Name" />
+                            <TableColumn fx:id="dateStart" prefWidth="150.0" text="Date start" />
+                              <TableColumn fx:id="timeStart" prefWidth="150.0" text="Time start" />
                           </columns>
+                           <VBox.margin>
+                              <Insets bottom="30.0" left="30.0" />
+                           </VBox.margin>
                         </TableView>
                      </children>
                   </VBox>
-                  <HBox prefHeight="100.0" prefWidth="150.0">
+                  <HBox prefHeight="400.0" prefWidth="245.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="350.0" prefWidth="150.0" spacing="30.0">
+                        <VBox alignment="CENTER" prefHeight="382.0" prefWidth="115.0" spacing="30.0">
                            <children>
-                              <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#handleAddUserToEvent" text="Add user to event" />
-                              <Button mnemonicParsing="false" onAction="#handleInspect" text="Inspect" />
-                              <Button mnemonicParsing="false" onAction="#handleAddEvent" text="Add event" />
-                              <Button mnemonicParsing="false" onAction="#handleDeleteEvent" text="Delete event" />
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleAddUserToEvent" prefWidth="111.0" text="Add user">
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../images/left.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <VBox.margin>
+                                    <Insets top="50.0" />
+                                 </VBox.margin></Button>
                            </children>
                            <padding>
                               <Insets bottom="175.0" />
                            </padding>
+                           <HBox.margin>
+                              <Insets bottom="30.0" left="25.0" right="25.0" top="60.0" />
+                           </HBox.margin>
                         </VBox>
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="250.0">
+                  <HBox prefHeight="365.0" prefWidth="556.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="250.0">
+                        <VBox alignment="CENTER" prefHeight="400.0" prefWidth="483.0">
                            <children>
-                              <Label text="User list" />
-                              <TextField />
-                              <TableView fx:id="userTable" prefHeight="325.0" prefWidth="250.0">
+                              <Label prefHeight="50.0" prefWidth="50.0" text="User list" />
+                              <HBox alignment="CENTER" prefHeight="25.0" prefWidth="476.0">
+                                 <children>
+                                    <ImageView fitHeight="25.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../images/search.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField alignment="CENTER" prefHeight="38.0" prefWidth="320.0">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" right="30.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="userTable" prefHeight="365.0" prefWidth="446.0">
                                 <columns>
-                                  <TableColumn fx:id="nameColumnuser" prefWidth="125.0" text="Name" />
-                                  <TableColumn fx:id="emailColumnUser" prefWidth="125.0" text="Email" />
+                                  <TableColumn fx:id="nameColumnuser" prefWidth="225.0" text="Name">
+                                       <graphic>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../../images/ListNames.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic></TableColumn>
+                                  <TableColumn fx:id="emailColumnUser" prefWidth="225.0" text="Email">
+                                       <graphic>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../../images/Email.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic></TableColumn>
                                 </columns>
+                                 <VBox.margin>
+                                    <Insets bottom="30.0" right="30.0" />
+                                 </VBox.margin>
                               </TableView>
                            </children>
                         </VBox>
@@ -65,7 +135,7 @@
       </VBox>
    </center>
    <top>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="105.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="325.0">
                <children>
