@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/dk/easv/GUI/View2/EventManagerView.fxml")));
+        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/dk/easv/GUI/View/LoginView.fxml")));
         Scene scene = new Scene(parent);
         primaryStage.setTitle("Login");
         primaryStage.setResizable(true);

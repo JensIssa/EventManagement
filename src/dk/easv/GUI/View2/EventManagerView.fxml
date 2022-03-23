@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EventManagerViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="463.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EventManagerViewController">
    <center>
       <VBox prefHeight="376.0" prefWidth="650.0" BorderPane.alignment="CENTER">
          <children>
@@ -35,6 +35,7 @@
                               <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#handleAddUserToEvent" text="Add user to event" />
                               <Button mnemonicParsing="false" onAction="#handleInspect" text="Inspect" />
                               <Button mnemonicParsing="false" onAction="#handleAddEvent" text="Add event" />
+                              <Button mnemonicParsing="false" onAction="#handleDeleteEvent" text="Delete event" />
                            </children>
                            <padding>
                               <Insets bottom="175.0" />

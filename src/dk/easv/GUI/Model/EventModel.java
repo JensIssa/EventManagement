@@ -34,7 +34,11 @@ public class EventModel {
     }
 
     public void createEvent(EventManager eventManager, String name, LocalDate startDate, String startTime, String info) throws SQLServerException {
-        eBM.create(eventManager,name,startDate,startTime,info);
+        eBM.createEvent(eventManager,name,startDate,startTime,info);
+    }
+
+    public void deleteEvent(Event eventDelete){
+        eBM.deleteEvent(eventDelete);
     }
 
     public List<User> getAllUsersFromEvent(Event event){

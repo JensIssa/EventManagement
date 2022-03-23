@@ -187,4 +187,24 @@ public class EventDAO {
             System.out.println(ex);
         }
     }
+
+    /**
+     *
+     * @param eventDelete Denne metode sletter først det valgte movie objekt fra alle categorier og bagefter selve movien fra databasen.
+     */
+    public void deleteEvent(Event eventDelete) {
+        try (Connection connection = dc.getConnection()) {
+            String sql = "Delete from Ticket WHERE eventID = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1,eventDelete.getId());
+            ps.execute();
+
+            String sql2 = "DELETE from Event WHERE Id = ?";
+            PreparedStatement ps2 = connection.prepareStatement(sql2);
+            ps2.setInt(1, eventDelete.getId());
+            ps2.execute();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
 }
