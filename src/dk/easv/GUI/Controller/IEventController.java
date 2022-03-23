@@ -2,6 +2,8 @@ package dk.easv.GUI.Controller;
 
 import dk.easv.BE.Event;
 
-public interface IEventController {
-    Event setEventInfo(Event event);
+import java.io.IOException;
+
+public interface IEventController extends IController {
+    void setEventInfo(Event event) throws IOException;
 }

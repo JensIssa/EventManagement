@@ -44,7 +44,7 @@ public class EventBusinessManager {
     }
 
     public List<User> getAllUsersFromEvent(Event event){
-        return eventDAO.getAllUsersFromEvent(event, PersonType.USER);
+        return eventDAO.getAllUsersFromEvent(event);
     }
     //test main til at lave en email list fil
     public static void main(String[] args) throws IOException, SQLException {
@@ -57,5 +57,8 @@ public class EventBusinessManager {
     }
     public void updateEvent(Event event){
         eventDAO.updateEvent(event);;
+    }
+    public void deleteUserFromEvent(User user){
+        eventDAO.deleteUserFromEvent(user);
     }
 }
