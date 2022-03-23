@@ -1,17 +1,27 @@
 #Ticket{
 
-    -fx-background-color: #ffffff;
+    -fx-background-color: #c6fcfa;
     -fx-background-size: 1200 900;
     -fx-background-radius: 18 18 18 18;
     -fx-border-radius: 18 18 18 18;
-    -fx-border-color: red;
+    -fx-border-color: #6027a4;
 
 }
 
 .label{
-    -fx-border-color: #73c2f8;
+    -fx-border-color: #0096a8;
     -fx-border-radius: 12px;
     -fx-padding: 5px;
+    -fx-text-fill: #000000;
 
 }
 
+#nameOfEventLabel{
+    -fx-font-size: 24;
+    -fx-wrap-text: true;
+}
+
+#infoOfEventLabel{
+    -fx-font-size: 12;
+    -fx-wrap-text: true;
+}

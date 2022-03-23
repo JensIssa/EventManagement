@@ -25,7 +25,6 @@ public class UserViewController extends SuperController implements IController, 
     @FXML
     private ScrollPane scrollPain;
     User user;
-    int numberOfEvents = 3;
     private EventModel eventModel;
 
     public UserViewController() throws IOException, SQLException {
@@ -54,7 +53,7 @@ public class UserViewController extends SuperController implements IController, 
         List<Event> listOfEvents = eventModel.getAllEventsFromUser(user);
         if (!listOfEvents.isEmpty()) {
             VBox tickets = new VBox(15);
-            for (int i = 0; i < numberOfEvents; i++) {
+            for (int i = 0; i < listOfEvents.size(); i++) {
                 try {
                     FXMLLoader root = new FXMLLoader(getClass().getResource("/dk/easv/GUI/View2/Ticket.fxml"));
                     Pane ticket = root.load();
