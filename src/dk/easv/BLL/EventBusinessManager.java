@@ -3,6 +3,8 @@ package dk.easv.BLL;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import dk.easv.BE.Event;
 import dk.easv.BE.EventManager;
+import dk.easv.BE.PersonType;
+import dk.easv.BE.User;
 import dk.easv.DAL.EventDAO;
 
 import java.io.FileWriter;
@@ -34,7 +36,13 @@ public class EventBusinessManager {
         writer.close();
     }
 
+    public void addUserToEvent(Event event, User user){
+        eventDAO.addUserToEvent(event, user);
+    }
 
+    public List<User> getAllUsersFromEvent(Event event){
+        return eventDAO.getAllUsersFromEvent(event, PersonType.USER);
+    }
     //test main til at lave en email list fil
     public static void main(String[] args) throws IOException, SQLException {
         EventBusinessManager eventBusinessManager = new EventBusinessManager();
@@ -43,5 +51,8 @@ public class EventBusinessManager {
 
         eventBusinessManager.createEmailDocFromEvent(event);
         System.out.println("Event ID: " + event.getId());
+    }
+    public void updateEvent(Event event){
+        eventDAO.updateEvent(event);;
     }
 }

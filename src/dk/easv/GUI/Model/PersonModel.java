@@ -3,6 +3,7 @@ package dk.easv.GUI.Model;
 import dk.easv.BE.EventManager;
 import dk.easv.BE.Person;
 import dk.easv.BE.PersonType;
+import dk.easv.BE.User;
 import dk.easv.BLL.PersonManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,11 +15,14 @@ public class PersonModel {
 
     private PersonManager pM;
     private ObservableList<Person> eventmanagerList;
+    private ObservableList<Person> userList;
 
     public PersonModel() throws IOException {
         pM = new PersonManager();
         eventmanagerList = FXCollections.observableArrayList();
         eventmanagerList.addAll(getAllEventmanagers());
+        userList = FXCollections.observableArrayList();
+        userList.addAll(getAllUsers());
     }
 
     private List<Person> getAllEventmanagers()
@@ -29,6 +33,15 @@ public class PersonModel {
     public ObservableList<Person> getObservablePersons() throws IOException {
         eventmanagerList.setAll(getAllEventmanagers());
         return eventmanagerList;
+    }
+
+    public List<Person> getAllUsers() {
+        return pM.getAllUsers();
+    }
+
+    public ObservableList<Person> getobservableUsers(){
+        userList.setAll(getAllUsers());
+        return userList;
     }
 
     public Person loginPerson(String email, String password){
@@ -47,4 +60,10 @@ public class PersonModel {
         pM.updateEventmanager(eventManager);
     }
 
+    public void createuser(String name, String email, String password, int phoneNumber){
+        pM.createUser(name, email, password, phoneNumber);
+    }
+    public void updateUser(User user){
+        pM.updateUser(user);
+    }
 }

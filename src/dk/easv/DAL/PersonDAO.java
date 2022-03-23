@@ -214,34 +214,21 @@ public class PersonDAO {
      */
     public void updateUser(User user){
         try (Connection connection = dc.getConnection()){
-            String sql = "UPDATE Person SET Name=?, email=?, phoneNumber=? WHERE ID=?";
+            String sql = "UPDATE Person SET Name=?, email=?,password = ?, phoneNumber=? WHERE ID=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, user.getName());
             preparedStatement.setString(2, user.getEmail());
-            preparedStatement.setInt(3, user.getPhoneNumber());
-            preparedStatement.setInt(4, user.getId());
+            preparedStatement.setString(3, user.getPassword());
+            preparedStatement.setInt(4, user.getPhoneNumber());
+            preparedStatement.setInt(5, user.getId());
             preparedStatement.executeUpdate();
         }
         catch (SQLException ex) {
             System.out.println(ex);
         }
     }
-    /**
-     * Sletter en user fra en event
-     * @param event - Eventen useren deltager i
-     * @param user - useren der skal fjernes fra eventen
-     */
-    public void deleteUserFromEvent(Event event, User user){
-        try (Connection connection = dc.getConnection()) {
-            String sql = "DELETE FROM Ticket WHERE personID = ? AND eventID = ?";
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, user.getId());
-            ps.setInt(2, event.getId());
-            ps.execute();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-    }
+
+
 
     public static void main(String[] args) throws IOException {
         PersonDAO eventManagerDAO = new PersonDAO();

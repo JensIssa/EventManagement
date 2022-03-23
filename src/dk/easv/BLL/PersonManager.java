@@ -1,9 +1,6 @@
 package dk.easv.BLL;
 
-import dk.easv.BE.Event;
-import dk.easv.BE.EventManager;
-import dk.easv.BE.Person;
-import dk.easv.BE.PersonType;
+import dk.easv.BE.*;
 import dk.easv.DAL.PersonDAO;
 
 import java.awt.desktop.PreferencesEvent;
@@ -43,6 +40,10 @@ public class PersonManager {
 
     public void updateEventmanager(EventManager eventManager) {
         personDAO.updateEventManagers(eventManager);
+    }
+
+    public void updateUser(User user){
+        personDAO.updateUser(user);
     }
 
     public List<Person> getAllUsers(){

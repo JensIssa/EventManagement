@@ -1,5 +1,6 @@
 package dk.easv.GUI.Controller;
 
+import dk.easv.BE.Event;
 import dk.easv.BE.Person;
 import dk.easv.BE.PersonType;
 import javafx.event.ActionEvent;
@@ -13,6 +14,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -104,6 +106,16 @@ public abstract class SuperController {
         else return null;
     }
 
+    public int getPhoneNumber(TextField phoneNumber){
+        int number = 0;
+        if (!phoneNumber.getText().trim().isEmpty()){
+            number = Integer.parseInt(phoneNumber.getText().trim());
+        }else{
+            errorMessage("Please put a valid phoneNumber");
+        }
+        return number;
+    }
+
     /**
      * Validere om den indtastede tid er et reelt tidspunkt
      * @param textField feltet der skal tjekkes.
@@ -135,7 +147,7 @@ public abstract class SuperController {
      * Shows error message
      * @param errorTxt
      */
-    private void errorMessage(String errorTxt) {
+    public void errorMessage(String errorTxt) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Warning");
         alert.setHeaderText(errorTxt);
@@ -190,6 +202,18 @@ public abstract class SuperController {
         stage.show();
     }
 
+    public void openNewSceneWithEvent(Event event, String fxmlPath, String Title) throws IOException {
+        FXMLLoader root = new FXMLLoader(getClass().getResource(fxmlPath));
+        Scene scene = new Scene(root.load());
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        IEventController iEventController = root.getController();
+        iEventController.setEventInfo(event);
+        stage.setTitle(Title);
+        stage.centerOnScreen();
+        stage.setResizable(false);
+        stage.show();
+    }
     /**
      * Giver en listener til et tekstfelt der sikre at
      * tekstfeltet kun kan modtage tal i formaten "xx:xx", hvor x er tal

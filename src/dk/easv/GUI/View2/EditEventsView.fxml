@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EditEventsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EditEventsController">
    <center>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -21,7 +22,7 @@
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0" spacing="10.0">
                            <children>
                               <Label alignment="CENTER" text="Name" />
-                              <TextField alignment="CENTER">
+                              <TextField fx:id="nameTxtField" alignment="CENTER">
                                  <VBox.margin>
                                     <Insets left="20.0" right="20.0" />
                                  </VBox.margin>
@@ -31,27 +32,24 @@
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                            <children>
                               <Label alignment="CENTER" text="Date start" />
-                              <TextField alignment="CENTER">
-                                 <VBox.margin>
-                                    <Insets left="20.0" right="20.0" />
-                                 </VBox.margin>
-                              </TextField>
+                              <DatePicker fx:id="dateStart" prefHeight="25.0" prefWidth="262.0" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" text="Date end" />
-                              <TextField alignment="CENTER">
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="Time start" />
+                              <TextField fx:id="timeStartTxtField" alignment="CENTER">
                                  <VBox.margin>
                                     <Insets left="20.0" right="20.0" />
                                  </VBox.margin>
                               </TextField>
                            </children>
                         </VBox>
+                        <Button fx:id="saveChanges" mnemonicParsing="false" onAction="#handleSaveChanges" text="Save" />
                         <VBox alignment="CENTER" prefHeight="298.0" prefWidth="300.0" spacing="10.0">
                            <children>
                               <Label alignment="CENTER" contentDisplay="CENTER" text="Information box" />
-                              <TextField alignment="CENTER" prefHeight="124.0" prefWidth="260.0">
+                              <TextField fx:id="informationBoxTxtField" alignment="CENTER" prefHeight="124.0" prefWidth="260.0">
                                  <VBox.margin>
                                     <Insets left="20.0" right="20.0" />
                                  </VBox.margin>
@@ -74,17 +72,17 @@
                         <VBox alignment="CENTER" prefHeight="548.0" prefWidth="500.0">
                            <children>
                               <TextField alignment="CENTER" promptText="Search for guests here" />
-                              <TableView prefHeight="488.0" prefWidth="500.0">
+                              <TableView fx:id="usersAtEventTable" prefHeight="488.0" prefWidth="500.0">
                                 <columns>
-                                  <TableColumn prefWidth="250.0" text="Name" />
-                                  <TableColumn prefWidth="250.0" text="Email" />
+                                  <TableColumn fx:id="nameColumn" prefWidth="250.0" text="Name" />
+                                  <TableColumn fx:id="emailColumn" prefWidth="250.0" text="Email" />
                                 </columns>
                               </TableView>
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="50.0" prefWidth="100.0">
                            <children>
-                              <Button alignment="CENTER" mnemonicParsing="false" text="Delete user">
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleDeleteUserFromEvent" text="Delete user">
                                  <VBox.margin>
                                     <Insets bottom="20.0" />
                                  </VBox.margin>

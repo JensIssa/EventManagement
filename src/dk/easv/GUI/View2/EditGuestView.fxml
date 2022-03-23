@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" styleClass="backgroundColor" stylesheets="@../../CSS/AddEventmanagerCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EditGuestController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" styleClass="backgroundColor" stylesheets="@../../CSS/AddEventmanagerCSS.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EditGuestController">
     <center>
         <VBox alignment="CENTER" prefHeight="380.0" prefWidth="300.0" BorderPane.alignment="CENTER">
             <children>
@@ -79,7 +79,7 @@
                                         <Insets right="70.0" />
                                     </VBox.margin>
                                 </Label>
-                                <TextField fx:id="phonenumberTxtField" alignment="CENTER">
+                                <TextField fx:id="phoneNumberTxtField" alignment="CENTER">
                                     <VBox.margin>
                                         <Insets left="15.0" right="15.0" />
                                     </VBox.margin>
@@ -111,7 +111,7 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <Button fx:id="saveBtn" alignment="CENTER" mnemonicParsing="false" text="Save">
+                        <Button fx:id="saveBtn" alignment="CENTER" mnemonicParsing="false" onAction="#handleSaveGuest" text="Save">
                             <font>
                                 <Font size="16.0" />
                             </font>
@@ -119,7 +119,7 @@
                                 <Insets left="120.0" top="10.0" />
                             </HBox.margin>
                         </Button>
-                        <Button fx:id="cancelBtn" alignment="CENTER" mnemonicParsing="false" text="Cancel">
+                        <Button fx:id="cancelBtn" alignment="CENTER" mnemonicParsing="false" onAction="#handleCancel" text="Cancel">
                             <font>
                                 <Font size="16.0" />
                             </font>
