@@ -22,8 +22,6 @@ public class EventModel {
         eBM = new EventBusinessManager();
         eventsList = FXCollections.observableArrayList();
         eventsList.addAll(eBM.getAllEvents());
-        usersInEventsList = FXCollections.observableArrayList();
-        usersInEventsList.addAll(getAllUsersFromEvent(new Event(0, null, null, null, null)));
     }
 
     private List<Event> getAllEvents() throws SQLException {return eBM.getAllEvents();}
@@ -42,7 +40,11 @@ public class EventModel {
     }
 
     public List<User> getAllUsersFromEvent(Event event){
-       return eBM.getAllUsersFromEvent(event);
+        List<User> tempUserList;
+        ObservableList<User> usersInEvent = FXCollections.observableArrayList();
+        tempUserList = this.eBM.getAllUsersFromEvent(event);
+        usersInEvent.addAll(tempUserList);
+        return usersInEvent;
     }
 
     public ObservableList<User> getObservableUsersFromEvents(Event event){
