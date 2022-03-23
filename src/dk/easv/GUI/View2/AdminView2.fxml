@@ -120,11 +120,11 @@
                               </ImageView>
                            </graphic>
                         </TableColumn>
-                        <TableColumn fx:id="startTimeColumn" prefWidth="135.0" text="Date end">
+                        <TableColumn fx:id="startTimeColumn" prefWidth="135.0" text="Start time">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../images/date.png" />
+                                    <Image url="@../../../../images/time.png" />
                                  </image>
                               </ImageView>
                            </graphic>

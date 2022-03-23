@@ -59,6 +59,8 @@
     -fx-opacity: 100;
     -fx-border-radius: 90;
     -fx-background-radius: 90;
+    -fx-font-size: 14px;
+    -fx-font-family: "Britannic Bold";
 }
 
 .label {
