@@ -6,7 +6,7 @@
 
 .table-view {
     -fx-background-color: linear-gradient(rgba(250,172,63,0.6) 0%, rgba(253,72,179,0.6) 100);
-    -fx-background-radius: 30;
+    -fx-background-radius: 10;
     -fx-fill: white;
 }
 
@@ -19,9 +19,11 @@
 
 .table-view .column-header-background {
     -fx-background-color: linear-gradient(rgba(250,172,63,0.6) 0%, rgba(253,72,179,0.6) 100);
-    -fx-background-radius: 30;
+    -fx-background-radius: 10;
     -fx-background-insets: 0 0 10 0;
     -fx-padding: 0 0 10 0;
+    -fx-font-size: 14;
+    -fx-font-family: "Britannic Bold";
 }
 
 .table-view .column-header, table-view .filler{
@@ -34,7 +36,54 @@
     -fx-background-color: rgba(0,0,0,0.7);
     -fx-font-weight:bold;
     -fx-text-fill: whitesmoke;
+    -fx-font-size: 14;
+    -fx-font-family: "Britannic Bold";
 }
+.table-row-cell.table-row-cell:filled:focused:selected {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.9), 10, 0, 0, 0);
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.table-row-cell:focused {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.9), 10, 0, 0, 0);
+}
+
+.table-row-cell:odd{
+    -fx-background-color: transparent;
+}
+
+
+.table-row-cell:even {
+    -fx-background-color: transparent;
+}
+
+
+.table-view .virtual-flow .scroll-bar:vertical,
+.table-view .virtual-flow .scroll-bar:vertical .track,
+.table-view .virtual-flow .scroll-bar:vertical .track-background,
+.table-view .virtual-flow .scroll-bar:horizontal,
+.table-view .virtual-flow .scroll-bar:horizontal .track,
+.table-view .virtual-flow .scroll-bar:horizontal .track-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .virtual-flow .scroll-bar .increment-button,
+.table-view .virtual-flow .scroll-bar .decrement-button {
+    -fx-opacity: 0;
+    -fx-padding: 2;
+}
+
+.table-view .virtual-flow .scroll-bar:vertical .thumb{
+    -fx-background-color:  linear-gradient(rgba(250,172,63,0.6) 0%, rgba(253,72,179,0.6) 100);
+}
+
+.table-view .virtual-flow .scroll-bar:horizontal .thumb {
+    -fx-background-color:  linear-gradient(rgba(250,172,63,0.6) 0%, rgba(253,72,179,0.6) 100);
+}
+
+
+
 
 .table-column {
 
