@@ -1,11 +1,11 @@
 package dk.easv.BLL;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
-import dk.easv.BE.Event;
-import dk.easv.BE.EventManager;
-import dk.easv.BE.PersonType;
-import dk.easv.BE.User;
+import dk.easv.BE.*;
+import dk.easv.BLL.util.SearchUtil;
 import dk.easv.DAL.EventDAO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,9 +15,11 @@ import java.util.List;
 
 public class EventBusinessManager {
     EventDAO eventDAO;
+    SearchUtil searchUtil;
 
     public EventBusinessManager() throws IOException {
         eventDAO = new EventDAO();
+        searchUtil = new SearchUtil();
     }
 
     public void createEvent(EventManager eventManager, String name, LocalDate startDate, String startTime, String info) throws SQLServerException {
@@ -64,5 +66,12 @@ public class EventBusinessManager {
 
     public List<Event> getAllEventsFromUser(User user){
         return eventDAO.getAllEventsFromUser(user);
+    }
+
+
+    public ObservableList<Event> searchEvent(ObservableList<Event> searchBase, String query) throws SQLException {
+        ObservableList<Event> foundEvents = FXCollections.observableArrayList();
+        foundEvents.addAll(searchUtil.searchEvent(searchBase, query));
+        return foundEvents;
     }
 }

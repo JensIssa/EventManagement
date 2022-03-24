@@ -125,7 +125,7 @@
                                           <Image url="@../../../../images/search.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField alignment="CENTER" onKeyReleased="#handleSearch" prefHeight="38.0" prefWidth="320.0" promptText="Search users here">
+                                    <TextField fx:id="searchFieldUsers" alignment="CENTER" onKeyReleased="#handleSearch" prefHeight="38.0" prefWidth="320.0" promptText="Search users here">
                                        <font>
                                           <Font size="16.0" />
                                        </font>

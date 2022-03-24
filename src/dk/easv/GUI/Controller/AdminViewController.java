@@ -3,6 +3,7 @@ package dk.easv.GUI.Controller;
 import dk.easv.BE.*;
 import dk.easv.GUI.Model.EventModel;
 import dk.easv.GUI.Model.PersonModel;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -23,6 +25,8 @@ import java.util.ResourceBundle;
 
 
 public class AdminViewController extends SuperController implements Initializable, IController {
+    @FXML
+    private TextField searchTxt;
     @FXML
     private Button closeBtn;
     @FXML
@@ -126,6 +130,12 @@ public class AdminViewController extends SuperController implements Initializabl
     public void handleBtnClose(ActionEvent actionEvent) throws IOException {
         closeWindow(closeBtn);
         openScene("/dk/easv/GUI/View/LoginView.fxml",false, "Loginscreen",false);
+    }
+
+    public void handleSearch(KeyEvent keyEvent) throws SQLException {
+        String searchParam = searchTxt.getText();
+        ObservableList<Event> foundUserList =  eventModel.searchEvents(eventInformationTable.getItems(), searchParam);
+        eventInformationTable.setItems(foundUserList);
     }
 }
 

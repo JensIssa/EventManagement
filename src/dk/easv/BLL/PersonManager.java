@@ -67,4 +67,9 @@ public class PersonManager {
         foundPersons.addAll(searchUtil.search(searchBase, query));
         return foundPersons;
     }
+    public ObservableList<Person> searchEventManagers(ObservableList<Person> searchBase, String query){
+        ObservableList<Person> foundPersons = FXCollections.observableArrayList();
+        foundPersons.addAll(searchUtil.searchEventManagers(searchBase, query));
+        return foundPersons;
+    }
 }
