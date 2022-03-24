@@ -55,6 +55,7 @@ public class EditEventsController extends SuperController implements Initializab
         maxLenghtListener(nameTxtField, 60);
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("Email"));
+        infoTxtArea.setWrapText(true);
     }
 
     @Override
