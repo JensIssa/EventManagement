@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="1200.0" styleClass="backgroundColor" stylesheets="@../../CSS/EventManagerViewCSS.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EventManagerViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="1200.0" styleClass="backgroundColor" stylesheets="@../../CSS/EventManagerViewCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EventManagerViewController">
    <center>
       <VBox BorderPane.alignment="CENTER">
          <children>
@@ -126,7 +126,7 @@
                                           <Image url="@../../../../images/search.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="searchFieldUsers" alignment="CENTER" onKeyReleased="#handleSearch" prefHeight="38.0" prefWidth="320.0" promptText="Search users here" text="Søg i alle gæster">
+                                    <TextField fx:id="searchFieldUsers" alignment="CENTER" onKeyReleased="#handleSearch" prefHeight="38.0" prefWidth="320.0" promptText="Søg gæster i alt">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
