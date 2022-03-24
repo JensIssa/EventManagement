@@ -103,9 +103,7 @@ public class AdminViewController extends SuperController implements Initializabl
             error("Vælg hvilken person du vil slette");
         } else {
             EventManager eventManager = (EventManager) eventmanagerTable.getSelectionModel().getSelectedItem();
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Er du sikker på at du vil slette " + eventManager.getName() + "?", ButtonType.YES, ButtonType.NO);
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.isPresent() && result.get() == ButtonType.YES) {
+            if (confirmationBox("Er du sikker på at du vil slette " + eventManager.getName() + "?").get() == ButtonType.YES){
                 personModel.deleteEventmanager(eventManager, PersonType.EVENTMANAGER);
                 eventmanagerTable.getItems().remove(eventManager);
             }
