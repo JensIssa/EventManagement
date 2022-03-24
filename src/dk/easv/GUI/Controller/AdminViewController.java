@@ -115,10 +115,12 @@ public class AdminViewController extends SuperController implements Initializabl
         eventmanagerTable.setItems(personModel.getObservablePersons());
     }
 
-    public void handleEditButton(ActionEvent actionEvent) throws IOException {
+    public void handleEditButton(ActionEvent actionEvent) throws IOException, SQLException {
         EventManager eventmanager = (EventManager) eventmanagerTable.getSelectionModel().getSelectedItem();
         if (eventmanager != null) {
             openNewSceneWithPerson(eventmanager, "/dk/easv/GUI/View2/EditEventManager.fxml", "Rediger event manager");
+            eventmanagerTable.setItems(personModel.getObservablePersons());
+            eventInformationTable.setItems(eventModel.getObservableEvents());
         }else{
             error("Vælg en event manager og prøv igen");
         }

@@ -111,8 +111,6 @@ public abstract class SuperController {
         int number = 0;
         if (!phoneNumber.getText().trim().isEmpty()){
             number = Integer.parseInt(phoneNumber.getText().trim());
-        }else{
-            errorMessage("Please put a valid phoneNumber");
         }
         return number;
     }

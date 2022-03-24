@@ -76,4 +76,8 @@ public class PersonModel {
     public void updateUser(User user){
         pM.updateUser(user);
     }
+
+    public void deleteUser(User user){
+        pM.deleteUser(user);
+    }
 }

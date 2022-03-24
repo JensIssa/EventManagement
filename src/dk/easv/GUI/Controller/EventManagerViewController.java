@@ -23,6 +23,7 @@ import java.util.ResourceBundle;
 
 public class EventManagerViewController extends SuperController  implements Initializable, IController{
 
+    //FIXME PERSON -> USER FOR TABLEVIEW / COULUMNS / SEARCH
     @FXML
     private TableColumn<Person, String> nameColumnuser;
     @FXML
@@ -148,7 +149,18 @@ public class EventManagerViewController extends SuperController  implements Init
         openScene("/dk/easv/GUI/View/LoginView.fxml",false, "Loginscreen",false);
     }
 
-    public void handleDeleteGuest(ActionEvent actionEvent) {
+    public void handleDeleteGuest(ActionEvent actionEvent) throws IOException {
+        if (userTable.getSelectionModel().getSelectedItem()!= null){
+            User user = (User) userTable.getSelectionModel().getSelectedItem();
+            if (confirmationBox("Er du sikker på at du vil slette " + user.getName() + "?").get() == ButtonType.YES){
+                personModel.deleteUser(user);
+                userTable.setItems(personModel.getObservablePersons());
+            }
+        }
+        else
+        {
+            errorMessage("Vælg den bruger du ønsker at slette");
+        }
 
     }
 }

@@ -8,7 +8,7 @@ public class User extends Person {
 
     public User(int id, String name,String email, String password, PersonType type, int phoneNumber) {
         super(id, name ,email, password, type);
-        phoneNumber = this.phoneNumber;
+        this.phoneNumber = phoneNumber;
     }
 
 
