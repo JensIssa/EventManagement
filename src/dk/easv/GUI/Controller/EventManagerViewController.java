@@ -10,11 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 
@@ -98,6 +94,7 @@ public class EventManagerViewController extends SuperController  implements Init
         Event event = (Event) eventTable.getSelectionModel().getSelectedItem();
         if (user != null && event != null){
             eventModel.addUserToEvent(event, user);
+            errorMessage(user.getName() + " er blevet tilføjet til begivenheden: " + event.getName());
         }
         else {
             errorMessage("Please select an user and/or event to add an user to the event");
@@ -127,9 +124,17 @@ public class EventManagerViewController extends SuperController  implements Init
 
 
     public void handleDeleteEvent(ActionEvent actionEvent) {
-        Event eventToDelete = eventTable.getSelectionModel().getSelectedItem();
-        eventModel.deleteEvent(eventToDelete);
-        eventTable.getItems().remove(eventToDelete);
+        if (eventTable.getSelectionModel().getSelectedItem() != null){
+            Event event = eventTable.getSelectionModel().getSelectedItem();
+            if (confirmationBox("Er du sikker på at du vil slette " + event.getName() + " ?").get()== ButtonType.YES){
+                eventModel.deleteEvent(event);
+                eventTable.getItems().remove(event);
+                eventTable.getSelectionModel().clearSelection();
+            }
+        }else
+        {
+            errorMessage("vælg et event du ønsker at slette");
+        }
     }
 
     public void handleSearch(KeyEvent keyEvent){

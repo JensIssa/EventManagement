@@ -70,10 +70,11 @@ public class EditEventsController extends SuperController implements Initializab
 
     public void handleDeleteUserFromEvent(ActionEvent actionEvent) {
         User user = usersAtEventTable.getSelectionModel().getSelectedItem();
-
-        userEventModel.deleteUserFromEvent(user,event);
-        usersAtEventTable.getItems().clear();
-        usersAtEventTable.setItems(userEventModel.getObservableUsersFromEvents(event));
+        if (confirmationBox("Er du sikker på at du vil slette "  + user.getName() + " fra "+ event.getName() + " ?").get()== ButtonType.YES){
+            userEventModel.deleteUserFromEvent(user,event);
+            usersAtEventTable.getItems().clear();
+            usersAtEventTable.setItems(userEventModel.getObservableUsersFromEvents(event));
+        }
     }
 
     public void handleSaveChanges(ActionEvent actionEvent) {
