@@ -11,12 +11,6 @@
 }
 
 
-.table-row-cell {
-    -fx-background-color: rgba(0,0,0,0.7);
-    -fx-font-weight:bold;
-    -fx-text-fill: whitesmoke;
-}
-
 .table-view .column-header-background {
     -fx-background-color: linear-gradient(rgba(250,172,63,0.6) 0%, rgba(253,72,179,0.6) 100);
     -fx-background-radius: 10;
@@ -38,6 +32,7 @@
     -fx-text-fill: whitesmoke;
     -fx-font-size: 14;
     -fx-font-family: "Britannic Bold";
+    -fx-text-alignment: center;
 }
 .table-row-cell.table-row-cell:filled:focused:selected {
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.9), 10, 0, 0, 0);
