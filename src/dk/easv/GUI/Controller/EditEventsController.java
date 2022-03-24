@@ -3,11 +3,13 @@ package dk.easv.GUI.Controller;
 import dk.easv.BE.*;
 import dk.easv.GUI.Model.EventModel;
 import dk.easv.GUI.Model.UserEventModel;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -16,6 +18,7 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class EditEventsController extends SuperController implements Initializable, IEventController{
+    public TextField usersInEventsSearchTxt;
     @FXML
     private TextArea infoTxtArea;
     @FXML
@@ -43,7 +46,6 @@ public class EditEventsController extends SuperController implements Initializab
     private Event event;
     public EditEventsController() throws SQLException, IOException {
         eventModel = new EventModel();
-
     }
     
     @Override
@@ -98,5 +100,11 @@ public class EditEventsController extends SuperController implements Initializab
 
     public void handleClose(ActionEvent actionEvent) {
         closeWindow(closeBtn);
+    }
+
+    public void handleSearch(KeyEvent keyEvent) {
+        String searchParam = usersInEventsSearchTxt.getText();
+        ObservableList<User> foundUserList =  eventModel.searchUsersInEvents(usersAtEventTable.getItems(), searchParam, event);
+        usersAtEventTable.setItems(foundUserList);
     }
 }

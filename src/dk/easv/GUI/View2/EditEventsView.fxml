@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="backgroundColor" stylesheets="@../../CSS/EditEventCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EditEventsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="backgroundColor" stylesheets="@../../CSS/EditEventCSS.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EditEventsController">
    <center>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="773.0" BorderPane.alignment="CENTER">
          <children>
@@ -124,7 +124,7 @@
                                           <Image url="@../../../../images/search.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField id="searchTableField" alignment="CENTER" prefHeight="26.0" prefWidth="350.0">
+                                    <TextField id="searchTableField" fx:id="usersInEventsSearchTxt" alignment="CENTER" onKeyReleased="#handleSearch" prefHeight="26.0" prefWidth="350.0">
                                        <HBox.margin>
                                           <Insets bottom="5.0" />
                                        </HBox.margin>
