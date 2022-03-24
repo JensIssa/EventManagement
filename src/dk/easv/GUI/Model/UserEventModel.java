@@ -19,16 +19,17 @@ public class UserEventModel {
         usersInEventsList.addAll(getAllUsersFromEvent(event));
     }
 
-    public List<User> getAllUsersFromEvent(Event event){
+    public List<User> getAllUsersFromEvent(Event event) {
         return eventBusinessManager.getAllUsersFromEvent(event);
     }
 
-    public ObservableList<User> getObservableUsersFromEvents(Event event){
+    public ObservableList<User> getObservableUsersFromEvents(Event event) {
         usersInEventsList.setAll(getAllUsersFromEvent(event));
         return usersInEventsList;
     }
-    public void deleteUserFromEvent(User user){
-        eventBusinessManager.deleteUserFromEvent(user);
+
+    public void deleteUserFromEvent(User user, Event event) {
+        eventBusinessManager.deleteUserFromEvent(user, event);
     }
 
 

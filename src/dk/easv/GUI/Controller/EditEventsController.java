@@ -66,7 +66,7 @@ public class EditEventsController extends SuperController implements Initializab
 
     public void handleDeleteUserFromEvent(ActionEvent actionEvent) {
         User user = (User) usersAtEventTable.getSelectionModel().getSelectedItem();
-        userEventModel.deleteUserFromEvent(user);
+        userEventModel.deleteUserFromEvent(user,event);
         usersAtEventTable.getItems().clear();
         usersAtEventTable.setItems(userEventModel.getObservableUsersFromEvents(event));
     }

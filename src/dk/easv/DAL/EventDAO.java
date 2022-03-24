@@ -113,11 +113,12 @@ public class EventDAO {
      * Sletter en user fra en event
      * @param user - useren der skal fjernes fra eventen
      */
-    public void deleteUserFromEvent( User user){
+    public void deleteUserFromEvent( User user, Event event){
         try (Connection connection = dc.getConnection()) {
-            String sql = "DELETE FROM Ticket WHERE personID = ?";
+            String sql = "DELETE FROM Ticket WHERE personID = ? and eventid = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, user.getId());
+            ps.setInt(2,event.getId());
             ps.execute();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
