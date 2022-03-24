@@ -74,4 +74,10 @@ public class EventBusinessManager {
         foundEvents.addAll(searchUtil.searchEvent(searchBase, query));
         return foundEvents;
     }
+
+    public ObservableList<User> searchUsersInEvent(ObservableList<User> usersInEvent, String query, Event event){
+        ObservableList<User> foundUsers = FXCollections.observableArrayList();
+        foundUsers.addAll(searchUtil.searcUserEvent(usersInEvent, query, event));
+        return foundUsers;
+    }
 }
