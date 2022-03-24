@@ -136,6 +136,6 @@ public class EventManagerViewController extends SuperController  implements Init
 
     public void handleClose(ActionEvent actionEvent) throws IOException {
         closeWindow(closeBtn);
-        openScene("/dk/easv/GUI/View/LoginView.fxml",true, "Loginscreen",false);
+        openScene("/dk/easv/GUI/View/LoginView.fxml",false, "Loginscreen",false);
     }
 }

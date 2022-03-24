@@ -125,7 +125,7 @@ public class AdminViewController extends SuperController implements Initializabl
 
     public void handleBtnClose(ActionEvent actionEvent) throws IOException {
         closeWindow(closeBtn);
-        openScene("/dk/easv/GUI/View/LoginView.fxml",true, "Loginscreen",false);
+        openScene("/dk/easv/GUI/View/LoginView.fxml",false, "Loginscreen",false);
     }
 }
 
