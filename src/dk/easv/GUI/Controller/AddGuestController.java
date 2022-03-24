@@ -32,7 +32,10 @@ public class AddGuestController extends SuperController implements Initializable
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        maxLenghtListener(emailTxtField,150);
+        maxLenghtListener(passwordTxtField,50);
+        maxLenghtListener(nameTxtField,80);
+        addPhoneNumberListener(phonenumberTxtField);
     }
 
 
@@ -45,9 +48,9 @@ public class AddGuestController extends SuperController implements Initializable
         String userName = getName(nameTxtField);
         String userEmail = getEmail(emailTxtField);
         int userPhoneNumber = getPhoneNumber(phonenumberTxtField);
-        String userPassword = passwordTxtField.getText();
+        String userPassword = getPassword(passwordTxtField);
 
-        if (userName != null && userEmail != null) {
+        if (userName != null && userEmail != null &&userPassword != null) {
             personModel.createuser(userName, userEmail, userPassword, userPhoneNumber);
             closeWindow(saveBtn);
         }
