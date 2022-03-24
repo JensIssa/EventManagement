@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="backgroundColor" stylesheets="@../../CSS/EditEventCSS.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EditEventsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="backgroundColor" stylesheets="@../../CSS/EditEventCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EditEventsController">
    <center>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="773.0" BorderPane.alignment="CENTER">
          <children>
@@ -105,7 +105,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Label alignment="CENTER" text="Gæster der deltager">
+                              <Label alignment="CENTER">
                                  <VBox.margin>
                                     <Insets top="25.0" />
                                  </VBox.margin>
@@ -135,23 +135,27 @@
                                  <children>
                                     <TableView fx:id="usersAtEventTable" prefHeight="420.0" prefWidth="500.0">
                                       <columns>
-                                        <TableColumn fx:id="nameColumn" prefWidth="250.0" text="Navn">
-                                             <graphic>
-                                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../../../../images/ListNames.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </TableColumn>
-                                        <TableColumn fx:id="emailColumn" prefWidth="250.0" text="E-mail">
-                                             <graphic>
-                                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../../../../images/Email.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
+                                          <TableColumn prefWidth="75.0" text="Alle gæster der deltager">
+                                             <columns>
+                                              <TableColumn fx:id="nameColumn" prefWidth="250.0" text="Navn">
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../../../images/ListNames.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </TableColumn>
+                                              <TableColumn fx:id="emailColumn" prefWidth="250.0" text="E-mail">
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../../../images/Email.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </TableColumn>
+                                             </columns>
                                           </TableColumn>
                                       </columns>
                                     </TableView>
@@ -161,18 +165,34 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="50.0" prefWidth="100.0">
                            <children>
-                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleDeleteUserFromEvent" prefHeight="37.0" prefWidth="137.0" text="Fjern gæst">
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" />
-                                 </VBox.margin>
-                                 <graphic>
-                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../../images/removeIMG.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                                 <children>
+                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleDeleteUserFromEvent" prefHeight="37.0" prefWidth="137.0" text="Fjern gæst">
+                                       <graphic>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../../images/removeIMG.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button mnemonicParsing="false" text="Eksporter emails">
+                                       <graphic>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../../images/emailExport.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" />
+                                 </padding>
+                              </HBox>
                            </children>
                         </VBox>
                      </children>

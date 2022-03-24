@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="1200.0" styleClass="backgroundColor" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.AdminViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="1200.0" styleClass="backgroundColor" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.AdminViewController">
     <center>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
             <children>
@@ -115,62 +115,72 @@
                     <children>
                   <TableView fx:id="eventInformationTable" prefHeight="420.0" prefWidth="570.0">
                     <columns>
-                      <TableColumn fx:id="eventColumn" prefWidth="150.0" text="Event navn">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../images/event2.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </TableColumn>
-                      <TableColumn fx:id="eventmanagerColumn" prefWidth="170.0" text="Event koordinator">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../images/eventmanager.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </TableColumn>
-                        <TableColumn fx:id="dateStartColumn" prefWidth="125.0" text="Start dato">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../images/date.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </TableColumn>
-                        <TableColumn fx:id="startTimeColumn" prefWidth="125.0" text="Start tid">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../images/time.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
+                        <TableColumn prefWidth="75.0" text="Alle events og deres tilknyttede event koordinator">
+                           <columns>
+                            <TableColumn fx:id="eventColumn" prefWidth="150.0" text="Event navn">
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../images/event2.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </TableColumn>
+                            <TableColumn fx:id="eventmanagerColumn" prefWidth="170.0" text="Event koordinator">
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../images/eventmanager.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </TableColumn>
+                              <TableColumn fx:id="dateStartColumn" prefWidth="125.0" text="Start dato">
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../images/date.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </TableColumn>
+                              <TableColumn fx:id="startTimeColumn" prefWidth="125.0" text="Start tid">
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../images/time.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </TableColumn>
+                           </columns>
                         </TableColumn>
                     </columns>
                   </TableView>
                         <TableView fx:id="eventmanagerTable" prefHeight="420.0" prefWidth="480.0" stylesheets="@../../CSS/AdminViewCSS.css">
                             <columns>
-                                <TableColumn fx:id="eventmanagersNames" prefWidth="240.0" text="Navn">
-                                    <graphic>
-                                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../../../../images/ListNames.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic></TableColumn>
-                                <TableColumn fx:id="eventmanagersEmail" prefWidth="240.0" text="E-mail">
-                                    <graphic>
-                                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../../../../images/Email.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic></TableColumn>
+                        <TableColumn prefWidth="75.0" text="Liste af alle eventkoordinators">
+                           <columns>
+                                      <TableColumn fx:id="eventmanagersNames" prefWidth="240.0" text="Navn">
+                                          <graphic>
+                                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                  <image>
+                                                      <Image url="@../../../../images/ListNames.png" />
+                                                  </image>
+                                              </ImageView>
+                                          </graphic>
+                              </TableColumn>
+                                      <TableColumn fx:id="eventmanagersEmail" prefWidth="240.0" text="E-mail">
+                                          <graphic>
+                                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                  <image>
+                                                      <Image url="@../../../../images/Email.png" />
+                                                  </image>
+                                              </ImageView>
+                                          </graphic>
+                              </TableColumn>
+                           </columns>
+                        </TableColumn>
                             </columns>
                             <HBox.margin>
                                 <Insets />
