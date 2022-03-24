@@ -17,7 +17,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="0.0" prefWidth="300.0" spacing="5.0">
                      <children>
-                        <Label text="Name">
+                        <Label prefHeight="28.0" prefWidth="72.0" text="Navn">
                            <font>
                               <Font name="Britannic Bold" size="24.0" />
                            </font>
@@ -25,7 +25,7 @@
                               <Insets right="210.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="nameTxtField" alignment="CENTER">
+                        <TextField fx:id="nameTxtField" alignment="CENTER" promptText="Tilføj eventkoordinator navn">
                            <VBox.margin>
                               <Insets left="15.0" right="15.0" />
                            </VBox.margin>
@@ -52,7 +52,7 @@
                               <Insets right="205.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="emailTxtField" alignment="CENTER" prefWidth="154.0">
+                        <TextField fx:id="emailTxtField" alignment="CENTER" prefWidth="154.0" promptText="Tilføj E-mail ">
                            <VBox.margin>
                               <Insets left="15.0" right="15.0" />
                            </VBox.margin>
@@ -79,7 +79,7 @@
                               <Insets right="170.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="passwordTxtField" alignment="CENTER">
+                        <TextField fx:id="passwordTxtField" alignment="CENTER" promptText="Tilføj password">
                            <VBox.margin>
                               <Insets left="15.0" right="15.0" />
                            </VBox.margin>
@@ -90,7 +90,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="saveBtn" alignment="CENTER" mnemonicParsing="false" onAction="#handleSaveBtn" text="Save">
+                  <Button fx:id="saveBtn" alignment="CENTER" mnemonicParsing="false" onAction="#handleSaveBtn" text="Gem">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -98,9 +98,9 @@
                         <Insets left="120.0" top="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="cancelBtn" alignment="CENTER" mnemonicParsing="false" onAction="#handleCancelBtn" text="Cancel">
+                  <Button fx:id="cancelBtn" alignment="CENTER" mnemonicParsing="false" onAction="#handleCancelBtn" text="Afslut">
                      <font>
-                        <Font size="16.0" />
+                        <Font name="Lucida Sans Regular" size="16.0" />
                      </font>
                      <HBox.margin>
                         <Insets left="10.0" top="10.0" />

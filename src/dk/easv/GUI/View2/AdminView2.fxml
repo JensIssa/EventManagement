@@ -17,32 +17,35 @@
     <center>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
             <children>
-                <HBox alignment="CENTER" prefHeight="90.0" prefWidth="799.0">
+                <HBox alignment="CENTER" prefHeight="90.0" prefWidth="1123.0">
                     <children>
-                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="348.0">
+                        <HBox alignment="CENTER" prefHeight="43.0" prefWidth="626.0">
                             <children>
                                 <ImageView fitHeight="25.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@../../../../images/search.png" />
                                     </image>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
                                 </ImageView>
-                                <TextField alignment="CENTER" prefHeight="40.0" prefWidth="478.0" promptText="Search here">
+                                <TextField alignment="CENTER" prefHeight="43.0" prefWidth="537.0" promptText="Søg her">
                                     <HBox.margin>
                                         <Insets />
                                     </HBox.margin>
                                     <font>
-                                        <Font name="Britannic Bold" size="22.0" />
+                                        <Font name="Lucida Sans Regular" size="22.0" />
                                     </font></TextField>
                             </children>
                             <HBox.margin>
-                                <Insets bottom="5.0" right="250.0" top="45.0" />
+                                <Insets bottom="5.0" top="45.0" />
                             </HBox.margin>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="328.0" spacing="15.0">
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="436.0" spacing="15.0">
                             <children>
-                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleAddManagerButton" prefHeight="40.0" prefWidth="79.0" text="Add">
+                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleAddManagerButton" prefHeight="40.0" prefWidth="101.0" text="Tilføj">
                                     <font>
-                                        <Font name="Britannic Bold" size="14.0" />
+                                        <Font name="Impact" size="14.0" />
                                     </font>
                                     <graphic>
                                         <ImageView fitHeight="32.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
@@ -52,7 +55,7 @@
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleRemoveButton" prefHeight="40.0" prefWidth="105.0" text="Remove">
+                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleRemoveButton" prefHeight="40.0" prefWidth="90.0" text="Fjern">
                                     <font>
                                         <Font name="Britannic Bold" size="14.0" />
                                     </font>
@@ -67,7 +70,7 @@
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleEditButton" prefHeight="40.0" prefWidth="105.0" text="Edit">
+                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleEditButton" prefHeight="40.0" prefWidth="105.0" text="Rediger">
                                     <font>
                                         <Font name="Britannic Bold" size="14.0" />
                                     </font>
@@ -81,19 +84,38 @@
                                 </Button>
                             </children>
                             <HBox.margin>
-                                <Insets bottom="5.0" left="20.0" top="45.0" />
+                                <Insets bottom="5.0" left="90.0" top="45.0" />
                             </HBox.margin>
                         </HBox>
+                  <VBox alignment="CENTER" prefHeight="90.0" prefWidth="184.0">
+                     <children>
+                        <Button fx:id="closeBtn" mnemonicParsing="false" onAction="#handleBtnClose" prefHeight="40.0" prefWidth="102.0" text="Afslut">
+                           <font>
+                              <Font name="Britannic Bold" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </VBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../images/close.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
                     </children>
                     <VBox.margin>
-                        <Insets left="50.0" right="50.0" />
+                        <Insets left="50.0" />
                     </VBox.margin>
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="460.0" prefWidth="967.0" spacing="50.0">
                     <children>
                   <TableView fx:id="eventInformationTable" prefHeight="420.0" prefWidth="570.0">
                     <columns>
-                      <TableColumn fx:id="eventColumn" prefWidth="150.0" text="Event name">
+                      <TableColumn fx:id="eventColumn" prefWidth="150.0" text="Event navn">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -102,7 +124,7 @@
                               </ImageView>
                            </graphic>
                         </TableColumn>
-                      <TableColumn fx:id="eventmanagerColumn" prefWidth="150.0" text="Eventmanager">
+                      <TableColumn fx:id="eventmanagerColumn" prefWidth="170.0" text="Event koordinator">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -111,7 +133,7 @@
                               </ImageView>
                            </graphic>
                         </TableColumn>
-                        <TableColumn fx:id="dateStartColumn" prefWidth="135.0" text="Date start">
+                        <TableColumn fx:id="dateStartColumn" prefWidth="125.0" text="Start dato">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -120,7 +142,7 @@
                               </ImageView>
                            </graphic>
                         </TableColumn>
-                        <TableColumn fx:id="startTimeColumn" prefWidth="135.0" text="Start time">
+                        <TableColumn fx:id="startTimeColumn" prefWidth="125.0" text="Start tid">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -133,7 +155,7 @@
                   </TableView>
                         <TableView fx:id="eventmanagerTable" prefHeight="420.0" prefWidth="480.0" stylesheets="@../../CSS/AdminViewCSS.css">
                             <columns>
-                                <TableColumn fx:id="eventmanagersNames" prefWidth="240.0" text="Name">
+                                <TableColumn fx:id="eventmanagersNames" prefWidth="240.0" text="Navn">
                                     <graphic>
                                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                             <image>

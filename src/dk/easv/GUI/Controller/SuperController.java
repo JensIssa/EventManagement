@@ -128,7 +128,7 @@ public abstract class SuperController {
                 return true;
             }
         }
-        System.out.println("Invalid time");
+        errorMessage("Indtast en tid i mellem 00:00-23:59 ");
         return false;
     }
 
@@ -220,10 +220,18 @@ public abstract class SuperController {
      * tekstfeltet kun kan modtage tal i formaten "xx:xx", hvor x er tal
      * @param textField
      */
-    public void addNumbersOnlyListener(TextField textField) {
+    public void addTimeListener(TextField textField) {
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("[0-2]?[0-9]?([\\:][0-5]?[0-9]?)?")) {
                 textField.setText(oldValue);
+            }
+        });
+    }
+
+    public void addPhoneNumberListener(TextField movieRatingTxt) {
+        movieRatingTxt.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d{0,8}")) {
+                movieRatingTxt.setText(oldValue);
             }
         });
     }

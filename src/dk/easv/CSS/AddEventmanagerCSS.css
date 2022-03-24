@@ -9,7 +9,7 @@
     -fx-border-style: solid;
     -fx-border-width: 0 0 1 0;
     -fx-text-fill: white;
-    -fx-font-family: "Britannic Bold";
+    -fx-font-family: "Lucida Sans";
     -fx-font-size: 18;
 }
 
@@ -27,7 +27,7 @@
 
 .label {
     -fx-text-fill: white;
-    -fx-font-family: "Britannic Bold";
+    -fx-font-family: "Lucida Sans";
     -fx-font-size: 24;
 }
 

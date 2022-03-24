@@ -9,10 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -26,6 +23,8 @@ import java.util.ResourceBundle;
 
 
 public class AdminViewController extends SuperController implements Initializable, IController {
+    @FXML
+    private Button closeBtn;
     @FXML
     private TableView<Event> eventInformationTable;
     @FXML
@@ -67,9 +66,7 @@ public class AdminViewController extends SuperController implements Initializabl
         try {
             eventmanagerTable.setItems(personModel.getObservablePersons());
             eventInformationTable.setItems(eventModel.getObservableEvents());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
     }
@@ -112,7 +109,7 @@ public class AdminViewController extends SuperController implements Initializabl
     }
 
     public void handleAddManagerButton(ActionEvent actionEvent) throws IOException {
-        openScene("/dk/easv/GUI/View2/AddEventManager.fxml", true, "Add Eventmanager", true);
+        openScene("/dk/easv/GUI/View2/AddEventManager.fxml", true, "Add Eventmanager", false);
         eventmanagerTable.setItems(personModel.getObservablePersons());
     }
 
@@ -125,5 +122,10 @@ public class AdminViewController extends SuperController implements Initializabl
         }
     }
 
+
+    public void handleBtnClose(ActionEvent actionEvent) throws IOException {
+        closeWindow(closeBtn);
+        openScene("/dk/easv/GUI/View/LoginView.fxml",true, "Loginscreen",false);
+    }
 }
 
