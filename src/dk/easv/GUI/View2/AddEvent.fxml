@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" styleClass="backgroundColor" stylesheets="@../../CSS/AddEventmanagerCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.AddEventController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" styleClass="backgroundColor" stylesheets="@../../CSS/AddEventmanagerCSS.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.AddEventController">
     <center>
         <VBox alignment="CENTER" prefHeight="380.0" prefWidth="300.0" BorderPane.alignment="CENTER">
             <children>
@@ -72,7 +72,7 @@
                                         <Insets right="90.0" />
                                     </VBox.margin>
                                 </Label>
-                                <TextField fx:id="eventStartTxtfield" alignment="CENTER">
+                                <TextField fx:id="eventStartTxtfield" promptText="HH:MM">
                                     <VBox.margin>
                                         <Insets left="25.0" right="25.0" />
                                     </VBox.margin>

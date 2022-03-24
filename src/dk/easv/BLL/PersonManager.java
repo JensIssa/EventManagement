@@ -72,4 +72,8 @@ public class PersonManager {
         foundPersons.addAll(searchUtil.searchEventManagers(searchBase, query));
         return foundPersons;
     }
+
+    public void deleteUser(User user){
+        personDAO.deleteUser(user);
+    }
 }

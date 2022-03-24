@@ -188,21 +188,19 @@ public class PersonDAO {
     /**
      * Sletter en user fra hele systemet - inklusiv alle sine billeter
      * @param userToBeDeleted - Useren der skal slettes
-     * @param personType - typen af useren
      */
-    public void deleteUser(User userToBeDeleted, PersonType personType) {
+    public void deleteUser(User userToBeDeleted) {
         try (Connection connection = dc.getConnection()){
             String sql = "DELETE FROM Ticket WHERE personID = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1 , userToBeDeleted.getId());
             preparedStatement.execute();
-            String sqlUser = "DELETE p\n" +
-                    "FROM Person AS p\n" +
-                    "INNER JOIN Role ON p.RoleID = Role.ID\n" +
-                    "WHERE p.ID = ? AND p.RoleID = ?";
+            String sqlUser = "DELETE \n" +
+                    "FROM Person \n" +
+                    "WHERE id = ?";
             preparedStatement = connection.prepareStatement(sqlUser);
             preparedStatement.setInt(1, userToBeDeleted.getId());
-            preparedStatement.setInt(2, personType.getI());
+            preparedStatement.execute();
         } catch (SQLException ex) {
             System.out.println(ex);
         }
