@@ -8,6 +8,7 @@ import dk.easv.GUI.Model.EventModel;
 import dk.easv.GUI.Model.PersonModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -28,6 +29,7 @@ public class EventManagerViewController extends SuperController  implements Init
     public TableColumn eventName;
     public TableColumn dateStart;
     public TableColumn timeStart;
+    public Label eventManagerNameLabel;
     private EventManager eventManager;
     private PersonModel personModel;
     private EventModel eventModel;
@@ -58,6 +60,7 @@ public class EventManagerViewController extends SuperController  implements Init
     @Override
     public void setPersonInfo(Person person) {
         eventManager = (EventManager) person;
+        eventManagerNameLabel.setText(eventManager.getName());
     }
 
     public void handleInspect(ActionEvent actionEvent) throws IOException, SQLException {
