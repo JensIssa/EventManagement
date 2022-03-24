@@ -88,8 +88,9 @@ public class EventManagerViewController extends SuperController  implements Init
         }
     }
 
-    public void handleAddEvent(ActionEvent actionEvent) throws IOException {
+    public void handleAddEvent(ActionEvent actionEvent) throws IOException, SQLException {
         openNewSceneWithPerson(eventManager,"/dk/easv/GUI/View2/AddEvent.fxml","Add Event");
+        eventTable.setItems(eventModel.getObservableEvents());
     }
 
     public void handleAddGuest(ActionEvent actionEvent) throws IOException {
@@ -98,7 +99,6 @@ public class EventManagerViewController extends SuperController  implements Init
     }
 
     public void handleEditGuest(ActionEvent actionEvent) throws IOException {
-
         User user = (User) userTable.getSelectionModel().getSelectedItem();
         if (user != null) {
             openNewSceneWithPerson(user, "/dk/easv/GUI/View2/EditGuestView.fxml", "Rediger guest");

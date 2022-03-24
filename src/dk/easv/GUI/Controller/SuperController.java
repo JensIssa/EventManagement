@@ -17,6 +17,8 @@ import org.w3c.dom.Text;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.regex.Pattern;
 
 public abstract class SuperController {
@@ -171,10 +173,12 @@ public abstract class SuperController {
 
         stage.setScene(scene);
         if(showAndWait){
+            System.out.println("fuc12312312k");
             stage.showAndWait();
         }
 
         if(!showAndWait){
+            System.out.println("fuck");
             stage.show();
         }
     }
@@ -197,7 +201,7 @@ public abstract class SuperController {
         stage.setTitle(Title);
         stage.centerOnScreen();
         stage.setResizable(false);
-        stage.show();
+        stage.showAndWait();
     }
 
     public void openNewSceneWithEventPerson(Event event, EventManager eventManager, String fxmlPath, String Title) throws IOException {
