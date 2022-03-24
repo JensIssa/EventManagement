@@ -55,8 +55,8 @@ public class PersonModel {
         pM.createEventManager(name,email,password);
     }
 
-    public List<User> searchUsers(List<User> users, String searchQuery){
-        return searchUtil.search(users, searchQuery);
+    public ObservableList<Person> searchUsers(ObservableList<Person> users, String searchQuery){
+        return  pM.search(users, searchQuery);
     }
 
 

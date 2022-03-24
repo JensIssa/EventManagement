@@ -1,7 +1,10 @@
 package dk.easv.BLL;
 
 import dk.easv.BE.*;
+import dk.easv.BLL.util.SearchUtil;
 import dk.easv.DAL.PersonDAO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.awt.desktop.PreferencesEvent;
 import java.io.IOException;
@@ -9,8 +12,10 @@ import java.util.List;
 
 public class PersonManager {
     PersonDAO personDAO;
+    SearchUtil searchUtil;
     public PersonManager() throws IOException {
         personDAO = new PersonDAO();
+        searchUtil = new SearchUtil();
     }
 
     public Person loginPerson(String email, String password){
@@ -54,5 +59,12 @@ public class PersonManager {
     }
     public List<Person> getAllAdmins(){
         return personDAO.getAllAdmins();
+    }
+
+
+    public ObservableList<Person> search(ObservableList<Person> searchBase, String query){
+        ObservableList<Person> foundPersons = FXCollections.observableArrayList();
+        foundPersons.addAll(searchUtil.search(searchBase, query));
+        return foundPersons;
     }
 }

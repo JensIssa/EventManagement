@@ -58,8 +58,8 @@ public class EventBusinessManager {
     public void updateEvent(Event event){
         eventDAO.updateEvent(event);;
     }
-    public void deleteUserFromEvent(User user){
-        eventDAO.deleteUserFromEvent(user);
+    public void deleteUserFromEvent(User user,Event event){
+        eventDAO.deleteUserFromEvent(user,event);
     }
 
     public List<Event> getAllEventsFromUser(User user){
