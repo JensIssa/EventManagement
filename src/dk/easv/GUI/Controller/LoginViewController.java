@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class LoginViewController {
+public class LoginViewController extends SuperController{
     @FXML
     private PasswordField passwordInput;
 
@@ -42,11 +42,11 @@ public class LoginViewController {
                     case USER -> openNewScene(person, "/dk/easv/GUI/View2/UserView.fxml", "User", actionEvent);
                 }
             }else{
-                System.out.println("person is null");
+                errorMessage("Ugyldigt Login");
             }
         }else{
             //error
-            System.out.println("error login");
+            errorMessage("Ugyldigt Login");
         }
     }
 
