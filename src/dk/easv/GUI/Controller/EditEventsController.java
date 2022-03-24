@@ -46,7 +46,7 @@ public class EditEventsController extends SuperController implements Initializab
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        addNumbersOnlyListener(timeStartTxtField);
+        addTimeListener(timeStartTxtField);
         maxLenghtListenerTxtArea(infoTxtArea);
         maxLenghtListener(nameTxtField, 60);
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));

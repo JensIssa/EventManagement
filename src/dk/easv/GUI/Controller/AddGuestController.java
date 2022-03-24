@@ -32,7 +32,10 @@ public class AddGuestController extends SuperController implements Initializable
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        maxLenghtListener(emailTxtField,150);
+        maxLenghtListener(passwordTxtField,50);
+        maxLenghtListener(nameTxtField,80);
+        addPhoneNumberListener(phonenumberTxtField);
     }
 
 

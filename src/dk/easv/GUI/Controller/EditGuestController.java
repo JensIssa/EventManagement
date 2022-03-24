@@ -1,6 +1,5 @@
 package dk.easv.GUI.Controller;
 
-import dk.easv.BE.EventManager;
 import dk.easv.BE.Person;
 import dk.easv.BE.PersonType;
 import dk.easv.BE.User;
@@ -15,7 +14,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class EditGuestController extends SuperController implements IController {
+public class EditGuestController extends SuperController implements Initializable, IController {
     @FXML
     private Button cancelBtn;
     @FXML
@@ -35,6 +34,14 @@ public class EditGuestController extends SuperController implements IController 
     public EditGuestController() throws IOException {
         personModel = new PersonModel();
     }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        maxLenghtListener(emailTxtField,150);
+        maxLenghtListener(passwordTxtField,50);
+        maxLenghtListener(nameTxtField,80);
+        addPhoneNumberListener(phoneNumberTxtField);
+    }
+
     @Override
     public void setPersonInfo(Person person) {
         this.user = (User) person;
@@ -64,4 +71,6 @@ public class EditGuestController extends SuperController implements IController 
     public void handleCancel(ActionEvent actionEvent) {
         closeWindow(cancelBtn);
     }
+
+
 }

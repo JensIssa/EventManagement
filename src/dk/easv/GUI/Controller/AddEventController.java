@@ -13,9 +13,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -41,7 +39,7 @@ public class AddEventController extends SuperController implements IController, 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        addNumbersOnlyListener(eventStartTxtfield);
+        addTimeListener(eventStartTxtfield);
         maxLenghtListener(informationTxtfield, 101);
         maxLenghtListener(nameTxtField, 60);
     }

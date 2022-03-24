@@ -67,9 +67,7 @@ public class AdminViewController extends SuperController implements Initializabl
         try {
             eventmanagerTable.setItems(personModel.getObservablePersons());
             eventInformationTable.setItems(eventModel.getObservableEvents());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
     }
