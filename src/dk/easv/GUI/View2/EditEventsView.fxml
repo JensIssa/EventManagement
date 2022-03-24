@@ -93,7 +93,7 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="78.0" prefWidth="500.0">
                            <children>
-                              <Button mnemonicParsing="false" text="Luk">
+                              <Button fx:id="closeBtn" mnemonicParsing="false" onAction="#handleClose" text="Luk">
                                  <VBox.margin>
                                     <Insets left="350.0" top="10.0" />
                                  </VBox.margin>
