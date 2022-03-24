@@ -23,7 +23,7 @@
     -fx-background-insets: 0 0 10 0;
     -fx-padding: 0 0 10 0;
     -fx-font-size: 14;
-    -fx-font-family: "Britannic Bold";
+    -fx-font-family: "Lucida Sans";
 }
 
 .table-view .column-header, table-view .filler{
@@ -37,7 +37,7 @@
     -fx-font-weight:bold;
     -fx-text-fill: whitesmoke;
     -fx-font-size: 14;
-    -fx-font-family: "Britannic Bold";
+    -fx-font-family: "Lucida Sans";
 }
 
 .table-column {
@@ -113,7 +113,7 @@
     -fx-border-radius: 90;
     -fx-background-radius: 90;
     -fx-font-size: 14px;
-    -fx-font-family: "Britannic Bold";
+    -fx-font-family: "Lucida Sans";
 }
 
 .label {
