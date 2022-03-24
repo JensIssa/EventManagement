@@ -173,12 +173,10 @@ public abstract class SuperController {
 
         stage.setScene(scene);
         if(showAndWait){
-            System.out.println("fuc12312312k");
             stage.showAndWait();
         }
 
         if(!showAndWait){
-            System.out.println("fuck");
             stage.show();
         }
     }
