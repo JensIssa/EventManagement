@@ -56,4 +56,8 @@ public class EventModel {
     public ObservableList<User> searchUsersInEvents(ObservableList<User> users, String query, Event event){
         return eBM.searchUsersInEvent(users, query, event);
     }
+
+    public void exportEmailsFromUsers(Event event) throws IOException {
+        eBM.exportUserEmailsFromEvent(event);
+    }
 }

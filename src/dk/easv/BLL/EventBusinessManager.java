@@ -32,11 +32,10 @@ public class EventBusinessManager {
     public List<Event> getAllEvents() throws SQLException {return eventDAO.getAllEvents();}
 
 
-    public void createEmailDocFromEvent(Event event) throws IOException {
-        //manger connect til knap
+    public void exportUserEmailsFromEvent(Event event) throws IOException {
         FileWriter writer = new FileWriter(event.getName() + " EmailListe.txt");//måske .csv???
         for(String str: eventDAO.getEmailListFromEvent(event)) {
-            writer.write(str + System.lineSeparator());
+            writer.write(str +","+ System.lineSeparator());
         }
         writer.close();
     }
@@ -48,15 +47,7 @@ public class EventBusinessManager {
     public List<User> getAllUsersFromEvent(Event event){
         return eventDAO.getAllUsersFromEvent(event);
     }
-    //test main til at lave en email list fil
-    public static void main(String[] args) throws IOException, SQLException {
-        EventBusinessManager eventBusinessManager = new EventBusinessManager();
-        List<Event> eventlist = eventBusinessManager.getAllEvents();
-        Event event = eventlist.get(2);
 
-        eventBusinessManager.createEmailDocFromEvent(event);
-        System.out.println("Event ID: " + event.getId());
-    }
     public void updateEvent(Event event){
         eventDAO.updateEvent(event);;
     }
@@ -80,4 +71,5 @@ public class EventBusinessManager {
         foundUsers.addAll(searchUtil.searcUserEvent(usersInEvent, query, event));
         return foundUsers;
     }
+
 }

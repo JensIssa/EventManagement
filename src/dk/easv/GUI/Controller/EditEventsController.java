@@ -109,4 +109,10 @@ public class EditEventsController extends SuperController implements Initializab
         ObservableList<User> foundUserList =  eventModel.searchUsersInEvents(usersAtEventTable.getItems(), searchParam, event);
         usersAtEventTable.setItems(foundUserList);
     }
+
+    public void handleEksportEmails(ActionEvent actionEvent) throws IOException {
+        if(confirmationBox("Vil du eksportere en E-mail liste fra " + event.getName() + "?").get() == ButtonType.YES){
+            eventModel.exportEmailsFromUsers(event);
+        }
+    }
 }
