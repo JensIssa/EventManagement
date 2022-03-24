@@ -147,4 +147,8 @@ public class EventManagerViewController extends SuperController  implements Init
         closeWindow(closeBtn);
         openScene("/dk/easv/GUI/View/LoginView.fxml",false, "Loginscreen",false);
     }
+
+    public void handleDeleteGuest(ActionEvent actionEvent) {
+
+    }
 }

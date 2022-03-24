@@ -140,9 +140,9 @@
                                     </TextField>
                                  </children>
                               </HBox>
-                              <HBox alignment="CENTER" spacing="15.0">
+                              <HBox alignment="CENTER" prefWidth="440.0" spacing="10.0">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#handleAddGuest" prefHeight="35.0" prefWidth="151.0" text="Tilføj gæst">
+                                    <Button mnemonicParsing="false" onAction="#handleAddGuest" prefHeight="35.0" prefWidth="123.0" text="Tilføj gæst">
                                        <graphic>
                                           <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -151,10 +151,10 @@
                                           </ImageView>
                                        </graphic>
                                        <HBox.margin>
-                                          <Insets left="5.0" />
+                                          <Insets />
                                        </HBox.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" onAction="#handleEditGuest" prefHeight="35.0" prefWidth="157.0" text="Rediger gæst">
+                                    <Button mnemonicParsing="false" onAction="#handleEditGuest" prefHeight="35.0" prefWidth="140.0" text="Rediger gæst">
                                        <graphic>
                                           <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -165,6 +165,15 @@
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
+                                    </Button>
+                                    <Button mnemonicParsing="false" onAction="#handleDeleteGuest" text="Fjern gæst">
+                                       <graphic>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../../images/removeIMG.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
                                     </Button>
                                  </children>
                               </HBox>
