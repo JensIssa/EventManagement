@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="backgroundColor" stylesheets="@../../CSS/EditEventCSS.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EditEventsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="backgroundColor" stylesheets="@../../CSS/EditEventCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EditEventsController">
    <center>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="773.0" BorderPane.alignment="CENTER">
          <children>
@@ -25,8 +25,8 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="0.0" prefWidth="300.0" spacing="10.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="28.0" prefWidth="40.0" text="Name" />
-                              <TextField id="nameEditField" fx:id="nameTxtField" alignment="CENTER" promptText="Edit name">
+                              <Label alignment="CENTER" prefHeight="28.0" prefWidth="40.0" text="Navn" />
+                              <TextField id="nameEditField" fx:id="nameTxtField" alignment="CENTER">
                                  <VBox.margin>
                                     <Insets left="20.0" right="20.0" />
                                  </VBox.margin>
@@ -41,17 +41,17 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                            <children>
-                              <Label alignment="CENTER" text="Date start" />
+                              <Label alignment="CENTER" text="Start dato" />
                               <DatePicker id="datepicker" fx:id="dateStart" prefHeight="25.0" prefWidth="262.0" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" text="Time start">
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="Starttidspunkt">
                                  <font>
                                     <Font name="Britannic Bold" size="16.0" />
                                  </font></Label>
-                              <TextField id="timeField" fx:id="timeStartTxtField" alignment="CENTER" promptText="Edit the time the event starts">
+                              <TextField id="timeField" fx:id="timeStartTxtField" alignment="CENTER">
                                  <VBox.margin>
                                     <Insets left="20.0" right="20.0" />
                                  </VBox.margin>
@@ -60,13 +60,13 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="298.0" prefWidth="300.0" spacing="10.0">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" text="Information box" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="Informations boks" />
                               <TextArea fx:id="infoTxtArea" prefHeight="200.0" prefWidth="200.0">
                                  <VBox.margin>
                                     <Insets bottom="10.0" left="15.0" right="15.0" />
                                  </VBox.margin>
                               </TextArea>
-                              <Button fx:id="saveChanges" mnemonicParsing="false" onAction="#handleSaveChanges" text="Save">
+                              <Button fx:id="saveChanges" mnemonicParsing="false" onAction="#handleSaveChanges" text="Gem">
                                  <VBox.margin>
                                     <Insets bottom="20.0" />
                                  </VBox.margin>
@@ -93,9 +93,21 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="78.0" prefWidth="500.0">
                            <children>
-                              <Label alignment="CENTER" text="Guest list">
+                              <Button fx:id="closeBtn" mnemonicParsing="false" onAction="#handleClose" text="Luk">
                                  <VBox.margin>
-                                    <Insets top="35.0" />
+                                    <Insets left="350.0" top="10.0" />
+                                 </VBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../images/close.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Label alignment="CENTER" text="Gæster der deltager">
+                                 <VBox.margin>
+                                    <Insets top="25.0" />
                                  </VBox.margin>
                               </Label>
                            </children>
@@ -112,7 +124,7 @@
                                           <Image url="@../../../../images/search.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField id="searchTableField" alignment="CENTER" prefHeight="26.0" prefWidth="350.0" promptText="Search for guests here">
+                                    <TextField id="searchTableField" alignment="CENTER" prefHeight="26.0" prefWidth="350.0">
                                        <HBox.margin>
                                           <Insets bottom="5.0" />
                                        </HBox.margin>
@@ -123,7 +135,7 @@
                                  <children>
                                     <TableView fx:id="usersAtEventTable" prefHeight="420.0" prefWidth="500.0">
                                       <columns>
-                                        <TableColumn fx:id="nameColumn" prefWidth="250.0" text="Name">
+                                        <TableColumn fx:id="nameColumn" prefWidth="250.0" text="Navn">
                                              <graphic>
                                                 <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
@@ -132,7 +144,7 @@
                                                 </ImageView>
                                              </graphic>
                                           </TableColumn>
-                                        <TableColumn fx:id="emailColumn" prefWidth="250.0" text="Email">
+                                        <TableColumn fx:id="emailColumn" prefWidth="250.0" text="E-mail">
                                              <graphic>
                                                 <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
@@ -149,7 +161,7 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="50.0" prefWidth="100.0">
                            <children>
-                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleDeleteUserFromEvent" prefHeight="37.0" prefWidth="137.0" text="Delete user">
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleDeleteUserFromEvent" prefHeight="37.0" prefWidth="137.0" text="Fjern gæst">
                                  <VBox.margin>
                                     <Insets bottom="20.0" />
                                  </VBox.margin>

@@ -13,17 +13,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1200.0" styleClass="backgroundColor" stylesheets="@../../CSS/EventManagerViewCSS.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EventManagerViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1200.0" styleClass="backgroundColor" stylesheets="@../../CSS/EventManagerViewCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EventManagerViewController">
    <center>
       <VBox prefHeight="376.0" prefWidth="650.0" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="402.0" prefWidth="1200.0">
                <children>
-                  <VBox alignment="CENTER" prefHeight="400.0" prefWidth="640.0">
+                  <VBox alignment="CENTER" prefHeight="400.0" prefWidth="620.0">
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#handleAddEvent" text="Add event">
+                              <Button mnemonicParsing="false" onAction="#handleAddEvent" text="Tilføj event">
                                  <graphic>
                                     <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -31,7 +31,7 @@
                                        </image>
                                     </ImageView>
                                  </graphic></Button>
-                              <Button mnemonicParsing="false" onAction="#handleDeleteEvent" prefHeight="35.0" prefWidth="131.0" text="Delete event">
+                              <Button mnemonicParsing="false" onAction="#handleDeleteEvent" prefHeight="35.0" prefWidth="143.0" text="Fjern event">
                                  <graphic>
                                     <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -39,7 +39,7 @@
                                        </image>
                                     </ImageView>
                                  </graphic></Button>
-                              <Button mnemonicParsing="false" onAction="#handleInspect" text="Edit">
+                              <Button mnemonicParsing="false" onAction="#handleInspect" text="Inspicer">
                                  <graphic>
                                     <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -51,30 +51,37 @@
                         </HBox>
                         <TableView fx:id="eventTable" prefHeight="362.0" prefWidth="551.0">
                           <columns>
-                            <TableColumn fx:id="eventName" prefWidth="230.0" text="Event name">
-                                 <graphic>
-                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../../images/event2.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic></TableColumn>
-                            <TableColumn fx:id="dateStart" prefWidth="150.0" text="Date start">
-                                 <graphic>
-                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../../images/date.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic></TableColumn>
-                              <TableColumn fx:id="timeStart" prefWidth="150.0" text="Time start">
-                                 <graphic>
-                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../../images/time.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic></TableColumn>
+                              <TableColumn prefWidth="75.0" text="Liste af dine events">
+                                 <columns>
+                                  <TableColumn fx:id="eventName" prefWidth="190.0" text="Event navn">
+                                       <graphic>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../../images/event2.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </TableColumn>
+                                  <TableColumn fx:id="dateStart" prefWidth="150.0" text="Start dato">
+                                       <graphic>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../../images/date.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </TableColumn>
+                                    <TableColumn fx:id="timeStart" prefWidth="170.0" text="Start tidspunkt">
+                                       <graphic>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../../images/time.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </TableColumn>
+                                 </columns>
+                              </TableColumn>
                           </columns>
                            <VBox.margin>
                               <Insets bottom="30.0" left="30.0" />
@@ -82,11 +89,11 @@
                         </TableView>
                      </children>
                   </VBox>
-                  <HBox alignment="CENTER" prefHeight="400.0" prefWidth="245.0">
+                  <HBox alignment="CENTER" prefHeight="400.0" prefWidth="265.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="382.0" prefWidth="115.0" spacing="30.0">
+                        <VBox alignment="CENTER" prefHeight="305.0" prefWidth="160.0" spacing="30.0">
                            <children>
-                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleAddUserToEvent" prefHeight="33.0" prefWidth="109.0" text="Add user">
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleAddUserToEvent" prefHeight="35.0" prefWidth="140.0" text="Tilføj gæster">
                                  <graphic>
                                     <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -109,7 +116,7 @@
                   </HBox>
                   <HBox prefHeight="365.0" prefWidth="556.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="400.0" prefWidth="483.0">
+                        <VBox alignment="CENTER" prefHeight="400.0" prefWidth="460.0">
                            <children>
                               <HBox alignment="CENTER" prefHeight="25.0" prefWidth="476.0">
                                  <children>
@@ -128,24 +135,30 @@
                                     </TextField>
                                  </children>
                               </HBox>
-                              <TableView fx:id="userTable" prefHeight="365.0" prefWidth="446.0">
+                              <TableView fx:id="userTable" prefHeight="365.0" prefWidth="435.0">
                                 <columns>
-                                  <TableColumn fx:id="nameColumnuser" prefWidth="225.0" text="Name">
-                                       <graphic>
-                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../../../../images/ListNames.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic></TableColumn>
-                                  <TableColumn fx:id="emailColumnUser" prefWidth="225.0" text="Email">
-                                       <graphic>
-                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../../../../images/Email.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic></TableColumn>
+                                    <TableColumn prefWidth="75.0" text="Liste af gæster i alt">
+                                       <columns>
+                                        <TableColumn fx:id="emailColumnUser" prefWidth="225.0" text="E-mail">
+                                             <graphic>
+                                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../../images/Email.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </TableColumn>
+                                        <TableColumn fx:id="nameColumnuser" prefWidth="225.0" text="Name">
+                                             <graphic>
+                                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../../images/ListNames.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </TableColumn>
+                                       </columns>
+                                    </TableColumn>
                                 </columns>
                                  <VBox.margin>
                                     <Insets bottom="30.0" right="30.0" />
@@ -163,36 +176,65 @@
    <top>
       <HBox alignment="CENTER" prefHeight="105.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="565.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="565.0" spacing="15.0">
                <children>
+                  <ImageView fitHeight="45.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../images/eventmanager.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="30.0" />
+                     </HBox.margin>
+                  </ImageView>
                   <Label fx:id="eventManagerNameLabel" text="Name">
                      <font>
                         <Font name="Britannic Bold" size="18.0" />
-                     </font></Label>
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="20.0" />
+                     </HBox.margin></Label>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="245.0" />
-            <HBox alignment="CENTER" prefHeight="45.0" prefWidth="489.0" spacing="15.0">
+            <HBox alignment="CENTER" prefHeight="105.0" prefWidth="426.0" spacing="15.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#handleAddGuest" text="Add user">
+                  <Button mnemonicParsing="false" onAction="#handleAddGuest" prefHeight="35.0" prefWidth="151.0" text="Tilføj gæst">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../../images/icons8-add-64.png" />
                            </image>
                         </ImageView>
-                     </graphic></Button>
-                  <Button mnemonicParsing="false" onAction="#handleEditGuest" text="Edit user">
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="5.0" top="60.0" />
+                     </HBox.margin></Button>
+                  <Button mnemonicParsing="false" onAction="#handleEditGuest" prefHeight="35.0" prefWidth="157.0" text="Rediger gæst">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../../images/edit.png" />
                            </image>
                         </ImageView>
-                     </graphic></Button>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets top="60.0" />
+                     </HBox.margin></Button>
+                  <Button fx:id="closeBtn" mnemonicParsing="false" onAction="#handleClose" prefHeight="35.0" prefWidth="120.0" text="Afslut">
+                     <HBox.margin>
+                        <Insets bottom="40.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../images/close.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
                <HBox.margin>
-                  <Insets right="30.0" top="60.0" />
+                  <Insets right="15.0" />
                </HBox.margin>
             </HBox>
          </children>

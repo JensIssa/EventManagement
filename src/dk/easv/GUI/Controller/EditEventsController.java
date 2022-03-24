@@ -16,8 +16,10 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class EditEventsController extends SuperController implements Initializable, IEventController{
-   @FXML
-    public TextArea infoTxtArea;
+    @FXML
+    private TextArea infoTxtArea;
+    @FXML
+    private Button closeBtn;
     @FXML
     private Button saveChanges;
     @FXML
@@ -66,7 +68,7 @@ public class EditEventsController extends SuperController implements Initializab
 
     public void handleDeleteUserFromEvent(ActionEvent actionEvent) {
         User user = (User) usersAtEventTable.getSelectionModel().getSelectedItem();
-        userEventModel.deleteUserFromEvent(user);
+        userEventModel.deleteUserFromEvent(user,event);
         usersAtEventTable.getItems().clear();
         usersAtEventTable.setItems(userEventModel.getObservableUsersFromEvents(event));
     }
@@ -87,8 +89,14 @@ public class EditEventsController extends SuperController implements Initializab
     }
 
 
+
+
     @Override
     public void setPersonInfo(Person person) {
         this.eventManager = (EventManager) person;
+    }
+
+    public void handleClose(ActionEvent actionEvent) {
+        closeWindow(closeBtn);
     }
 }

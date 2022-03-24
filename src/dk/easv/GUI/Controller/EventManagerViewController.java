@@ -8,7 +8,9 @@ import dk.easv.GUI.Model.EventModel;
 import dk.easv.GUI.Model.PersonModel;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -25,15 +27,27 @@ import java.util.ResourceBundle;
 
 public class EventManagerViewController extends SuperController  implements Initializable, IController{
 
-    public TableColumn<Person, String> nameColumnuser;
-    public TableColumn<Person, String> emailColumnUser;
-    public TableView<Person> userTable;
-    public TableView<Event> eventTable;
-    public TableColumn<Event, String> eventName;
-    public TableColumn<Event, LocalDate> dateStart;
-    public TableColumn<Event, String> timeStart;
-    public Label eventManagerNameLabel;
-    public TextField searchFieldUsers;
+    @FXML
+    private TableColumn<Person, String> nameColumnuser;
+    @FXML
+    private TableColumn<Person, String> emailColumnUser;
+    @FXML
+    private TableView<Person> userTable;
+    @FXML
+    private TableView<Event> eventTable;
+    @FXML
+    private TableColumn<Event, String> eventName;
+    @FXML
+    private TableColumn<Event, LocalDate> dateStart;
+    @FXML
+    private TableColumn<Event, String> timeStart;
+    @FXML
+    private Label eventManagerNameLabel;
+    @FXML
+    private Button closeBtn;
+    @FXML
+    private TextField searchFieldUsers;
+
     private EventManager eventManager;
     private PersonModel personModel;
     private EventModel eventModel;
@@ -90,8 +104,9 @@ public class EventManagerViewController extends SuperController  implements Init
         }
     }
 
-    public void handleAddEvent(ActionEvent actionEvent) throws IOException {
+    public void handleAddEvent(ActionEvent actionEvent) throws IOException, SQLException {
         openNewSceneWithPerson(eventManager,"/dk/easv/GUI/View2/AddEvent.fxml","Add Event");
+        eventTable.setItems(eventModel.getObservableEvents());
     }
 
     public void handleAddGuest(ActionEvent actionEvent) throws IOException {
@@ -100,7 +115,6 @@ public class EventManagerViewController extends SuperController  implements Init
     }
 
     public void handleEditGuest(ActionEvent actionEvent) throws IOException {
-
         User user = (User) userTable.getSelectionModel().getSelectedItem();
         if (user != null) {
             openNewSceneWithPerson(user, "/dk/easv/GUI/View2/EditGuestView.fxml", "Rediger guest");
@@ -122,5 +136,10 @@ public class EventManagerViewController extends SuperController  implements Init
         String searchParam = searchFieldUsers.getText();
         ObservableList<Person> foundUserList =  personModel.searchUsers(userTable.getItems(), searchParam);
         userTable.setItems(foundUserList);
+    }
+
+    public void handleClose(ActionEvent actionEvent) throws IOException {
+        closeWindow(closeBtn);
+        openScene("/dk/easv/GUI/View/LoginView.fxml",true, "Loginscreen",false);
     }
 }
