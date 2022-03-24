@@ -5,10 +5,12 @@ import dk.easv.BE.Person;
 import dk.easv.BE.User;
 import dk.easv.GUI.Model.EventModel;
 import dk.easv.GUI.Model.UserEventModel;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -22,6 +24,8 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class UserViewController extends SuperController implements IController, Initializable {
+    @FXML
+    private Button closeBtn;
     @FXML
     private ScrollPane scrollPain;
     User user;
@@ -71,6 +75,11 @@ public class UserViewController extends SuperController implements IController, 
             scrollPain.setContent(tickets);
 
         }
+    }
+
+    public void handleClose(ActionEvent actionEvent) throws IOException {
+        closeWindow(closeBtn);
+        openScene("/dk/easv/GUI/View/LoginView.fxml",false, "Loginscreen",false);
     }
 }
 
