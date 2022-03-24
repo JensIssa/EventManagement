@@ -17,6 +17,7 @@ import org.w3c.dom.Text;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.regex.Pattern;
@@ -259,6 +260,11 @@ public abstract class SuperController {
                 }
             }
         } );
+    }
+
+    public Optional<ButtonType> confirmationBox(String string){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,string,ButtonType.YES,ButtonType.NO);
+        return alert.showAndWait();
     }
 
 }
