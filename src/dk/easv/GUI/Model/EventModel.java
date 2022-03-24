@@ -5,6 +5,7 @@ import dk.easv.BE.Event;
 import dk.easv.BE.EventManager;
 import dk.easv.BE.User;
 import dk.easv.BLL.EventBusinessManager;
+import dk.easv.BLL.util.SearchUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -48,5 +49,8 @@ public class EventModel {
 
     public List<Event> getAllEventsFromUser(User user){
         return eBM.getAllEventsFromUser(user);
+    }
+    public ObservableList<Event> searchEvents(ObservableList<Event> searchBase, String query) throws SQLException {
+        return eBM.searchEvent(searchBase, query);
     }
 }

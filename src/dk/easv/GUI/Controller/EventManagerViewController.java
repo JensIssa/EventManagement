@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 
@@ -32,6 +33,7 @@ public class EventManagerViewController extends SuperController  implements Init
     public TableColumn<Event, LocalDate> dateStart;
     public TableColumn<Event, String> timeStart;
     public Label eventManagerNameLabel;
+    public TextField searchFieldUsers;
     private EventManager eventManager;
     private PersonModel personModel;
     private EventModel eventModel;
@@ -117,7 +119,7 @@ public class EventManagerViewController extends SuperController  implements Init
     }
 
     public void handleSearch(KeyEvent keyEvent){
-        String searchParam = keyEvent.getText();
+        String searchParam = searchFieldUsers.getText();
         ObservableList<Person> foundUserList =  personModel.searchUsers(userTable.getItems(), searchParam);
         userTable.setItems(foundUserList);
     }

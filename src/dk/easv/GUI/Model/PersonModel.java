@@ -58,7 +58,9 @@ public class PersonModel {
     public ObservableList<Person> searchUsers(ObservableList<Person> users, String searchQuery){
         return  pM.search(users, searchQuery);
     }
-
+    public ObservableList<Person> searchEventManagers(ObservableList<Person> eventManagers, String query){
+        return pM.searchEventManagers(eventManagers, query);
+    }
 
 
     public void deleteEventmanager(EventManager eventManager, PersonType usertype) {
