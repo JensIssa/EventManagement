@@ -6,12 +6,14 @@ import dk.easv.BE.Person;
 import dk.easv.BE.User;
 import dk.easv.GUI.Model.EventModel;
 import dk.easv.GUI.Model.PersonModel;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,13 +24,13 @@ import java.util.ResourceBundle;
 
 public class EventManagerViewController extends SuperController  implements Initializable, IController{
 
-    public TableColumn nameColumnuser;
-    public TableColumn emailColumnUser;
-    public TableView userTable;
+    public TableColumn<Person, String> nameColumnuser;
+    public TableColumn<Person, String> emailColumnUser;
+    public TableView<Person> userTable;
     public TableView<Event> eventTable;
-    public TableColumn eventName;
-    public TableColumn dateStart;
-    public TableColumn timeStart;
+    public TableColumn<Event, String> eventName;
+    public TableColumn<Event, LocalDate> dateStart;
+    public TableColumn<Event, String> timeStart;
     public Label eventManagerNameLabel;
     private EventManager eventManager;
     private PersonModel personModel;
@@ -42,12 +44,12 @@ public class EventManagerViewController extends SuperController  implements Init
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        nameColumnuser.setCellValueFactory(new PropertyValueFactory<Person, String>("Name"));
-        emailColumnUser.setCellValueFactory(new PropertyValueFactory<Person, String>("Email"));
+        nameColumnuser.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        emailColumnUser.setCellValueFactory(new PropertyValueFactory<>("Email"));
         userTable.setItems(personModel.getobservableUsers());
-        eventName.setCellValueFactory(new PropertyValueFactory<Event, String>("Name"));
-        dateStart.setCellValueFactory(new PropertyValueFactory<Event, LocalDate>("startDate"));
-        timeStart.setCellValueFactory(new PropertyValueFactory<Event, String>("startTime"));
+        eventName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        dateStart.setCellValueFactory(new PropertyValueFactory<>("startDate"));
+        timeStart.setCellValueFactory(new PropertyValueFactory<>("startTime"));
 
         try {
             eventTable.setItems(eventModel.getObservableEvents());
@@ -112,5 +114,11 @@ public class EventManagerViewController extends SuperController  implements Init
         Event eventToDelete = eventTable.getSelectionModel().getSelectedItem();
         eventModel.deleteEvent(eventToDelete);
         eventTable.getItems().remove(eventToDelete);
+    }
+
+    public void handleSearch(KeyEvent keyEvent){
+        String searchParam = keyEvent.getText();
+        ObservableList<Person> foundUserList =  personModel.searchUsers(userTable.getItems(), searchParam);
+        userTable.setItems(foundUserList);
     }
 }
