@@ -13,15 +13,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="1200.0" styleClass="backgroundColor" stylesheets="@../../CSS/EventManagerViewCSS.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EventManagerViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="1200.0" styleClass="backgroundColor" stylesheets="@../../CSS/EventManagerViewCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EventManagerViewController">
    <center>
       <VBox BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="586.0" prefWidth="1200.0">
                <children>
-                  <VBox alignment="CENTER" prefWidth="620.0">
+                  <VBox alignment="CENTER" prefWidth="620.0" spacing="15.0">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="54.0" prefWidth="540.0" spacing="30.0">
+                        <HBox alignment="CENTER" prefHeight="170.0" prefWidth="540.0" />
+                        <HBox alignment="CENTER" prefHeight="54.0" prefWidth="540.0" spacing="15.0">
                            <children>
                               <Button mnemonicParsing="false" onAction="#handleAddEvent" text="Tilføj event">
                                  <graphic>
@@ -48,8 +49,11 @@
                                     </ImageView>
                                  </graphic></Button>
                            </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
                         </HBox>
-                        <TableView fx:id="eventTable" prefHeight="400.0" prefWidth="510.0">
+                        <TableView fx:id="eventTable" prefHeight="533.0" prefWidth="527.0">
                           <columns>
                               <TableColumn prefWidth="75.0" text="Liste af dine events">
                                  <columns>
@@ -84,7 +88,7 @@
                               </TableColumn>
                           </columns>
                            <VBox.margin>
-                              <Insets bottom="30.0" left="30.0" />
+                              <Insets bottom="60.0" left="30.0" />
                            </VBox.margin>
                         </TableView>
                      </children>
@@ -117,16 +121,16 @@
                   </HBox>
                   <HBox prefHeight="365.0" prefWidth="556.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="400.0" prefWidth="460.0" spacing="10.0">
+                        <VBox alignment="CENTER" prefHeight="400.0" prefWidth="460.0" spacing="15.0">
                            <children>
-                              <HBox alignment="CENTER" prefHeight="25.0" prefWidth="460.0">
+                              <HBox alignment="CENTER" prefHeight="48.0" prefWidth="460.0">
                                  <children>
                                     <ImageView fitHeight="25.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../../../../images/search.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="searchFieldUsers" alignment="CENTER" onKeyReleased="#handleSearch" prefHeight="38.0" prefWidth="320.0" promptText="Search users here" text="Søg i alle gæster">
+                                    <TextField fx:id="searchFieldUsers" alignment="CENTER" onKeyReleased="#handleSearch" prefHeight="38.0" prefWidth="320.0" promptText="Søg gæster i alt">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
@@ -136,7 +140,7 @@
                                     </TextField>
                                  </children>
                               </HBox>
-                              <HBox alignment="CENTER">
+                              <HBox alignment="CENTER" spacing="15.0">
                                  <children>
                                     <Button mnemonicParsing="false" onAction="#handleAddGuest" prefHeight="35.0" prefWidth="151.0" text="Tilføj gæst">
                                        <graphic>
@@ -164,7 +168,7 @@
                                     </Button>
                                  </children>
                               </HBox>
-                              <TableView fx:id="userTable" prefHeight="396.0" prefWidth="430.0">
+                              <TableView fx:id="userTable" prefHeight="533.0" prefWidth="430.0">
                                 <columns>
                                     <TableColumn prefWidth="75.0" text="Liste af gæster i alt">
                                        <columns>
@@ -190,7 +194,7 @@
                                     </TableColumn>
                                 </columns>
                                  <VBox.margin>
-                                    <Insets bottom="30.0" right="30.0" />
+                                    <Insets bottom="60.0" right="30.0" />
                                  </VBox.margin>
                               </TableView>
                            </children>

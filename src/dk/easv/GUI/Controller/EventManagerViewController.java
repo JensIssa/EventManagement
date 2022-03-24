@@ -94,6 +94,7 @@ public class EventManagerViewController extends SuperController  implements Init
         Event event = (Event) eventTable.getSelectionModel().getSelectedItem();
         if (user != null && event != null){
             eventModel.addUserToEvent(event, user);
+            errorMessage(user.getName() + " er blevet tilføjet til begivenheden: " + event.getName());
         }
         else {
             errorMessage("Please select an user and/or event to add an user to the event");
