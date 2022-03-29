@@ -6,6 +6,15 @@
     -fx-background-color: linear-gradient(rgba(250,172,63,0.6) 0%, rgba(253,72,179,0.6) 100);
 }
 
+/**
+Transparant vbox til login uden at påvirke Textfield + label inde i vboxen
+ */
+.transparant {
+    -fx-background-color: rgba(255,255,255, 0.3);
+    -fx-background-radius: 30;
+    -fx-border-color: rgba(255,255,255, 0.3);
+    -fx-border-radius: 30;
+}
 
 /**
 Alt CSS, der tilhører table-view
@@ -155,8 +164,55 @@ Alt CSS, der tilhører labels (Styrer også farven i tableview-column-header)
     -fx-text-fill: white;
 }
 
+/**
+Alt CSS, der tilhører Check-box
+ */
+.check-box{
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-border-radius: 90;
+}
 
 /**
 ID's Som hovedsageligt bliver benyttet i Add / Edit views, da bl.a. labels / textFields er anderledes
  */
 
+/**
+Generelle ID's
+ */
+
+#LoginButton{
+    -fx-background-color: linear-gradient(to left bottom, rgba(250,172,63,255) 0%, rgba(253,72,179,255) 100);
+    -fx-text-fill: white;
+    -fx-opacity: 100;
+    -fx-border-radius: 90;
+    -fx-background-radius: 90;
+    -fx-font-family: "Lucida Sans";
+    -fx-font-size: 18px;
+}
+
+#LoginButton:pressed
+{
+    -fx-background-color: linear-gradient(to left bottom, rgba(238,143,11,255) 0%, rgba(226,11,136,255) 100);
+    -fx-border-color: #CDD1D6;
+    -fx-border-radius: 90;
+    -fx-background-radius: 90;
+    -fx-cursor: hand;
+}
+
+#LoginButton:hover
+{
+    -fx-background-color: linear-gradient(to left bottom, rgba(238,143,11,255) 0%, rgba(226,11,136,255) 100);
+    -fx-border-radius: 90;
+    -fx-background-radius: 90;
+    -fx-cursor: hand;
+}
+
+#LoginButton:focused
+{
+    -fx-background-color: linear-gradient(to left bottom, rgba(238,143,11,255) 0%, rgba(226,11,136,255) 100);
+    -fx-border-color: #CDD1D6;
+    -fx-border-radius: 90;
+    -fx-background-radius: 90;
+    -fx-cursor: hand;
+}
