@@ -152,9 +152,6 @@ Alt CSS der tilhører textfields
     -fx-cursor: hand;
 }
 
-.text-field:pressed {
-    -fx-cursor: hand;
-}
 
 /**
 Alt CSS, der tilhører labels (Styrer også farven i tableview-column-header)
@@ -174,8 +171,111 @@ Alt CSS, der tilhører Check-box
 }
 
 /**
+Alt CSS, der tilhører Scroll-pane
+ */
+
+.scroll-pane{
+    -fx-background-color: #8d90e4;
+}
+
+/**
+Alt generelt CSS, der tilhører TextArea
+ */
+
+.text-area {
+    -fx-font-family: "Lucida Sans";
+    -fx-font-size: 16;
+    -fx-text-alignment: center;
+}
+
+
+/**
+Alt generelt CSS, der tilhører datepicker
+ */
+
+.datepicker {
+    -fx-text-alignment: right;
+    -fx-font-family: "Lucida Sans";
+    -fx-font-size: 16;
+}
+
+/**
 ID's Som hovedsageligt bliver benyttet i Add / Edit views, da bl.a. labels / textFields er anderledes
  */
+
+#AddOrEditTextField {
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-border-style: solid;
+    -fx-border-width: 0 0 1 0;
+    -fx-text-fill: white;
+    -fx-font-family: "Lucida Sans";
+    -fx-font-size: 18;
+}
+
+#AddOrEditTextField:hover {
+    -fx-cursor: hand;
+}
+
+#AddOrEditLabel {
+    -fx-text-fill: white;
+    -fx-font-family: "Lucida Sans";
+    -fx-font-size: 24;
+}
+
+/**
+Edit Event View CSS
+ */
+
+
+#EditEventTextfield{
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-border-style: solid;
+    -fx-border-width: 0 0 1 0;
+    -fx-text-fill: white;
+    -fx-font-size: 16;
+    -fx-font-family: "Lucida Sans";
+}
+
+#EditEventTextfield:hover {
+    -fx-cursor: hand;
+}
+
+#EditEventLabel {
+    -fx-text-fill: white;
+    -fx-font-size: 16;
+    -fx-font-family: "Lucida Sans";
+}
+
+/**
+Alt CSS, der tilhører Ticket
+ */
+
+#Ticket{
+    -fx-background-color: #c6fcfa;
+    -fx-background-size: 1200 900;
+    -fx-background-radius: 18 18 18 18;
+    -fx-border-radius: 18 18 18 18;
+    -fx-border-color: #6027a4;
+}
+
+#nameOfEventLabel{
+    -fx-font-size: 24;
+    -fx-wrap-text: true;
+}
+
+#infoOfEventLabel{
+    -fx-font-size: 12;
+    -fx-wrap-text: true;
+}
+
+#labelTicket {
+    -fx-border-color: #0096a8;
+    -fx-border-radius: 12px;
+    -fx-padding: 5px;
+    -fx-text-fill: #000000;
+}
 
 /**
 Generelle ID's
@@ -215,4 +315,10 @@ Generelle ID's
     -fx-border-radius: 90;
     -fx-background-radius: 90;
     -fx-cursor: hand;
+}
+
+#alder{
+    -fx-text-fill: white;
+    -fx-font-family: "Lucida Sans";
+    -fx-font-size: 20;
 }

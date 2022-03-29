@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" styleClass="backgroundColor" stylesheets="@../../CSS/AddEventmanagerCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EditGuestController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" styleClass="backgroundColor" stylesheets="@../../CSS/EventmanagementCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EditGuestController">
     <center>
         <VBox alignment="CENTER" prefHeight="380.0" prefWidth="300.0" BorderPane.alignment="CENTER">
             <children>
@@ -19,7 +19,7 @@
                     <children>
                         <VBox alignment="CENTER" prefHeight="210.0" prefWidth="300.0" spacing="5.0">
                             <children>
-                                <Label text="Navn">
+                                <Label id="AddOrEditLabel" text="Navn">
                                     <font>
                                         <Font name="Britannic Bold" size="24.0" />
                                     </font>
@@ -27,7 +27,7 @@
                                         <Insets right="210.0" />
                                     </VBox.margin>
                                 </Label>
-                                <TextField fx:id="nameTxtField" alignment="CENTER">
+                                <TextField id="AddOrEditTextField" fx:id="nameTxtField" alignment="CENTER">
                                     <VBox.margin>
                                         <Insets left="15.0" right="15.0" />
                                     </VBox.margin>
@@ -46,7 +46,7 @@
                     <children>
                         <VBox alignment="CENTER" prefHeight="210.0" prefWidth="300.0" spacing="5.0">
                             <children>
-                                <Label text="E-mail">
+                                <Label id="AddOrEditLabel" text="E-mail">
                                     <font>
                                         <Font name="Britannic Bold" size="24.0" />
                                     </font>
@@ -54,7 +54,7 @@
                                         <Insets right="195.0" />
                                     </VBox.margin>
                                 </Label>
-                                <TextField fx:id="emailTxtField" alignment="CENTER" prefWidth="154.0">
+                                <TextField id="AddOrEditTextField" fx:id="emailTxtField" alignment="CENTER" prefWidth="154.0">
                                     <VBox.margin>
                                         <Insets left="15.0" right="15.0" />
                                     </VBox.margin>
@@ -73,7 +73,7 @@
                     <children>
                         <VBox alignment="CENTER" prefHeight="230.0" prefWidth="300.0" spacing="5.0">
                             <children>
-                                <Label prefWidth="200.0" text="Telefonnummer">
+                                <Label id="AddOrEditLabel" prefWidth="200.0" text="Telefonnummer">
                                     <font>
                                         <Font name="Britannic Bold" size="24.0" />
                                     </font>
@@ -81,7 +81,7 @@
                                         <Insets right="70.0" />
                                     </VBox.margin>
                                 </Label>
-                                <TextField fx:id="phoneNumberTxtField" alignment="CENTER">
+                                <TextField id="AddOrEditTextField" fx:id="phoneNumberTxtField" alignment="CENTER">
                                     <VBox.margin>
                                         <Insets left="15.0" right="15.0" />
                                     </VBox.margin>
@@ -97,12 +97,12 @@
                     <children>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0">
                             <children>
-                                <Label alignment="CENTER" text="Password">
+                                <Label id="AddOrEditLabel" alignment="CENTER" text="Password">
                                     <VBox.margin>
                                         <Insets right="160.0" />
                                     </VBox.margin>
                                 </Label>
-                                <TextField fx:id="passwordTxtField" alignment="CENTER">
+                                <TextField id="AddOrEditTextField" fx:id="passwordTxtField" alignment="CENTER">
                                     <VBox.margin>
                                         <Insets left="15.0" right="15.0" />
                                     </VBox.margin>

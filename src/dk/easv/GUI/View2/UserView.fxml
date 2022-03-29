@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="587.0" prefWidth="842.0" styleClass="backgroundColor" stylesheets="@../../CSS/UserView.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.UserViewController">
+<AnchorPane prefHeight="587.0" prefWidth="842.0" styleClass="backgroundColor" stylesheets="@../../CSS/EventmanagementCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.UserViewController">
    <children>
       <ScrollPane fx:id="scrollPain" layoutX="142.0" layoutY="43.0" prefHeight="510.0" prefWidth="684.0" />
       <ImageView fitHeight="112.0" fitWidth="114.0" layoutX="6.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">

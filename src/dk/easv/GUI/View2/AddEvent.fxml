@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="327.0" styleClass="backgroundColor" stylesheets="@../../CSS/AddEventmanagerCSS.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.AddEventController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="327.0" styleClass="backgroundColor" stylesheets="@../../CSS/EventmanagementCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.AddEventController">
     <center>
         <VBox alignment="CENTER" prefHeight="380.0" prefWidth="300.0" BorderPane.alignment="CENTER">
             <children>
@@ -20,7 +20,7 @@
                     <children>
                         <VBox alignment="CENTER" prefHeight="210.0" prefWidth="300.0" spacing="15.0">
                             <children>
-                                <Label text="Event navn">
+                                <Label id="AddOrEditLabel" text="Event navn">
                                     <font>
                                         <Font name="Britannic Bold" size="24.0" />
                                     </font>
@@ -28,7 +28,7 @@
                                         <Insets right="135.0" />
                                     </VBox.margin>
                                 </Label>
-                                <TextField fx:id="nameTxtField" alignment="CENTER">
+                                <TextField id="AddOrEditTextField" fx:id="nameTxtField" alignment="CENTER">
                                     <VBox.margin>
                                         <Insets left="25.0" right="25.0" />
                                     </VBox.margin>
@@ -44,7 +44,7 @@
                     <children>
                         <VBox alignment="CENTER" prefHeight="210.0" prefWidth="300.0" spacing="15.0">
                             <children>
-                                <Label text="Event dato">
+                                <Label id="AddOrEditLabel" text="Event dato">
                                     <font>
                                         <Font name="Britannic Bold" size="24.0" />
                                     </font>
@@ -64,7 +64,7 @@
                     <children>
                         <VBox alignment="CENTER" prefHeight="230.0" prefWidth="300.0" spacing="15.0">
                             <children>
-                                <Label text="Event start tid">
+                                <Label id="AddOrEditLabel" text="Event start tid">
                                     <font>
                                         <Font name="Britannic Bold" size="24.0" />
                                     </font>
@@ -72,7 +72,7 @@
                                         <Insets right="90.0" />
                                     </VBox.margin>
                                 </Label>
-                                <TextField fx:id="eventStartTxtfield" promptText="HH:MM">
+                                <TextField id="AddOrEditTextField" fx:id="eventStartTxtfield" promptText="HH:MM">
                                     <VBox.margin>
                                         <Insets left="25.0" right="25.0" />
                                     </VBox.margin>
@@ -85,7 +85,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="230.0" prefWidth="300.0" spacing="15.0">
                      <children>
-                        <Label text="Event slut tid">
+                        <Label id="AddOrEditLabel" text="Event slut tid">
                            <font>
                               <Font name="Britannic Bold" size="24.0" />
                            </font>
@@ -93,7 +93,7 @@
                               <Insets right="95.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="eventEndTxtfield" promptText="HH:MM">
+                        <TextField id="AddOrEditTextField" fx:id="eventEndTxtfield" promptText="HH:MM">
                            <VBox.margin>
                               <Insets left="25.0" right="25.0" />
                            </VBox.margin>
@@ -109,7 +109,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="230.0" prefWidth="300.0" spacing="15.0">
                      <children>
-                        <Label text="Praktisk information">
+                        <Label id="AddOrEditLabel" text="Praktisk information">
                            <font>
                               <Font name="Britannic Bold" size="24.0" />
                            </font>
@@ -117,7 +117,7 @@
                               <Insets right="10.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="informationTxtfield" alignment="CENTER">
+                        <TextField id="AddOrEditTextField" fx:id="informationTxtfield" alignment="CENTER">
                            <VBox.margin>
                               <Insets left="25.0" right="25.0" />
                            </VBox.margin>
@@ -130,7 +130,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="230.0" prefWidth="300.0" spacing="15.0">
                      <children>
-                        <Label text="Lokation">
+                        <Label id="AddOrEditLabel" text="Lokation">
                            <font>
                               <Font name="Britannic Bold" size="24.0" />
                            </font>
@@ -138,7 +138,7 @@
                               <Insets right="145.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="locationTxtfield" alignment="CENTER">
+                        <TextField id="AddOrEditTextField" fx:id="locationTxtfield" alignment="CENTER">
                            <VBox.margin>
                               <Insets left="25.0" right="25.0" />
                            </VBox.margin>

@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="800.0" styleClass="backgroundColor" stylesheets="@../../CSS/EditEventCSS.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EditEventsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="800.0" styleClass="backgroundColor" stylesheets="@../../CSS/EventmanagementCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EditEventsController">
    <center>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="773.0" BorderPane.alignment="CENTER">
          <children>
@@ -25,8 +25,8 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="0.0" prefWidth="300.0" spacing="10.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="28.0" prefWidth="40.0" text="Navn" />
-                              <TextField id="nameEditField" fx:id="nameTxtField" alignment="CENTER">
+                              <Label id="EditEventLabel" alignment="CENTER" prefHeight="28.0" prefWidth="40.0" text="Navn" />
+                              <TextField id="EditEventTextfield" fx:id="nameTxtField" alignment="CENTER">
                                  <VBox.margin>
                                     <Insets left="20.0" right="20.0" />
                                  </VBox.margin>
@@ -41,17 +41,17 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                            <children>
-                              <Label alignment="CENTER" text="Start dato" />
+                              <Label id="EditEventLabel" alignment="CENTER" text="Start dato" />
                               <DatePicker id="datepicker" fx:id="dateStart" prefHeight="25.0" prefWidth="262.0" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" text="Starttidspunkt">
+                              <Label id="EditEventLabel" alignment="CENTER" contentDisplay="CENTER" text="Starttidspunkt">
                                  <font>
                                     <Font name="Britannic Bold" size="16.0" />
                                  </font></Label>
-                              <TextField id="timeField" fx:id="timeStartTxtField" alignment="CENTER">
+                              <TextField id="EditEventTextfield" fx:id="timeStartTxtField" alignment="CENTER">
                                  <VBox.margin>
                                     <Insets left="20.0" right="20.0" />
                                  </VBox.margin>
@@ -60,12 +60,12 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" text="Sluttidspunkt">
+                              <Label id="EditEventLabel" alignment="CENTER" contentDisplay="CENTER" text="Sluttidspunkt">
                                  <font>
                                     <Font name="Britannic Bold" size="16.0" />
                                  </font>
                               </Label>
-                              <TextField id="timeField" fx:id="timeEndTxtField" alignment="CENTER">
+                              <TextField id="EditEventTextfield" fx:id="timeEndTxtField" alignment="CENTER">
                                  <VBox.margin>
                                     <Insets left="20.0" right="20.0" />
                                  </VBox.margin>
@@ -74,12 +74,12 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" text="Lokation">
+                              <Label id="EditEventLabel" alignment="CENTER" contentDisplay="CENTER" text="Lokation">
                                  <font>
                                     <Font name="Britannic Bold" size="16.0" />
                                  </font>
                               </Label>
-                              <TextField id="timeField" fx:id="locationTxtField" alignment="CENTER">
+                              <TextField id="EditEventTextfield" fx:id="locationTxtField" alignment="CENTER">
                                  <VBox.margin>
                                     <Insets left="20.0" right="20.0" />
                                  </VBox.margin>
@@ -88,7 +88,7 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="298.0" prefWidth="300.0" spacing="10.0">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" text="Informations boks" />
+                              <Label id="EditEventLabel" alignment="CENTER" contentDisplay="CENTER" text="Informations boks" />
                               <TextArea fx:id="infoTxtArea" prefHeight="200.0" prefWidth="200.0">
                                  <VBox.margin>
                                     <Insets bottom="10.0" left="15.0" right="15.0" />
@@ -152,7 +152,7 @@
                                           <Image url="@../../../../images/search.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField id="searchTableField" fx:id="usersInEventsSearchTxt" alignment="CENTER" onKeyReleased="#handleSearch" prefHeight="26.0" prefWidth="350.0">
+                                    <TextField id="EditEventTextfield" fx:id="usersInEventsSearchTxt" alignment="CENTER" onKeyReleased="#handleSearch" prefHeight="26.0" prefWidth="350.0">
                                        <HBox.margin>
                                           <Insets bottom="5.0" />
                                        </HBox.margin>
