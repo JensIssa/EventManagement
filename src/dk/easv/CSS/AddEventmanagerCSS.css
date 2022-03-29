@@ -25,7 +25,14 @@
     -fx-background-radius: 90;
     -fx-font-family: "Lucida Sans";
 }
+#alder{
+    -fx-text-fill: white;
+    -fx-font-family: "Lucida Sans";
+    -fx-font-size: 20;
 
+
+
+}
 .label {
     -fx-text-fill: white;
     -fx-font-family: "Lucida Sans";
