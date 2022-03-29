@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" styleClass="backgroundColor" stylesheets="@../../CSS/AddEventmanagerCSS.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.AddEventController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="327.0" styleClass="backgroundColor" stylesheets="@../../CSS/AddEventmanagerCSS.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.AddEventController">
     <center>
         <VBox alignment="CENTER" prefHeight="380.0" prefWidth="300.0" BorderPane.alignment="CENTER">
             <children>
@@ -81,6 +81,27 @@
                         </VBox>
                     </children>
                 </HBox>
+            <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="230.0" prefWidth="300.0" spacing="15.0">
+                     <children>
+                        <Label text="Event slut tid">
+                           <font>
+                              <Font name="Britannic Bold" size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets right="95.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="eventEndTxtfield" promptText="HH:MM">
+                           <VBox.margin>
+                              <Insets left="25.0" right="25.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
                 <HBox alignment="CENTER" prefHeight="110.0" prefWidth="300.0" spacing="15.0">
                     <VBox.margin>
                         <Insets />
@@ -88,12 +109,12 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="230.0" prefWidth="300.0" spacing="15.0">
                      <children>
-                        <Label text="Information">
+                        <Label text="Praktisk information">
                            <font>
                               <Font name="Britannic Bold" size="24.0" />
                            </font>
                            <VBox.margin>
-                              <Insets right="115.0" />
+                              <Insets right="10.0" />
                            </VBox.margin>
                         </Label>
                         <TextField fx:id="informationTxtfield" alignment="CENTER">
@@ -106,6 +127,27 @@
                </children>
                 </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="230.0" prefWidth="300.0" spacing="15.0">
+                     <children>
+                        <Label text="Lokation">
+                           <font>
+                              <Font name="Britannic Bold" size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets right="145.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="locationTxtfield" alignment="CENTER">
+                           <VBox.margin>
+                              <Insets left="25.0" right="25.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="83.0" prefWidth="300.0">
                <children>
                         <Button fx:id="saveBtn" alignment="CENTER" mnemonicParsing="false" onAction="#handleSaveBtn" text="Gem">
                             <font>

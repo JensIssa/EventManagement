@@ -41,6 +41,8 @@ public class EventDAO {
                 Date startDate = resultSet.getDate("startDate");
                 String startTime = resultSet.getString("startTime");
                 String info = resultSet.getString("info");
+                String endTime = resultSet.getString("endTime");
+                String loc = resultSet.getString("loc");
 
                 String sqlGetManagerName = "SELECT name FROM Person WHERE ID = ?";
                 PreparedStatement psGetMName = connection.prepareStatement(sqlGetManagerName);
@@ -49,7 +51,7 @@ public class EventDAO {
                 rsGetMName.next();
                 String managerName = rsGetMName.getString("name");
 
-                Event event = new Event(id, personId, name, startDate.toLocalDate(), startTime, managerName, info);
+                Event event = new Event(id, personId, name, startDate.toLocalDate(), startTime, managerName, info,endTime, loc);
                 allEvents.add(event);
             }
 
@@ -69,8 +71,8 @@ public class EventDAO {
      * @param startTime    Tiden på starten af eventet
      * @throws SQLServerException
      */
-    public void createEvent(EventManager eventManager, String name, LocalDate startDate, String startTime, String info) throws SQLServerException {
-        String sql = "INSERT INTO Event(personID, name, startDate, startTime, info) VALUES (?,?,?,?,?)";
+    public void createEvent(EventManager eventManager, String name, LocalDate startDate, String startTime, String info, String endTime, String loc) throws SQLServerException {
+        String sql = "INSERT INTO Event(personID, name, startDate, startTime, info, endTime, loc ) VALUES (?,?,?,?,?,?,?)";
         try (Connection connection = dc.getConnection()) {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, eventManager.getId());
@@ -78,6 +80,8 @@ public class EventDAO {
             ps.setDate(3, Date.valueOf(startDate));
             ps.setString(4, startTime);
             ps.setString(5, info);
+            ps.setString(6, endTime);
+            ps.setString(7, loc);
             ps.addBatch();
             ps.executeBatch();
 
@@ -169,13 +173,15 @@ public class EventDAO {
 
     public void updateEvent(Event event){
         try (Connection connection = dc.getConnection()){
-            String sql = "UPDATE Event SET Name=?, startDate=?,startTime=?, info=? WHERE ID=?";
+            String sql = "UPDATE Event SET Name=?, startDate=?, startTime=?, info=?, endTime=?, loc=? WHERE ID=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, event.getName());
             preparedStatement.setDate(2, Date.valueOf(event.getStartDate()));
             preparedStatement.setString(3, event.getStartTime());
             preparedStatement.setString(4, event.getInfo());
             preparedStatement.setInt(5, event.getId());
+            preparedStatement.setString(6, event.getEndTime());
+            preparedStatement.setString(7, event.getLoc());
             preparedStatement.executeUpdate();
         }
         catch (SQLException ex) {
@@ -219,6 +225,8 @@ public class EventDAO {
                 Date startDate = resultSet.getDate("startDate");
                 String startTime = resultSet.getString("startTime");
                 String info = resultSet.getString("info");
+                String endTime = resultSet.getString("endtTime");
+                String loc = resultSet.getString("loc");
 
                 String sqlGetManagerName = "SELECT name FROM Person WHERE ID = ?";
                 PreparedStatement psGetMName = connection.prepareStatement(sqlGetManagerName);
@@ -227,7 +235,7 @@ public class EventDAO {
                 rsGetMName.next();
                 String managerName = rsGetMName.getString("name");
 
-                Event event = new Event(id, personId, name, startDate.toLocalDate(), startTime, managerName, info);
+                Event event = new Event(id, personId, name, startDate.toLocalDate(), startTime, managerName, info, endTime, loc);
                 eventList.add(event);
             }
 

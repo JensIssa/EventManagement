@@ -20,6 +20,10 @@ import java.util.ResourceBundle;
 public class EditEventsController extends SuperController implements Initializable, IEventController{
     public TextField usersInEventsSearchTxt;
     @FXML
+    private TextField timeEndTxtField;
+    @FXML
+    private TextField locationTxtField;
+    @FXML
     private TextArea infoTxtArea;
     @FXML
     private Button closeBtn;
@@ -65,7 +69,9 @@ public class EditEventsController extends SuperController implements Initializab
         nameTxtField.setText(event.getName());
         dateStart.setValue(event.getStartDate());
         timeStartTxtField.setText(event.getStartTime());
+        timeEndTxtField.setText(event.getEndTime());
         infoTxtArea.setText(event.getInfo());
+        locationTxtField.setText(event.getLoc());
         usersAtEventTable.setItems(userEventModel.getObservableUsersFromEvents(event));
     }
 
@@ -83,11 +89,13 @@ public class EditEventsController extends SuperController implements Initializab
         LocalDate startDate = getLocalDate(dateStart);
         String timeStart = getTime(timeStartTxtField);
         String info = infoTxtArea.getText();
+        String endTime = getTime(timeEndTxtField);
+        String loc = locationTxtField.getText();
 
         if (name != null && startDate != null && timeStart != null)
         {
             int id = event.getId();
-            Event event = new Event(id,eventManager.getId(), name, startDate, timeStart,eventManager.getName(), info);
+            Event event = new Event(id,eventManager.getId(), name, startDate, timeStart,eventManager.getName(), info, endTime, loc);
             eventModel.updateEvent(event);
             closeWindow(saveChanges);
         }

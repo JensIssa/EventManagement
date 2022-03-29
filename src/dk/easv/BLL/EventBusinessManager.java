@@ -22,8 +22,8 @@ public class EventBusinessManager {
         searchUtil = new SearchUtil();
     }
 
-    public void createEvent(EventManager eventManager, String name, LocalDate startDate, String startTime, String info) throws SQLServerException {
-        eventDAO.createEvent(eventManager, name, startDate, startTime, info);
+    public void createEvent(EventManager eventManager, String name, LocalDate startDate, String startTime, String info, String endTime, String loc) throws SQLServerException {
+        eventDAO.createEvent(eventManager, name, startDate, startTime, info, endTime, loc);
     }
     public void deleteEvent(Event eventDelete){
         eventDAO.deleteEvent(eventDelete);
