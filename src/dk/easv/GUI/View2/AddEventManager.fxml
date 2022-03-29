@@ -19,7 +19,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="0.0" prefWidth="300.0" spacing="5.0">
                      <children>
-                        <Label prefHeight="28.0" prefWidth="72.0" text="Navn">
+                        <Label id="#nameLabel" prefHeight="28.0" prefWidth="72.0" text="Navn">
                            <font>
                               <Font name="Britannic Bold" size="24.0" />
                            </font>
@@ -46,7 +46,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="210.0" prefWidth="300.0" spacing="5.0">
                      <children>
-                        <Label text="E-mail">
+                        <Label id="emailLabel" text="E-mail">
                            <font>
                               <Font name="Britannic Bold" size="24.0" />
                            </font>
@@ -76,7 +76,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="210.0" prefWidth="300.0">
                      <children>
-                        <Label alignment="CENTER" text="Password">
+                        <Label id="passwordLabel" alignment="CENTER" text="Password">
                            <VBox.margin>
                               <Insets right="170.0" />
                            </VBox.margin>
