@@ -10,17 +10,21 @@ public class Event {
     private String name;
     private LocalDate startDate;
     private String startTime;
+    private String endTime;
     private String managerName;
     private String info;
+    private String loc;
 
-    public Event(int id,int managerId, String name, LocalDate startDate, String startTime, String managerName, String info) {
+    public Event(int id,int managerId, String name, LocalDate startDate, String startTime, String managerName, String info,String endTime, String loc) {
         this.id = id;
         this.managerId = managerId;
         this.name = name;
         this.startDate = startDate;
         this.startTime = startTime;
+        this.endTime = endTime;
         this.managerName = managerName;
         this.info = info;
+        this.loc = loc;
     }
 
     public int getId() {
@@ -52,6 +56,14 @@ public class Event {
         return info;
     }
 
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public String getLoc() {
+        return loc;
+    }
+
     @Override
     public String toString() {
         return "Event{" +
@@ -60,8 +72,10 @@ public class Event {
                 ", name='" + name + '\'' +
                 ", startDate=" + startDate +
                 ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
                 ", managerName='" + managerName + '\'' +
                 ", info='" + info + '\'' +
+                ", loc='" + loc + '\'' +
                 '}';
     }
 }

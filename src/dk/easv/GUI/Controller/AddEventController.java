@@ -20,6 +20,10 @@ import java.util.ResourceBundle;
 public class AddEventController extends SuperController implements IController, Initializable {
 
     @FXML
+    private TextField eventEndTxtfield;
+    @FXML
+    private TextField locationTxtfield;
+    @FXML
     private Button saveBtn;
     @FXML
     private DatePicker datePicker;
@@ -39,9 +43,11 @@ public class AddEventController extends SuperController implements IController, 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        addTimeListener(eventStartTxtfield);
-        maxLenghtListener(informationTxtfield, 101);
         maxLenghtListener(nameTxtField, 60);
+        addTimeListener(eventStartTxtfield);
+        addTimeListener(eventEndTxtfield);
+        maxLenghtListener(informationTxtfield, 101);
+        maxLenghtListener(locationTxtfield, 101);
     }
 
     public void handleSaveBtn(ActionEvent actionEvent) throws SQLServerException {
@@ -49,9 +55,11 @@ public class AddEventController extends SuperController implements IController, 
         LocalDate eventDate = getLocalDate(datePicker);
         String eventStart = getTime(eventStartTxtfield);
         String info = informationTxtfield.getText();
+        String eventEnd = getTime(eventEndTxtfield);
+        String loc = locationTxtfield.getText();
 
         if (eventName != null && eventDate != null && eventStart != null) {
-            eventModel.createEvent(eventManager, eventName, eventDate, eventStart, info);
+            eventModel.createEvent(eventManager, eventName, eventDate, eventStart, info, eventEnd, loc);
             closeWindow(saveBtn);
         }
     }
