@@ -20,6 +20,7 @@ Transparant vbox til login uden at påvirke Textfield + label inde i vboxen
 Alt CSS, der tilhører table-view
  */
 
+
 .table-view {
     -fx-background-color: linear-gradient(rgba(250,172,63,0.6) 0%, rgba(253,72,179,0.6) 100);
     -fx-background-radius: 10;
@@ -321,4 +322,10 @@ Generelle ID's
     -fx-text-fill: white;
     -fx-font-family: "Lucida Sans";
     -fx-font-size: 20;
+}
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+.scroll-pane {
+    -fx-background-color: black;
 }
