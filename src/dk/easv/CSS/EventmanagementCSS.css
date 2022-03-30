@@ -17,6 +17,13 @@ Transparant vbox til login uden at påvirke Textfield + label inde i vboxen
 }
 
 /**
+Transparent til vores scrollpane
+ */
+.transparantPane {
+    -fx-background-color: rgba(251,156,240, 0.5);
+    -fx-border-color: rgba(255,255,255, 0.3);
+}
+/**
 Alt CSS, der tilhører table-view
  */
 
@@ -175,7 +182,7 @@ Alt CSS, der tilhører Check-box
 Alt CSS, der tilhører Scroll-pane
  */
 
-.scroll-pane{
+#scrollPaneTicket{
     -fx-background-color: #8d90e4;
 }
 
@@ -323,9 +330,6 @@ Generelle ID's
     -fx-font-family: "Lucida Sans";
     -fx-font-size: 20;
 }
-.scroll-pane > .viewport {
+#scrollPaneGuest > .viewport {
     -fx-background-color: transparent;
-}
-.scroll-pane {
-    -fx-background-color: black;
 }

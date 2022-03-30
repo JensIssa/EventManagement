@@ -207,7 +207,7 @@
                       </HBox>
                   </children>
               </VBox>
-            <ScrollPane fx:id="scrollPane" prefHeight="746.0" prefWidth="427.0">
+            <ScrollPane id="scrollPaneGuest" fx:id="scrollPane" prefHeight="746.0" prefWidth="427.0" styleClass="transparantPane">
                <HBox.margin>
                   <Insets bottom="50.0" top="200.0" />
                </HBox.margin>
