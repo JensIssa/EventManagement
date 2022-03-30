@@ -20,8 +20,8 @@ Transparant vbox til login uden at påvirke Textfield + label inde i vboxen
 Transparent til vores scrollpane
  */
 .transparantPane {
-    -fx-background-color: rgba(251,156,240, 0.5);
-    -fx-border-color: rgba(255,255,255, 0.3);
+    -fx-background-color: linear-gradient(rgba(250,172,63,0.3) 0%, rgba(253,72,179,0.3) 100);
+    -fx-border-color: rgba(253,72,179, 0.3);
 }
 /**
 Alt CSS, der tilhører table-view

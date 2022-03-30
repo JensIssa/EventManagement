@@ -11,6 +11,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -74,10 +75,12 @@ public class AddGuestController extends SuperController implements Initializable
         header.setText(text);
         int counter = Integer.parseInt(label.getText());
         VBox vBox = new VBox(20);
+        Font font = new Font("Lucida Sans",  15);
         if (counter > 0) {
             vBox.getChildren().add(header);
             for (int i = 0; i < counter; i++) {
                 TextField txtAdult = new TextField();
+                txtAdult.setFont(font);
                 vBox.getChildren().add(txtAdult);
             }
         }
