@@ -96,10 +96,10 @@ public class AddGuestController extends SuperController implements Initializable
         String userName = getName(nameTxtField);
         String userEmail = getEmail(emailTxtField);
         int userPhoneNumber = getPhoneNumber(phonenumberTxtField);
-        String userPassword = getPassword(passwordTxtField);
+        //TODO LÆS MANGE NAME FELTER. LAV MANGE TICKETS I STEDET FOR MANGE USERS. ALLE TICKETS SKAL TILKNYTTES DEN USER(EMAIL) DER ER INDTASTET
 
-        if (userName != null && userEmail != null &&userPassword != null) {
-            personModel.createuser(userName, userEmail, userPassword, userPhoneNumber);
+        if (userName != null && userEmail != null) {
+            personModel.createuser(userName, userEmail, userPhoneNumber);
             closeWindow(saveBtn);
         }
     }

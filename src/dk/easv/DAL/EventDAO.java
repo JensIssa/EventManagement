@@ -3,14 +3,11 @@ package dk.easv.DAL;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import dk.easv.BE.Event;
 import dk.easv.BE.EventManager;
-import dk.easv.BE.PersonType;
+import dk.easv.BE.enums.PersonType;
 import dk.easv.BE.User;
 
 import java.io.IOException;
 import java.sql.*;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -113,6 +110,8 @@ public class EventDAO {
         }
         return emailList;
     }
+
+    //TODO FIX
     /**
      * Sletter en user fra en event
      * @param user - useren der skal fjernes fra eventen
@@ -128,6 +127,8 @@ public class EventDAO {
             throwables.printStackTrace();
         }
     }
+
+    //TODO FIX
     /**
      * Tilføjer en user til en event
      * @param event - Eventen useren deltager i
@@ -145,6 +146,7 @@ public class EventDAO {
         }
     }
 
+    //TODO FIX
     public List<User> getAllUsersFromEvent(Event event){
         List<User> usersInEvent = new ArrayList<>();
         try (Connection connection = dc.getConnection()) {
@@ -160,7 +162,7 @@ public class EventDAO {
                   String email = rSet.getString("email");
                   String password = rSet.getString("password");
                   int phoneNumber = rSet.getInt("phoneNumber");
-                  User user = new User(id, name,email, password, PersonType.USER, phoneNumber);
+                  User user = new User(id, name,email, PersonType.USER, phoneNumber);
                   usersInEvent.add(user);
               }
 
@@ -209,6 +211,7 @@ public class EventDAO {
         }
     }
 
+    //TODO FIX
     public List<Event> getAllEventsFromUser(User user){
         List<Event> eventList = new ArrayList<>();
         try (Connection connection = dc.getConnection()) {

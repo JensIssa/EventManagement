@@ -2,7 +2,7 @@ package dk.easv.GUI.Model;
 
 import dk.easv.BE.EventManager;
 import dk.easv.BE.Person;
-import dk.easv.BE.PersonType;
+import dk.easv.BE.enums.PersonType;
 import dk.easv.BE.User;
 import dk.easv.BLL.PersonManager;
 import dk.easv.BLL.util.SearchUtil;
@@ -70,8 +70,8 @@ public class PersonModel {
         pM.updateEventmanager(eventManager);
     }
 
-    public void createuser(String name, String email, String password, int phoneNumber){
-        pM.createUser(name, email, password, phoneNumber);
+    public void createuser(String name, String email, int phoneNumber){
+        pM.createUser(name, email, phoneNumber);
     }
     public void updateUser(User user){
         pM.updateUser(user);

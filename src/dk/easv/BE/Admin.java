@@ -1,19 +1,21 @@
 package dk.easv.BE;
 
-import java.util.List;
+import dk.easv.BE.enums.PersonType;
 
 public class Admin extends Person {
 
-    private List<EventManager> eventManagers;
+    private String password;
 
-    public Admin(int id,String name , String email, String password, PersonType type) {
-        super(id, name, email, password, type);
+    public Admin(int id, String name, String email,String password, PersonType type) {
+        super(id, name, email, type);
+        this.password = password;
     }
 
-    public List<EventManager> getEventManagers() {
-        return eventManagers;
+    public String getPassword() {
+        return password;
     }
-    public void setEventManagers(List<EventManager> eventManagers) {
-        this.eventManagers = eventManagers;
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

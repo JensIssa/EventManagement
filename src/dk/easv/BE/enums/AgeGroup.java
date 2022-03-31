@@ -1,7 +1,7 @@
-package dk.easv.BE;
+package dk.easv.BE.enums;
 
 public enum AgeGroup {
-    YOUNGERKID,
+    YOUNGKID,
     OLDKID,
     ADULT
 }

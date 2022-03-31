@@ -3,23 +3,15 @@ package dk.easv.GUI.Controller;
 import dk.easv.BE.Event;
 import dk.easv.BE.EventManager;
 import dk.easv.BE.Person;
-import dk.easv.BE.PersonType;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Optional;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.regex.Pattern;
 
 public abstract class SuperController {

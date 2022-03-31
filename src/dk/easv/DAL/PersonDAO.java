@@ -1,7 +1,7 @@
 package dk.easv.DAL;
 
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 import dk.easv.BE.*;
+import dk.easv.BE.enums.PersonType;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -18,7 +18,7 @@ public class PersonDAO {
         dc = new DatabaseConnector();
     }
 
-
+//TODO FIX
     /**
      * Generisk metode til at hente alle personer af den ønskede persontype
      * @param personType - Persontypen, hvori informationer ønskes hentet fra
@@ -41,7 +41,7 @@ public class PersonDAO {
                     int phoneNumber = resultSet.getInt("phoneNumber");
                     switch (personType){
                         case USER ->
-                            allPersons.add(new User(id, name,email, password, personType, phoneNumber));
+                            allPersons.add(new User(id, name,email, personType, phoneNumber));
                         case EVENTMANAGER ->
                             allPersons.add(new EventManager(id, name,email, password, personType));
                         case ADMIN ->
@@ -82,7 +82,6 @@ public class PersonDAO {
      * @param usertype
      */
     public void createPerson(String name, String email, String password, PersonType usertype) {
-
         try (Connection con = dc.getConnection()) {
             String sql = "INSERT INTO Person(Email,Password,roleID,Name) VALUES (?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
@@ -95,12 +94,12 @@ public class PersonDAO {
             throwables.printStackTrace();
         }
     }
-    public void createPerson(String name, String email, String password, PersonType usertype,int phoneNumber) {
+    //TODO FIX LAV EN CREATE GUEST OG EN TIL AT CREATE ADMIN / EVENTMAN
+    public void createPerson(String name, String email, PersonType usertype,int phoneNumber) {
         try (Connection con = dc.getConnection()) {
             String sql = "INSERT INTO Person(Email,Password,roleID,phoneNumber,Name) VALUES (?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, email);
-            ps.setString(2, password);
             ps.setInt(3, usertype.getI());
             ps.setInt(4,phoneNumber);
             ps.setString(5, name);
@@ -109,7 +108,7 @@ public class PersonDAO {
             throwables.printStackTrace();
         }
     }
-
+//TODO FIX fjern user
     /**
      * finder den bruger i databasen der passer med de givne login informationer
      * @param email
@@ -134,7 +133,7 @@ public class PersonDAO {
                 String pass = rs.getString("password");
                 int phoneNumber = rs.getInt("phoneNumber");
                 return switch (type) {
-                    case USER -> new User(id, name, mail, pass, type, phoneNumber);
+                    case USER -> new User(id, name, mail, type, phoneNumber);
                     case ADMIN -> new Admin(id, name, mail, pass, type);
                     case EVENTMANAGER -> new EventManager(id, name, mail, pass, type);
                 };
@@ -164,6 +163,7 @@ public class PersonDAO {
         }
     }
 
+    //TODO FIX slet tickets -> events -> manager
     /**
      * Sletter eventManagers og de events de er tilknyttet til
      * @param eventManagerToBeDeleted - EventManageren der skal slettes
@@ -185,6 +185,7 @@ public class PersonDAO {
         }
         }
 
+    //TODO FIX
     /**
      * Sletter en user fra hele systemet - inklusiv alle sine billeter
      * @param userToBeDeleted - Useren der skal slettes
@@ -206,33 +207,24 @@ public class PersonDAO {
         }
     }
 
+    //TODO FIX
     /**
      * Opdaterer userens oplsyninger
      * @param user - useren der bliver opdateret
      */
     public void updateUser(User user){
         try (Connection connection = dc.getConnection()){
-            String sql = "UPDATE Person SET Name=?, email=?,password = ?, phoneNumber=? WHERE ID=?";
+            String sql = "UPDATE Person SET Name=?, email=?,phoneNumber=? WHERE ID=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, user.getName());
             preparedStatement.setString(2, user.getEmail());
-            preparedStatement.setString(3, user.getPassword());
-            preparedStatement.setInt(4, user.getPhoneNumber());
-            preparedStatement.setInt(5, user.getId());
+            preparedStatement.setInt(3, user.getPhoneNumber());
+            preparedStatement.setInt(4, user.getId());
             preparedStatement.executeUpdate();
         }
         catch (SQLException ex) {
             System.out.println(ex);
         }
-    }
-
-
-
-    public static void main(String[] args) throws IOException {
-        PersonDAO eventManagerDAO = new PersonDAO();
-
-        System.out.println(eventManagerDAO.getAllAdmins());
-
     }
 
 }
