@@ -2,6 +2,7 @@ package dk.easv.BLL;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import dk.easv.BE.*;
+import dk.easv.BE.enums.AgeGroup;
 import dk.easv.BLL.util.SearchUtil;
 import dk.easv.DAL.EventDAO;
 import javafx.collections.FXCollections;
@@ -40,8 +41,8 @@ public class EventBusinessManager {
         writer.close();
     }
 
-    public void addUserToEvent(Event event, User user){
-        eventDAO.addUserToEvent(event, user);
+    public void addUserToEvent(Event event, User user, AgeGroup ageGroup, String[] name){
+        eventDAO.addUserToEvent(event, user, ageGroup, name);
     }
 
     public List<User> getAllUsersFromEvent(Event event){

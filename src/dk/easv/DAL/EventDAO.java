@@ -3,6 +3,7 @@ package dk.easv.DAL;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import dk.easv.BE.Event;
 import dk.easv.BE.EventManager;
+import dk.easv.BE.enums.AgeGroup;
 import dk.easv.BE.enums.PersonType;
 import dk.easv.BE.User;
 
@@ -111,7 +112,6 @@ public class EventDAO {
         return emailList;
     }
 
-    //TODO FIX
     /**
      * Sletter en user fra en event
      * @param user - useren der skal fjernes fra eventen
@@ -128,19 +128,25 @@ public class EventDAO {
         }
     }
 
-    //TODO FIX
+    //TODO FIX TAG
     /**
      * Tilføjer en user til en event
      * @param event - Eventen useren deltager i
      * @param user - useren der skal tilføjes til eventen
      */
-    public void addUserToEvent(Event event, User user){
+    public void addUserToEvent(Event event, User user, AgeGroup ageGroup, String[] names){
         try (Connection connection = dc.getConnection()) {
-            String sql = "INSERT INTO Ticket (personID, eventID) VALUES (?,?)";
+            String sql = "INSERT INTO Ticket (guestID, eventID, age, name) VALUES (?,?,?,?)" +
+                    "INNER JOIN Ticket ON AgeGroups ON Ticket.age = AgeGroups.ID";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, user.getId());
             ps.setInt(2, event.getId());
-            ps.execute();
+            ps.setInt(3,ageGroup.getI());
+            for (String name: names) {
+                ps.setString(4, name);
+                ps.addBatch();
+            }
+            ps.executeBatch();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
