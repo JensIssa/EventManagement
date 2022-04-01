@@ -4,7 +4,6 @@ import com.microsoft.sqlserver.jdbc.SQLServerException;
 import dk.easv.BE.Event;
 import dk.easv.BE.EventManager;
 import dk.easv.BE.User;
-import dk.easv.BE.enums.AgeGroup;
 import dk.easv.BLL.EventBusinessManager;
 import dk.easv.BLL.util.SearchUtil;
 import javafx.collections.FXCollections;
@@ -40,8 +39,8 @@ public class EventModel {
         eBM.deleteEvent(eventDelete);
     }
 
-    public void addUserToEvent(Event event, User user, AgeGroup ageGroup, String[] name){
-        eBM.addUserToEvent(event, user, ageGroup, name);
+    public void addUserToEvent(Event event, User user){
+        eBM.addUserToEvent(event, user);
     }
 
     public void updateEvent(Event event){

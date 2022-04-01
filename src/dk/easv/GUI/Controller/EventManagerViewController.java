@@ -89,9 +89,9 @@ public class EventManagerViewController extends SuperController  implements Init
         eventTable.getItems().clear();
         eventTable.setItems(eventModel.getObservableEvents());
     }
-    //TODO FIX USERTABLE TAKING PERSON INPUTS AND TAKE CORRECT VALUES WITH Nam
+
     public void handleAddUserToEvent(ActionEvent actionEvent) {
-    /*    User user = (User) userTable.getSelectionModel().getSelectedItem();
+        User user = (User) userTable.getSelectionModel().getSelectedItem();
         Event event = (Event) eventTable.getSelectionModel().getSelectedItem();
         if (user != null && event != null){
             eventModel.addUserToEvent(event, user);
@@ -100,8 +100,6 @@ public class EventManagerViewController extends SuperController  implements Init
         else {
             errorMessage("Please select an user and/or event to add an user to the event");
         }
-
-     */
     }
 
     public void handleAddEvent(ActionEvent actionEvent) throws IOException, SQLException {
@@ -114,9 +112,7 @@ public class EventManagerViewController extends SuperController  implements Init
         userTable.setItems(personModel.getobservableUsers());
     }
 
-    //TODO FIX USERTABLE TAKING PERSON INPUTS
     public void handleEditGuest(ActionEvent actionEvent) throws IOException {
-       /*
         User user = (User) userTable.getSelectionModel().getSelectedItem();
         if (user != null) {
             openNewSceneWithPerson(user, "/dk/easv/GUI/View2/EditGuestView.fxml", "Rediger guest");
@@ -125,8 +121,6 @@ public class EventManagerViewController extends SuperController  implements Init
             errorMessage("Please pick a guest to edit");
         }
         userTable.setItems(personModel.getobservableUsers());
-
-        */
     }
 
 
@@ -155,9 +149,7 @@ public class EventManagerViewController extends SuperController  implements Init
         openScene("/dk/easv/GUI/View/LoginView.fxml",false, "Loginscreen",false);
     }
 
-    //TODO FIX USERTABLE TAKING PERSON INPUTS
     public void handleDeleteGuest(ActionEvent actionEvent) throws IOException {
-        /*
         if (userTable.getSelectionModel().getSelectedItem()!= null){
             User user = (User) userTable.getSelectionModel().getSelectedItem();
             if (confirmationBox("Er du sikker på at du vil slette " + user.getName() + "?").get() == ButtonType.YES){
@@ -169,6 +161,6 @@ public class EventManagerViewController extends SuperController  implements Init
         {
             errorMessage("Vælg den bruger du ønsker at slette");
         }
-*/
+
     }
 }
