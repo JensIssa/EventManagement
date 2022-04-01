@@ -1,12 +1,12 @@
 package dk.easv.BLL;
 
 import dk.easv.BE.*;
-import dk.easv.BE.enums.PersonType;
 import dk.easv.BLL.util.SearchUtil;
 import dk.easv.DAL.PersonDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.awt.desktop.PreferencesEvent;
 import java.io.IOException;
 import java.util.List;
 
@@ -26,15 +26,15 @@ public class PersonManager {
 
 
     public void createEventManager(String name, String email, String password){
-        personDAO.createPerson(name,email,password, PersonType.EVENTMANAGER);
+        personDAO.createPerson(name,email,password,PersonType.EVENTMANAGER);
     }
 
     public void createAdmin(String name, String email, String password){
         personDAO.createPerson(name,email,password,PersonType.ADMIN);
     }
 
-    public void createUser(String name, String email, int phoneNumber){
-        personDAO.createPerson(name,email,PersonType.USER,phoneNumber);
+    public void createUser(String name, String email, String password,int phoneNumber){
+        personDAO.createPerson(name,email,password,PersonType.USER,phoneNumber);
     }
 
 

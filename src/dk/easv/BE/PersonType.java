@@ -1,4 +1,4 @@
-package dk.easv.BE.enums;
+package dk.easv.BE;
 
 public enum PersonType {
     USER(1),

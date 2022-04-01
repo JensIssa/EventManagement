@@ -2,7 +2,7 @@ package dk.easv.GUI.Controller;
 
 import dk.easv.BE.EventManager;
 import dk.easv.BE.Person;
-import dk.easv.BE.enums.PersonType;
+import dk.easv.BE.PersonType;
 import dk.easv.GUI.Model.PersonModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

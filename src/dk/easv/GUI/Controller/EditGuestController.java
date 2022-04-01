@@ -1,7 +1,7 @@
 package dk.easv.GUI.Controller;
 
 import dk.easv.BE.Person;
-import dk.easv.BE.enums.PersonType;
+import dk.easv.BE.PersonType;
 import dk.easv.BE.User;
 import dk.easv.GUI.Model.PersonModel;
 import javafx.event.ActionEvent;
@@ -20,6 +20,8 @@ public class EditGuestController extends SuperController implements Initializabl
     @FXML
     private Button saveBtn;
     @FXML
+    private TextField passwordTxtField;
+    @FXML
     private TextField phoneNumberTxtField;
     @FXML
     private TextField emailTxtField;
@@ -35,6 +37,7 @@ public class EditGuestController extends SuperController implements Initializabl
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         maxLenghtListener(emailTxtField,150);
+        maxLenghtListener(passwordTxtField,50);
         maxLenghtListener(nameTxtField,80);
         addPhoneNumberListener(phoneNumberTxtField);
     }
@@ -44,17 +47,22 @@ public class EditGuestController extends SuperController implements Initializabl
         this.user = (User) person;
         nameTxtField.setText(user.getName());
         emailTxtField.setText(user.getEmail());
+        passwordTxtField.setText(user.getPassword());
         phoneNumberTxtField.setText(Integer.toString(user.getPhoneNumber()));
     }
+
+
+
 
     public void handleSaveGuest(ActionEvent actionEvent) {
         String name = getName(nameTxtField);
         String email = getEmail(emailTxtField);
+        String password = getPassword(passwordTxtField);
         int phoneNumber = getPhoneNumber(phoneNumberTxtField);
-        if (name != null && email != null)
+        if (name != null && email != null && password != null)
         {
             int id = user.getId();
-            User user = new User(id, name, email, PersonType.USER , phoneNumber);
+            User user = new User(id, name, email, password,PersonType.USER , phoneNumber);
             personModel.updateUser(user);
             closeWindow(saveBtn);
         }

@@ -1,13 +1,13 @@
 package dk.easv.BE;
 
-import dk.easv.BE.enums.PersonType;
+import java.util.List;
 
 public class User extends Person {
 
     private int phoneNumber;
 
-    public User(int id, String name, String email, PersonType type, int phoneNumber) {
-        super(id, name ,email, type);
+    public User(int id, String name,String email, String password, PersonType type, int phoneNumber) {
+        super(id, name ,email, password, type);
         this.phoneNumber = phoneNumber;
     }
 
