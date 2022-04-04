@@ -53,7 +53,7 @@ public class AddGuestController extends SuperController implements Initializable
         maxLenghtListener(emailTxtField,150);
         addPhoneNumberListener(phonenumberTxtField);
     }
-
+/*
     private void drawScrollPane(){
         HBox hBox = new HBox(40);
 
@@ -68,7 +68,9 @@ public class AddGuestController extends SuperController implements Initializable
      hBox.getChildren().addAll(adults, old, young);
         scrollPane.setContent(hBox);
     }
+    */
 
+/*
     private VBox createVbox(String text,Label label )
     {
         Label header = new Label();
@@ -86,7 +88,7 @@ public class AddGuestController extends SuperController implements Initializable
         }
         return vBox;
     }
-
+*/
     public void handleCancelButton() {
         closeWindow(cancelBtn);
     }
@@ -110,7 +112,6 @@ public class AddGuestController extends SuperController implements Initializable
             if (count > 0){
                 count--;
                 labelOlderKids.setText(String.valueOf(count));
-                drawScrollPane();
             }
         }
     }
@@ -119,7 +120,6 @@ public class AddGuestController extends SuperController implements Initializable
         int count = Integer.parseInt(labelOlderKids.getText());
         count++;
         labelOlderKids.setText(String.valueOf(count));
-        drawScrollPane();
 
     }
 
@@ -128,7 +128,6 @@ public class AddGuestController extends SuperController implements Initializable
         if (count > 0){
             count--;
             labelYoungerKids.setText(String.valueOf(count));
-            drawScrollPane();
         }
 
     }
@@ -137,14 +136,12 @@ public class AddGuestController extends SuperController implements Initializable
         int count = Integer.parseInt(labelYoungerKids.getText());
         count++;
         labelYoungerKids.setText(String.valueOf(count));
-        drawScrollPane();
     }
 
     public void handleAddAdults(ActionEvent actionEvent) {
         int count = Integer.parseInt(labelAdult.getText());
         count++;
         labelAdult.setText(String.valueOf(count));
-        drawScrollPane();
 
     }
 
@@ -153,7 +150,6 @@ public class AddGuestController extends SuperController implements Initializable
         if (count > 0){
             count--;
             labelAdult.setText(String.valueOf(count));
-           drawScrollPane();
         }
     }
 }
