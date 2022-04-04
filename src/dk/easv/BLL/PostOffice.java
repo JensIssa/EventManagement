@@ -16,6 +16,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class PostOffice {
+    /**
+     * finder hvor på computeren outlook er installeret
+     * @return pathen til outlook.exe
+     */
     private String getOutlook() {
         try {
             Process p = Runtime.getRuntime()
@@ -44,7 +48,6 @@ public class PostOffice {
                     outlookNotFoundMessage("Error parsing PST file association");
                 }
             }
-
         } catch (Exception err) {
             err.printStackTrace();
             outlookNotFoundMessage(err.getMessage());
@@ -56,26 +59,48 @@ public class PostOffice {
         System.out.println("Could not find Outlook: \n" + errorMessage);
     }
 
-    public void openOutlook() {
+    /**
+     * bygger en sammenhængede string af emails speraret af ;
+     * @param mailingList arrayliste af emails
+     * @return string af emails speraret af ;
+     */
+    private String buildMailString(String[] mailingList){
+        StringBuilder sb = new StringBuilder();
+        for (String s : mailingList){
+            sb.append(s.trim()).append(";");
+        }
+        return sb.toString();
+    }
+
+    /**
+     * fjerner ulovlige tegn i subject inputtet
+     * @param rawSubject subject til email
+     * @return  en string der er encoded til at ikke indeholde ulovlige tegn til en mails
+     */
+    private String buildSubjectString(String rawSubject){
+        return rawSubject.trim()
+                .replace(" ","%20");
+    }
+
+    /**
+     * åbner outlook og auto udfylder de relevante info
+     * @param mailingList arrayliste af email adresser der skal modtage emailen
+     * @param subject Emnet til emailen
+     * @param attachmentPath pathen til den valgte attachment
+     */
+    public void prepareOutlook(String[] mailingList,String subject, String attachmentPath) {
         String outlook = getOutlook();
         Runtime rt = Runtime.getRuntime();
-        //C:\Users\deaso>"C:\Program Files\Microsoft Office\root\Office16\OUTLOOK.EXE" /m "cchesberg@gmail.com" /c ipm.note /a "c:\Users\deaso\random.dat
 
+        String subjectString = buildSubjectString(subject);
+        String mailString = buildMailString(mailingList);
         try {
-            String attachment = "src/Passivelapwing_9f0fdb_8839861.jpg";
-            //String attachment = "resources/TempTickets/"+ticketSold.getTicketNumber()+".png";
-            File file = new File(attachment);
+            File file = new File(attachmentPath);
             System.out.println(file.getAbsolutePath());
-            rt.exec(new String[]{"cmd.exe", "/c", outlook, "/m", "vict657k@easv365.dk?subject=Ticket_Email", "/a", file.getAbsolutePath()});
-
+            rt.exec(new String[]{"cmd.exe", "/c", outlook, "/m", mailString+"?subject="+subjectString, "/a", file.getAbsolutePath()});
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-        PostOffice postOffice = new PostOffice();
-        postOffice.openOutlook();
     }
 }
