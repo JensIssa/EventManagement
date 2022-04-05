@@ -1,5 +1,6 @@
 package dk.easv.GUI.Controller;
 
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import dk.easv.BE.Event;
 import dk.easv.BE.EventManager;
 import dk.easv.BE.Person;
@@ -201,7 +202,7 @@ public abstract class SuperController {
         stage.showAndWait();
     }
 
-    public void openNewSceneWithEventPerson(Event event, EventManager eventManager, String fxmlPath, String Title) throws IOException {
+    public void openNewSceneWithEventPerson(Event event, EventManager eventManager, String fxmlPath, String Title) throws IOException, SQLServerException {
         FXMLLoader root = new FXMLLoader(getClass().getResource(fxmlPath));
         Scene scene = new Scene(root.load());
         Stage stage = new Stage();

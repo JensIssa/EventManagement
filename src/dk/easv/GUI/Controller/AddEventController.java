@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -18,6 +19,7 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class AddEventController extends SuperController implements IController, Initializable {
+
 
     @FXML
     private TextField eventEndTxtfield;
@@ -30,7 +32,7 @@ public class AddEventController extends SuperController implements IController, 
     @FXML
     private TextField eventStartTxtfield;
     @FXML
-    private TextField informationTxtfield;
+    private TextArea txtAreaEmail;
     @FXML
     private TextField nameTxtField;
 
@@ -46,7 +48,7 @@ public class AddEventController extends SuperController implements IController, 
         maxLenghtListener(nameTxtField, 60);
         addTimeListener(eventStartTxtfield);
         addTimeListener(eventEndTxtfield);
-        maxLenghtListener(informationTxtfield, 101);
+        maxLenghtListenerTxtArea(txtAreaEmail);
         maxLenghtListener(locationTxtfield, 101);
     }
 
@@ -54,7 +56,7 @@ public class AddEventController extends SuperController implements IController, 
         String eventName = getName(nameTxtField);
         LocalDate eventDate = getLocalDate(datePicker);
         String eventStart = getTime(eventStartTxtfield);
-        String info = informationTxtfield.getText();
+        String info = txtAreaEmail.getText();
         String eventEnd = getTime(eventEndTxtfield);
         String loc = locationTxtfield.getText();
 
