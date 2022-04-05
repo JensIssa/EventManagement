@@ -41,7 +41,7 @@ public class PersonDAO {
                     int phoneNumber = resultSet.getInt("phoneNumber");
                     switch (personType){
                         case USER ->
-                            allPersons.add(new User(id, name,email, password, personType, phoneNumber));
+                            allPersons.add(new User(id, name,email,password, personType, phoneNumber));
                         case EVENTMANAGER ->
                             allPersons.add(new EventManager(id, name,email, password, personType));
                         case ADMIN ->
@@ -81,7 +81,7 @@ public class PersonDAO {
      * @param password
      * @param usertype
      */
-    public void createPerson(String name, String email, String password, PersonType usertype) {
+    public void createGuest(String name, String email, String password, PersonType usertype) {
         try (Connection con = dc.getConnection()) {
             String sql = "INSERT INTO Person(Email,Password,roleID,Name) VALUES (?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
@@ -94,15 +94,23 @@ public class PersonDAO {
             throwables.printStackTrace();
         }
     }
-    public void createPerson(String name, String email, String password, PersonType usertype,int phoneNumber) {
+
+    /**
+     * Tilføjer en person til vores database med de givne oplysninger - Password er sat som default til "Humpty dumpty"
+     * @param name
+     * @param email
+     * @param usertype
+     * @param phoneNumber
+     */
+
+    public void createGuest(String name, String email, PersonType usertype, int phoneNumber) {
         try (Connection con = dc.getConnection()) {
-            String sql = "INSERT INTO Person(Email,Password,roleID,phoneNumber,Name) VALUES (?,?,?,?,?)";
+            String sql = "INSERT INTO Person(Email,password,roleID,phoneNumber,Name) VALUES (?,'Humpty dumpty',?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, email);
-            ps.setString(2, password);
-            ps.setInt(3, usertype.getI());
-            ps.setInt(4,phoneNumber);
-            ps.setString(5, name);
+            ps.setInt(2, usertype.getI());
+            ps.setInt(3,phoneNumber);
+            ps.setString(4, name);
             ps.execute();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -118,7 +126,7 @@ public class PersonDAO {
     public Person loginUser(String email, String password) {
         try (Connection con = dc.getConnection()) {
             String sql =
-                    "Select Person.id, email, password, type, phonenumber, [name]"+
+                    "Select Person.id, email, password, type, [name]"+
                             "from Person INNER JOIN Role ON Person.RoleID = Role.ID where email = ? and password = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, email);
@@ -131,12 +139,14 @@ public class PersonDAO {
                 String name = rs.getString("name");
                 String mail = rs.getString("email");
                 String pass = rs.getString("password");
-                int phoneNumber = rs.getInt("phoneNumber");
-                return switch (type) {
-                    case USER -> new User(id, name, mail, pass, type, phoneNumber);
-                    case ADMIN -> new Admin(id, name, mail, pass, type);
-                    case EVENTMANAGER -> new EventManager(id, name, mail, pass, type);
-                };
+                 switch (type) {
+                     case ADMIN -> {
+                         return new Admin(id, name, mail, pass, type);
+                     }
+                     case EVENTMANAGER -> {
+                         return new EventManager(id, name, mail, pass, type);
+                     }
+                 };
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -211,13 +221,12 @@ public class PersonDAO {
      */
     public void updateUser(User user){
         try (Connection connection = dc.getConnection()){
-            String sql = "UPDATE Person SET Name=?, email=?,password = ?, phoneNumber=? WHERE ID=?";
+            String sql = "UPDATE Person SET Name=?, email=?, phoneNumber=? WHERE ID=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, user.getName());
             preparedStatement.setString(2, user.getEmail());
-            preparedStatement.setString(3, user.getPassword());
-            preparedStatement.setInt(4, user.getPhoneNumber());
-            preparedStatement.setInt(5, user.getId());
+            preparedStatement.setInt(3, user.getPhoneNumber());
+            preparedStatement.setInt(4, user.getId());
             preparedStatement.executeUpdate();
         }
         catch (SQLException ex) {

@@ -62,10 +62,9 @@ public class AddGuestController extends SuperController implements Initializable
         String userName = getName(nameTxtField);
         String userEmail = getEmail(emailTxtField);
         int userPhoneNumber = getPhoneNumber(phonenumberTxtField);
-        String userPassword = getPassword(passwordTxtField);
 
-        if (userName != null && userEmail != null &&userPassword != null) {
-            personModel.createuser(userName, userEmail, userPassword, userPhoneNumber);
+        if (userName != null && userEmail != null) {
+            personModel.createuser(userName, userEmail, userPhoneNumber);
             closeWindow(saveBtn);
         }
     }

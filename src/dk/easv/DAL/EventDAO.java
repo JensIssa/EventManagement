@@ -1,10 +1,7 @@
 package dk.easv.DAL;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
-import dk.easv.BE.Event;
-import dk.easv.BE.EventManager;
-import dk.easv.BE.PersonType;
-import dk.easv.BE.User;
+import dk.easv.BE.*;
 
 import java.io.IOException;
 import java.sql.*;
@@ -133,13 +130,18 @@ public class EventDAO {
      * @param event - Eventen useren deltager i
      * @param user - useren der skal tilføjes til eventen
      */
-    public void addUserToEvent(Event event, User user){
+    public void createTicket(Event event, User user, AgeGroup ageGroup, int ticketAmount){
         try (Connection connection = dc.getConnection()) {
-            String sql = "INSERT INTO Ticket (personID, eventID) VALUES (?,?)";
+            String sql = "INSERT INTO Ticket (personID, eventID, age) VALUES (?,?,?)"
+                    +"INNER JOIN Ticket ON Agegroups.agegroup = Ticket.age";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, user.getId());
             ps.setInt(2, event.getId());
-            ps.execute();
+            ps.setInt(3, ageGroup.getI());
+            for (int i = 0; i < ticketAmount; i++) {
+                ps.addBatch();
+            }
+            ps.executeBatch();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -160,7 +162,7 @@ public class EventDAO {
                   String email = rSet.getString("email");
                   String password = rSet.getString("password");
                   int phoneNumber = rSet.getInt("phoneNumber");
-                  User user = new User(id, name,email, password, PersonType.USER, phoneNumber);
+                  User user = new User(id, name,email,password, PersonType.USER, phoneNumber);
                   usersInEvent.add(user);
               }
 
