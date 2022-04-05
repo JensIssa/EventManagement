@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="327.0" styleClass="backgroundColor" stylesheets="@../../CSS/EventmanagementCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.AddEventController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="327.0" styleClass="backgroundColor" stylesheets="@../../CSS/EventmanagementCSS.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.AddEventController">
     <center>
         <VBox alignment="CENTER" prefHeight="380.0" prefWidth="300.0" BorderPane.alignment="CENTER">
             <children>
@@ -109,12 +109,12 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="230.0" prefWidth="300.0" spacing="15.0">
                      <children>
-                        <Label id="AddOrEditLabel" text="Praktisk information">
+                        <Label id="AddOrEditLabel" text="Tekst i Email">
                            <font>
                               <Font name="Britannic Bold" size="24.0" />
                            </font>
                            <VBox.margin>
-                              <Insets right="10.0" />
+                              <Insets right="100.0" />
                            </VBox.margin>
                         </Label>
                         <TextField id="AddOrEditTextField" fx:id="informationTxtfield" alignment="CENTER">
