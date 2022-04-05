@@ -149,7 +149,7 @@ public class EventDAO {
         List<User> usersInEvent = new ArrayList<>();
         try (Connection connection = dc.getConnection()) {
                 String userSQL = "SELECT * FROM Person\n" +
-                        "INNER JOIN Ticket ON Person.ID = Ticket.personID\n" +
+                        "INNER JOIN Ticket ON Person.ID = Ticket.guestid\n" +
                         "WHERE Ticket.eventID = ?";
                 PreparedStatement psUserEvent = connection.prepareStatement(userSQL);
                 psUserEvent.setInt(1, event.getId());

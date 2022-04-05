@@ -53,46 +53,10 @@ public class AddGuestController extends SuperController implements Initializable
         maxLenghtListener(emailTxtField,150);
         addPhoneNumberListener(phonenumberTxtField);
     }
-/*
-    private void drawScrollPane(){
-        HBox hBox = new HBox(40);
 
-        //voksne
-    VBox adults = createVbox("Voksne", labelAdult);
-
-        //Store børn
-     VBox old = createVbox("Ældre børn", labelOlderKids);
-        //Små børn
-     VBox young = createVbox("Yngre børn", labelYoungerKids);
-
-     hBox.getChildren().addAll(adults, old, young);
-        scrollPane.setContent(hBox);
-    }
-    */
-
-/*
-    private VBox createVbox(String text,Label label )
-    {
-        Label header = new Label();
-        header.setText(text);
-        int counter = Integer.parseInt(label.getText());
-        VBox vBox = new VBox(20);
-        Font font = new Font("Lucida Sans",  15);
-        if (counter > 0) {
-            vBox.getChildren().add(header);
-            for (int i = 0; i < counter; i++) {
-                TextField txtAdult = new TextField();
-                txtAdult.setFont(font);
-                vBox.getChildren().add(txtAdult);
-            }
-        }
-        return vBox;
-    }
-*/
     public void handleCancelButton() {
         closeWindow(cancelBtn);
     }
-
 
     public void handleSaveUser(ActionEvent actionEvent) {
         String userName = getName(nameTxtField);
