@@ -179,9 +179,9 @@ public class EventDAO {
             preparedStatement.setDate(2, Date.valueOf(event.getStartDate()));
             preparedStatement.setString(3, event.getStartTime());
             preparedStatement.setString(4, event.getInfo());
-            preparedStatement.setInt(5, event.getId());
-            preparedStatement.setString(6, event.getEndTime());
-            preparedStatement.setString(7, event.getLoc());
+            preparedStatement.setString(5, event.getEndTime());
+            preparedStatement.setString(6, event.getLoc());
+            preparedStatement.setInt(7, event.getId());
             preparedStatement.executeUpdate();
         }
         catch (SQLException ex) {

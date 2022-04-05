@@ -17,7 +17,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class EditEventsController extends SuperController implements Initializable, IEventController{
+public class EditEventsController extends SuperController implements Initializable, IEventController {
     public TextField usersInEventsSearchTxt;
     @FXML
     private TextField timeEndTxtField;
@@ -48,10 +48,11 @@ public class EditEventsController extends SuperController implements Initializab
     private EventManager eventManager;
 
     private Event event;
+
     public EditEventsController() throws SQLException, IOException {
         eventModel = new EventModel();
     }
-    
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         addTimeListener(timeStartTxtField);
@@ -64,7 +65,7 @@ public class EditEventsController extends SuperController implements Initializab
 
     @Override
     public void setEventInfo(Event event) throws IOException {
-        userEventModel = new UserEventModel(event);
+        userEventModel = new UserEventModel();
         this.event = event;
         nameTxtField.setText(event.getName());
         dateStart.setValue(event.getStartDate());
@@ -77,8 +78,8 @@ public class EditEventsController extends SuperController implements Initializab
 
     public void handleDeleteUserFromEvent(ActionEvent actionEvent) {
         User user = usersAtEventTable.getSelectionModel().getSelectedItem();
-        if (confirmationBox("Er du sikker på at du vil slette "  + user.getName() + " fra "+ event.getName() + " ?").get()== ButtonType.YES){
-            userEventModel.deleteUserFromEvent(user,event);
+        if (confirmationBox("Er du sikker på at du vil slette " + user.getName() + " fra " + event.getName() + " ?").get() == ButtonType.YES) {
+            userEventModel.deleteUserFromEvent(user, event);
             usersAtEventTable.getItems().clear();
             usersAtEventTable.setItems(userEventModel.getObservableUsersFromEvents(event));
         }
@@ -92,16 +93,13 @@ public class EditEventsController extends SuperController implements Initializab
         String endTime = getTime(timeEndTxtField);
         String loc = locationTxtField.getText();
 
-        if (name != null && startDate != null && timeStart != null)
-        {
+        if (name != null && startDate != null && timeStart != null) {
             int id = event.getId();
-            Event event = new Event(id,eventManager.getId(), name, startDate, timeStart,eventManager.getName(), info, endTime, loc);
+            Event event = new Event(id, eventManager.getId(), name, startDate, timeStart, eventManager.getName(), info, endTime, loc);
             eventModel.updateEvent(event);
             closeWindow(saveChanges);
         }
     }
-
-
 
 
     @Override
@@ -115,12 +113,12 @@ public class EditEventsController extends SuperController implements Initializab
 
     public void handleSearch(KeyEvent keyEvent) {
         String searchParam = usersInEventsSearchTxt.getText();
-        ObservableList<User> foundUserList =  eventModel.searchUsersInEvents(usersAtEventTable.getItems(), searchParam, event);
+        ObservableList<User> foundUserList = eventModel.searchUsersInEvents(usersAtEventTable.getItems(), searchParam, event);
         usersAtEventTable.setItems(foundUserList);
     }
 
     public void handleEksportEmails(ActionEvent actionEvent) throws IOException {
-        if(confirmationBox("Vil du eksportere en E-mail liste fra " + event.getName() + "?").get() == ButtonType.YES){
+        if (confirmationBox("Vil du eksportere en E-mail liste fra " + event.getName() + "?").get() == ButtonType.YES) {
             eventModel.exportEmailsFromUsers(event);
         }
     }

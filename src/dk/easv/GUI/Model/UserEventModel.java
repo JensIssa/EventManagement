@@ -7,16 +7,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.io.IOException;
+import java.util.Formatter;
 import java.util.List;
 
 public class UserEventModel {
     private ObservableList<User> usersInEventsList;
     private EventBusinessManager eventBusinessManager;
 
-    public UserEventModel(Event event) throws IOException {
+    public UserEventModel() throws IOException {
         usersInEventsList = FXCollections.observableArrayList();
         eventBusinessManager = new EventBusinessManager();
-        usersInEventsList.addAll(getAllUsersFromEvent(event));
     }
 
     public List<User> getAllUsersFromEvent(Event event) {
@@ -31,6 +31,5 @@ public class UserEventModel {
     public void deleteUserFromEvent(User user, Event event) {
         eventBusinessManager.deleteUserFromEvent(user, event);
     }
-
 
 }

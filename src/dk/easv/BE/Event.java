@@ -66,16 +66,6 @@ public class Event {
 
     @Override
     public String toString() {
-        return "Event{" +
-                "id=" + id +
-                ", managerId=" + managerId +
-                ", name='" + name + '\'' +
-                ", startDate=" + startDate +
-                ", startTime='" + startTime + '\'' +
-                ", endTime='" + endTime + '\'' +
-                ", managerName='" + managerName + '\'' +
-                ", info='" + info + '\'' +
-                ", loc='" + loc + '\'' +
-                '}';
+        return getName();
     }
 }

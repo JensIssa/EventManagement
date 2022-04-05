@@ -82,7 +82,6 @@ public class PersonDAO {
      * @param usertype
      */
     public void createPerson(String name, String email, String password, PersonType usertype) {
-
         try (Connection con = dc.getConnection()) {
             String sql = "INSERT INTO Person(Email,Password,roleID,Name) VALUES (?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
