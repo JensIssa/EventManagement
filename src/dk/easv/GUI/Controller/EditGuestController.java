@@ -47,7 +47,6 @@ public class EditGuestController extends SuperController implements Initializabl
         this.user = (User) person;
         nameTxtField.setText(user.getName());
         emailTxtField.setText(user.getEmail());
-        passwordTxtField.setText(user.getPassword());
         phoneNumberTxtField.setText(Integer.toString(user.getPhoneNumber()));
     }
 
@@ -62,7 +61,7 @@ public class EditGuestController extends SuperController implements Initializabl
         if (name != null && email != null && password != null)
         {
             int id = user.getId();
-            User user = new User(id, name, email, password,PersonType.USER , phoneNumber);
+            User user = new User(id, name, email, password ,PersonType.USER , phoneNumber);
             personModel.updateUser(user);
             closeWindow(saveBtn);
         }

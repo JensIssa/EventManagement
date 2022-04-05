@@ -70,8 +70,8 @@ public class PersonModel {
         pM.updateEventmanager(eventManager);
     }
 
-    public void createuser(String name, String email, String password, int phoneNumber){
-        pM.createUser(name, email, password, phoneNumber);
+    public void createuser(String name, String email, int phoneNumber){
+        pM.createUser(name, email,  phoneNumber);
     }
     public void updateUser(User user){
         pM.updateUser(user);

@@ -5,7 +5,6 @@ import dk.easv.BE.Event;
 import dk.easv.BE.EventManager;
 import dk.easv.BE.User;
 import dk.easv.BLL.EventBusinessManager;
-import dk.easv.BLL.util.SearchUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -39,8 +38,8 @@ public class EventModel {
         eBM.deleteEvent(eventDelete);
     }
 
-    public void addUserToEvent(Event event, User user){
-        eBM.addUserToEvent(event, user);
+    public void addUserToEvent(Event event, User user, int adultTickes, int oldChildTickets, int youngChildTickets) throws SQLException {
+        eBM.createTicket(event, user, adultTickes, oldChildTickets, youngChildTickets);
     }
 
     public void updateEvent(Event event){

@@ -40,8 +40,17 @@ public class EventBusinessManager {
         writer.close();
     }
 
-    public void addUserToEvent(Event event, User user){
-        eventDAO.addUserToEvent(event, user);
+    public void createTicket(Event event, User user, int adultTickets, int oldChildTickets, int youngChildTickets) throws SQLException {
+      if (adultTickets > 0){
+          eventDAO.createTicket(event, user, AgeGroup.ADULT, adultTickets);
+      }
+      if (oldChildTickets > 0){
+          eventDAO.createTicket(event, user, AgeGroup.OLDKID, oldChildTickets);
+      }
+      if (youngChildTickets > 0){
+          eventDAO.createTicket(event, user, AgeGroup.YOUNGERKID, youngChildTickets);
+      }
+
     }
 
     public List<User> getAllUsersFromEvent(Event event){
