@@ -1,5 +1,6 @@
 package dk.easv.GUI.Controller;
 
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import dk.easv.BE.Event;
 import dk.easv.BE.EventManager;
 import dk.easv.BE.Person;
@@ -87,8 +88,13 @@ public class EventManagerViewController extends SuperController implements Initi
         clearLabels();
     }
 
-    public void handleAddGuest(ActionEvent actionEvent) throws IOException {
-        openScene("/dk/easv/GUI/View2/AddGuestView.fxml", true, "Add guest", true);
+    public void handleAddGuest(ActionEvent actionEvent) throws IOException, SQLServerException {
+        event = eventComboBox.getSelectionModel().getSelectedItem();
+        if (event != null){
+            openNewSceneWithEventPerson(event,eventManager,"/dk/easv/GUI/View2/AddGuestView.fxml","skab gæst");
+        }
+
+
         if (event != null) {
             userTable.setItems(userEventModel.getObservableUsersFromEvents(event));
         }

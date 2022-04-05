@@ -82,4 +82,8 @@ public class PersonModel {
     public void deleteUser(User user){
         pM.deleteUser(user);
     }
+    public Integer getMostRecentId(){
+        return pM.getMostRecentId();
+    }
+
 }

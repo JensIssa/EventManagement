@@ -75,4 +75,8 @@ public class PersonManager {
     public void deleteUser(User user){
         personDAO.deleteUser(user);
     }
+
+    public Integer getMostRecentId(){
+        return personDAO.getMostRecentId();
+    }
 }

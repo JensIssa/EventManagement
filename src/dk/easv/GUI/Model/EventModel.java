@@ -38,7 +38,7 @@ public class EventModel {
         eBM.deleteEvent(eventDelete);
     }
 
-    public void addUserToEvent(Event event, User user, int adultTickes, int oldChildTickets, int youngChildTickets) throws SQLException {
+    public void createTicket(Event event, User user, int adultTickes, int oldChildTickets, int youngChildTickets) throws SQLException {
         eBM.createTicket(event, user, adultTickes, oldChildTickets, youngChildTickets);
     }
 

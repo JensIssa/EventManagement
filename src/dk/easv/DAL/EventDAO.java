@@ -132,8 +132,8 @@ public class EventDAO {
      */
     public void createTicket(Event event, User user, AgeGroup ageGroup, int ticketAmount){
         try (Connection connection = dc.getConnection()) {
-            String sql = "INSERT INTO Ticket (personID, eventID, age) VALUES (?,?,?)"
-                    +"INNER JOIN Ticket ON Agegroups.agegroup = Ticket.age";
+            String sql = "INSERT INTO Ticket (guestID, eventID, age) VALUES (?,?,?)";
+
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, user.getId());
             ps.setInt(2, event.getId());
