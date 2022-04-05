@@ -154,6 +154,7 @@ Alt CSS der tilhører textfields
     -fx-border-style: solid;
     -fx-border-width: 0 0 1 0;
     -fx-text-fill: white;
+    -fx-text-alignment: center;
 }
 
 .text-field:hover {
