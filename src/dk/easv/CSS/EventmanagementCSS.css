@@ -261,7 +261,7 @@ Alt CSS, der tilhører Ticket
  */
 
 #Ticket{
-    -fx-background-color: #c6fcfa;
+    -fx-background-color: #34ffd7;
     -fx-background-size: 1200 900;
     -fx-background-radius: 18 18 18 18;
     -fx-border-radius: 18 18 18 18;
@@ -280,6 +280,13 @@ Alt CSS, der tilhører Ticket
 
 #labelTicket {
     -fx-border-color: #0096a8;
+    -fx-border-radius: 12px;
+    -fx-padding: 5px;
+    -fx-text-fill: #000000;
+}
+#labelTicketID {
+    -fx-border-color: #000000;
+    -fx-font-size: 24;
     -fx-border-radius: 12px;
     -fx-padding: 5px;
     -fx-text-fill: #000000;
