@@ -1,12 +1,10 @@
 package dk.easv.GUI.Controller;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
-import dk.easv.BE.Event;
-import dk.easv.BE.EventManager;
-import dk.easv.BE.Person;
-import dk.easv.BE.User;
+import dk.easv.BE.*;
 import dk.easv.GUI.Model.EventModel;
 import dk.easv.GUI.Model.PersonModel;
+import dk.easv.GUI.Model.TicketModel;
 import dk.easv.GUI.Model.UserEventModel;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,14 +22,28 @@ import java.util.ResourceBundle;
 
 
 public class EventManagerViewController extends SuperController implements Initializable, IController {
-
-    public ComboBox<Event> eventComboBox;
-    public Label eventNameLabel;
-    public Label startTimeLabel;
-    public Label locationLabel;
-    public Label dateLabel;
-    public Label endTimeLabel;
-    public TextArea infoTextArea;
+    @FXML
+    private ComboBox<Event> eventComboBox;
+    @FXML
+    private Label eventNameLabel;
+    @FXML
+    private Label startTimeLabel;
+    @FXML
+    private Label locationLabel;
+    @FXML
+    private Label dateLabel;
+    @FXML
+    private Label endTimeLabel;
+    @FXML
+    private TextArea infoTextArea;
+    @FXML
+    private Label adultLabel;
+    @FXML
+    private Label olderKidsLabel;
+    @FXML
+    private Label youngerKidsLabel;
+    @FXML
+    private Label allAttendeesLabel;
     @FXML
     private TableColumn<User, String> nameColumnuser;
     @FXML
@@ -48,11 +60,12 @@ public class EventManagerViewController extends SuperController implements Initi
     private EventModel eventModel;
     UserEventModel userEventModel;
     private Event event;
-
+    private TicketModel ticketModel;
     public EventManagerViewController() throws IOException, SQLException {
         personModel = new PersonModel();
         eventModel = new EventModel();
         userEventModel = new UserEventModel();
+        ticketModel = new TicketModel();
     }
 
     @Override
@@ -147,7 +160,7 @@ public class EventManagerViewController extends SuperController implements Initi
 
     }
 
-    public void handleComboBoxClicked(ActionEvent actionEvent) throws IOException {
+    public void handleComboBoxClicked(ActionEvent actionEvent) throws IOException, SQLException {
         event = eventComboBox.getSelectionModel().getSelectedItem();
         if (event != null) {
             clearLabels();
@@ -158,6 +171,10 @@ public class EventManagerViewController extends SuperController implements Initi
             dateLabel.setText(dateLabel.getText() + event.getStartDate().toString());
             userTable.setItems(userEventModel.getObservableUsersFromEvents(event));
             infoTextArea.setText(event.getInfo());
+            adultLabel.setText(adultLabel.getText() + ticketModel.countAdults(event));
+            olderKidsLabel.setText(olderKidsLabel.getText() + ticketModel.countOlderKids(event));
+            youngerKidsLabel.setText(youngerKidsLabel.getText() + ticketModel.countYoungerKids(event));
+            allAttendeesLabel.setText(allAttendeesLabel.getText() + ticketModel.countEventAttendees(event));
         }
     }
 
@@ -167,6 +184,10 @@ public class EventManagerViewController extends SuperController implements Initi
         endTimeLabel.setText("Slut tid: ");
         locationLabel.setText("Lokation: ");
         dateLabel.setText("Dato: ");
+        adultLabel.setText("Voksne: ");
+        olderKidsLabel.setText("Ældre børn: ");
+        youngerKidsLabel.setText("Yngre børn: ");
+        allAttendeesLabel.setText("Samlet antal: ");
         userTable.getItems().clear();
     }
 }

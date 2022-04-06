@@ -147,6 +147,7 @@ public class EventDAO {
         }
     }
 
+
     public List<User> getAllUsersFromEvent(Event event){
         List<User> usersInEvent = new ArrayList<>();
         try (Connection connection = dc.getConnection()) {
