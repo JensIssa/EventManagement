@@ -3,6 +3,7 @@ package dk.easv.GUI.Model;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import dk.easv.BE.AgeGroup;
 import dk.easv.BE.Event;
+import dk.easv.BE.User;
 import dk.easv.BLL.TicketManager;
 
 import java.io.IOException;
@@ -29,5 +30,15 @@ public class TicketModel {
     }
     public int countYoungerKids(Event event) throws SQLException {
         return ticketManager.countYoungerKids(event);
+    }
+
+    public int countIndividualAdult(User user){
+        return ticketManager.countIndividualAdult(user);
+    }
+    public int countIndividualOldKid(User user){
+        return ticketManager.countIndividualOldKid(user);
+    }
+    public int countIndividualYoungKid(User user){
+        return ticketManager.countIndividualYoungKid(user);
     }
 }

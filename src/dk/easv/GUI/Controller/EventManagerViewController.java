@@ -23,6 +23,12 @@ import java.util.ResourceBundle;
 
 public class EventManagerViewController extends SuperController implements Initializable, IController {
     @FXML
+    private TableColumn<User, Integer> adultColumn;
+    @FXML
+    private TableColumn<User, Integer> oldKidColumn;
+    @FXML
+    private TableColumn<User, Integer> youngKidColumn;
+    @FXML
     private ComboBox<Event> eventComboBox;
     @FXML
     private Label eventNameLabel;

@@ -160,7 +160,7 @@
                                     <Insets right="25.0" />
                                  </VBox.margin>
                               </HBox>
-                              <TableView fx:id="userTable" prefHeight="533.0" prefWidth="430.0">
+                              <TableView fx:id="userTable" prefHeight="406.0" prefWidth="495.0">
                                 <columns>
                                     <TableColumn prefWidth="75.0" text="Gæster">
                                        <columns>
@@ -183,6 +183,9 @@
                                              </graphic>
                                           </TableColumn>
                                           <TableColumn prefWidth="75.0" text="Telf nr." />
+                                          <TableColumn fx:id="adultColumn" prefWidth="75.0" text="Voksne" />
+                                          <TableColumn fx:id="oldKidColumn" prefWidth="75.0" text="Ældre børn" />
+                                          <TableColumn fx:id="youngKidColumn" prefWidth="75.0" text="Yngre børn" />
                                        </columns>
                                     </TableColumn>
                                 </columns>

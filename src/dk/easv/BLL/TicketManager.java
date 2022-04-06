@@ -3,6 +3,7 @@ package dk.easv.BLL;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import dk.easv.BE.AgeGroup;
 import dk.easv.BE.Event;
+import dk.easv.BE.User;
 import dk.easv.DAL.TicketDAO;
 
 import java.io.IOException;
@@ -31,5 +32,15 @@ public class TicketManager {
     }
     public int countYoungerKids(Event event) throws SQLException {
         return ticketDAO.countEventAttendees(event, AgeGroup.YOUNGERKID);
+    }
+
+    public int countIndividualAdult(User user){
+        return ticketDAO.countIndividualGuestAttendees(user, AgeGroup.ADULT);
+    }
+    public int countIndividualOldKid(User user){
+        return ticketDAO.countIndividualGuestAttendees(user, AgeGroup.OLDKID);
+    }
+    public int countIndividualYoungKid(User user){
+        return ticketDAO.countIndividualGuestAttendees(user, AgeGroup.YOUNGERKID);
     }
 }
