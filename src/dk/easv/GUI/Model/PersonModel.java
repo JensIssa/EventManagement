@@ -62,7 +62,7 @@ public class PersonModel {
     }
 
 
-    public void deleteEventmanager(EventManager eventManager, PersonType usertype) {
+    public void deleteEventmanager(EventManager eventManager) {
         pM.delete(eventManager, PersonType.EVENTMANAGER);}
 
     public void updateEventmanager(EventManager eventManager) {
