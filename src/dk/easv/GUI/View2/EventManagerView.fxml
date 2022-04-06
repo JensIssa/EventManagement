@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="1085.0" styleClass="backgroundColor" stylesheets="@../../CSS/EventmanagementCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EventManagerViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="1085.0" styleClass="backgroundColor" stylesheets="@../../CSS/EventmanagementCSS.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EventManagerViewController">
    <center>
       <VBox BorderPane.alignment="CENTER">
          <children>
@@ -120,7 +120,18 @@
                                     </TextField>
                                  </children>
                               </HBox>
-                              <HBox alignment="CENTER" prefHeight="35.0" prefWidth="445.0" spacing="10.0">
+                              <GridPane alignment="CENTER" hgap="10.0" vgap="25.0">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                 <columnConstraints>
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
                                  <children>
                                     <Button mnemonicParsing="false" onAction="#handleAddGuest" prefHeight="35.0" prefWidth="137.0" text="Tilføj gæst">
                                        <graphic>
@@ -130,11 +141,8 @@
                                              </image>
                                           </ImageView>
                                        </graphic>
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" onAction="#handleEditGuest" prefHeight="35.0" prefWidth="154.0" text="Rediger gæst">
+                                    <Button mnemonicParsing="false" onAction="#handleEditGuest" prefHeight="35.0" prefWidth="154.0" text="Rediger gæst" GridPane.columnIndex="1">
                                        <graphic>
                                           <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -142,11 +150,8 @@
                                              </image>
                                           </ImageView>
                                        </graphic>
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" onAction="#handleDeleteGuest" text="Fjern gæst">
+                                    <Button mnemonicParsing="false" onAction="#handleDeleteGuest" text="Fjern gæst" GridPane.rowIndex="1">
                                        <graphic>
                                           <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -155,11 +160,17 @@
                                           </ImageView>
                                        </graphic>
                                     </Button>
+                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleSendEmail" prefHeight="35.0" prefWidth="169.0" text="Send Billetter" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <graphic>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../../images/emailExport.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
                                  </children>
-                                 <VBox.margin>
-                                    <Insets right="25.0" />
-                                 </VBox.margin>
-                              </HBox>
+                              </GridPane>
                               <TableView fx:id="userTable" prefHeight="406.0" prefWidth="495.0">
                                 <columns>
                                     <TableColumn prefWidth="75.0" text="Gæster">

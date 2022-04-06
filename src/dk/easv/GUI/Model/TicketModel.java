@@ -8,6 +8,7 @@ import dk.easv.BLL.TicketManager;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 public class TicketModel {
     private TicketManager ticketManager;
@@ -16,8 +17,8 @@ public class TicketModel {
         ticketManager = new TicketManager();
     }
 
-    public int getTicketId() throws SQLServerException {
-        return ticketManager.getTicketId();
+    public List<Integer> getTicketId(User user) throws SQLServerException {
+        return ticketManager.getTicketId(user);
     }
     public int countEventAttendees(Event event) throws SQLException {
         return ticketManager.countEventAttendees(event);

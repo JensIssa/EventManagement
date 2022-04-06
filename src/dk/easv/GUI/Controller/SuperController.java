@@ -187,7 +187,7 @@ public abstract class SuperController {
      * @param Title
      * @throws IOException
      */
-    public void openNewSceneWithPerson(Person person,String fxmlPath, String Title) throws IOException {
+    public void openNewSceneWithPerson(Person person,String fxmlPath, String Title) throws IOException, SQLServerException {
         FXMLLoader root = new FXMLLoader(getClass().getResource(fxmlPath));
         Scene scene = new Scene(root.load());
         Stage stage = new Stage();
@@ -202,7 +202,7 @@ public abstract class SuperController {
         stage.showAndWait();
     }
 
-    public void openNewSceneWithEventPerson(Event event, EventManager eventManager, String fxmlPath, String Title) throws IOException, SQLServerException {
+    public void openNewSceneWithEventPerson(Event event, Person person, String fxmlPath, String Title) throws IOException, SQLServerException {
         FXMLLoader root = new FXMLLoader(getClass().getResource(fxmlPath));
         Scene scene = new Scene(root.load());
         Stage stage = new Stage();
@@ -210,7 +210,7 @@ public abstract class SuperController {
         IEventController iEventController = root.getController();
         iEventController.setEventInfo(event);
         IController iController = root.getController();
-        iController.setPersonInfo(eventManager);
+        iController.setPersonInfo(person);
         stage.setTitle(Title);
         stage.centerOnScreen();
         stage.setResizable(false);

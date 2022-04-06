@@ -198,4 +198,9 @@ public class EventManagerViewController extends SuperController implements Initi
         allAttendeesLabel.setText("Samlet antal: ");
         userTable.getItems().clear();
     }
+
+    public void handleSendEmail(ActionEvent actionEvent) throws SQLServerException, IOException {
+        openNewSceneWithEventPerson(eventComboBox.getValue(), userTable.getSelectionModel().getSelectedItem(),"/dk/easv/GUI/View2/MailPreview.fxml","Send Billetter");
+
+    }
 }

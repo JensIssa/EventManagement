@@ -294,9 +294,15 @@ Alt CSS, der tilhører Ticket
     -fx-text-fill: #000000;
 }
 
+
 /**
 Generelle ID's
  */
+#infoTextLabel{
+    -fx-text-fill: black;
+    -fx-font-size: 18;
+
+}
 
 #LoginButton{
     -fx-background-color: linear-gradient(to left bottom, rgba(250,172,63,255) 0%, rgba(253,72,179,255) 100);
@@ -342,3 +348,5 @@ Generelle ID's
 #scrollPaneGuest > .viewport {
     -fx-background-color: transparent;
 }
+
+

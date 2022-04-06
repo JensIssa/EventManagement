@@ -9,8 +9,10 @@ import dk.easv.GUI.Model.EventModel;
 import dk.easv.GUI.Model.PersonModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -130,7 +132,6 @@ public class AddGuestController extends SuperController implements Initializable
             labelAdult.setText(String.valueOf(count));
         }
     }
-
 
     @Override
     public void setPersonInfo(Person person) {
