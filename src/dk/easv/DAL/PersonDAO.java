@@ -177,11 +177,24 @@ public class PersonDAO {
      * @param eventManagerToBeDeleted - EventManageren der skal slettes
      * @param personType              - typen af useren
      */
+
+    // Find ud af hvor mange events den her person ejer
+    //Brug evt array
+    // Slet tickets til de her events
+    // Hvis et event ikke har flere tickets > Slet evemt
+    // Når en eventmanager ikke har flere events -> Slet eventmanager
     public void deleteEventManager(EventManager eventManagerToBeDeleted, PersonType personType) {
         try (Connection connection = dc.getConnection()) {
+            int eventID
+
+            String deleteTicket = "DELETE FROM Ticket WHERE eventID = ?";
+            PreparedStatement ps = connection.prepareStatement(deleteTicket);
+            ps.setInt(1, ticket.getId());
+
             String deleteFromEvent = "DELETE FROM Event WHERE personID = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(deleteFromEvent);
             preparedStatement.setInt(1, eventManagerToBeDeleted.getId());
+
             String sql = "DELETE p FROM Person AS p INNER JOIN Role ON p.RoleID = Role.ID WHERE p.ID = ? AND p.RoleID = ?";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, eventManagerToBeDeleted.getId());

@@ -38,7 +38,7 @@ public class PersonManager {
 
 
 
-    public void delete(EventManager eventManager, PersonType usertype) {
+    public void delete(EventManager eventManager ,PersonType usertype) {
         personDAO.deleteEventManager(eventManager, PersonType.EVENTMANAGER);
     }
 
