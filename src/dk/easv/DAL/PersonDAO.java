@@ -172,20 +172,39 @@ public class PersonDAO {
     }
 
     /**
-     * Sletter eventManagers og de events de er tilknyttet til
-     *
-     * @param eventManagerToBeDeleted - EventManageren der skal slettes
-     * @param personType              - typen af useren
+     * Denne metode sletter tickets til event, sletter Event og sletter eventmanageren
+     * @param eventManager
      */
-    public void deleteEventManager(EventManager eventManagerToBeDeleted, PersonType personType) {
+    public void deleteEventManager(EventManager eventManager) {
         try (Connection connection = dc.getConnection()) {
-            String deleteFromEvent = "DELETE FROM Event WHERE personID = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(deleteFromEvent);
-            preparedStatement.setInt(1, eventManagerToBeDeleted.getId());
-            String sql = "DELETE p FROM Person AS p INNER JOIN Role ON p.RoleID = Role.ID WHERE p.ID = ? AND p.RoleID = ?";
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, eventManagerToBeDeleted.getId());
-            preparedStatement.setInt(2, personType.getI());
+            List<Integer> eventIDS = new ArrayList<>();
+
+            String sqlFindId = "SELECT ID FROM Event WHERE personID = ? ";
+            PreparedStatement preparedStmt = connection.prepareStatement(sqlFindId);
+            preparedStmt.setInt(1, eventManager.getId());
+            ResultSet resultSet = preparedStmt.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("ID");
+                eventIDS.add(id);
+            }
+
+            String deleteTicket = "DELETE FROM Ticket WHERE eventID = ?";
+            PreparedStatement ps = connection.prepareStatement(deleteTicket);
+            for (Integer eventID : eventIDS) {
+                ps.setInt(1, eventID);
+                ps.addBatch();
+            }
+            ps.executeBatch();
+
+
+            String deleteEvent = "DELETE FROM Event WHERE personID = ?";
+            PreparedStatement ps1 = connection.prepareStatement(deleteEvent);
+            ps1.setInt(1, eventManager.getId());
+            ps1.execute();
+
+            String deleteEventmanager = "DELETE FROM Person WHERE ID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(deleteEventmanager);
+            preparedStatement.setInt(1, eventManager.getId());
             preparedStatement.execute();
 
         } catch (SQLException ex) {

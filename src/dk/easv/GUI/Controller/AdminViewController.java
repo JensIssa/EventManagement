@@ -104,7 +104,7 @@ public class AdminViewController extends SuperController implements Initializabl
         } else {
             EventManager eventManager = (EventManager) eventmanagerTable.getSelectionModel().getSelectedItem();
             if (confirmationBox("Er du sikker på at du vil slette " + eventManager.getName() + "?").get() == ButtonType.YES){
-                personModel.deleteEventmanager(eventManager, PersonType.EVENTMANAGER);
+                personModel.deleteEventmanager(eventManager);
                 eventmanagerTable.getItems().remove(eventManager);
             }
         }

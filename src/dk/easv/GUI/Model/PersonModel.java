@@ -1,9 +1,6 @@
 package dk.easv.GUI.Model;
 
-import dk.easv.BE.EventManager;
-import dk.easv.BE.Person;
-import dk.easv.BE.PersonType;
-import dk.easv.BE.User;
+import dk.easv.BE.*;
 import dk.easv.BLL.PersonManager;
 import dk.easv.BLL.util.SearchUtil;
 import javafx.collections.FXCollections;
@@ -65,7 +62,7 @@ public class PersonModel {
     }
 
 
-    public void deleteEventmanager(EventManager eventManager, PersonType usertype) {
+    public void deleteEventmanager(EventManager eventManager) {
         pM.delete(eventManager, PersonType.EVENTMANAGER);}
 
     public void updateEventmanager(EventManager eventManager) {
