@@ -20,8 +20,6 @@ public class EditGuestController extends SuperController implements Initializabl
     @FXML
     private Button saveBtn;
     @FXML
-    private TextField passwordTxtField;
-    @FXML
     private TextField phoneNumberTxtField;
     @FXML
     private TextField emailTxtField;
@@ -37,7 +35,6 @@ public class EditGuestController extends SuperController implements Initializabl
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         maxLenghtListener(emailTxtField,150);
-        maxLenghtListener(passwordTxtField,50);
         maxLenghtListener(nameTxtField,80);
         addPhoneNumberListener(phoneNumberTxtField);
     }
@@ -56,9 +53,9 @@ public class EditGuestController extends SuperController implements Initializabl
     public void handleSaveGuest(ActionEvent actionEvent) {
         String name = getName(nameTxtField);
         String email = getEmail(emailTxtField);
-        String password = getPassword(passwordTxtField);
+        String password = ".";
         int phoneNumber = getPhoneNumber(phoneNumberTxtField);
-        if (name != null && email != null && password != null)
+        if (name != null && email != null)
         {
             int id = user.getId();
             User user = new User(id, name, email, password ,PersonType.USER , phoneNumber);

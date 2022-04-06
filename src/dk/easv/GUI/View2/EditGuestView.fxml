@@ -90,27 +90,6 @@
                         </VBox>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER" prefHeight="110.0" prefWidth="300.0" spacing="5.0">
-                    <VBox.margin>
-                        <Insets />
-                    </VBox.margin>
-                    <children>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0">
-                            <children>
-                                <Label id="AddOrEditLabel" alignment="CENTER" text="Password">
-                                    <VBox.margin>
-                                        <Insets right="160.0" />
-                                    </VBox.margin>
-                                </Label>
-                                <TextField id="AddOrEditTextField" fx:id="passwordTxtField" alignment="CENTER">
-                                    <VBox.margin>
-                                        <Insets left="15.0" right="15.0" />
-                                    </VBox.margin>
-                                </TextField>
-                            </children>
-                        </VBox>
-                    </children>
-                </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                     <children>
                         <Button fx:id="saveBtn" alignment="CENTER" mnemonicParsing="false" onAction="#handleSaveGuest" text="Gem">

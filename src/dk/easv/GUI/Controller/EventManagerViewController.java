@@ -156,6 +156,8 @@ public class EventManagerViewController extends SuperController implements Initi
             User user = userTable.getSelectionModel().getSelectedItem();
             if (confirmationBox("Er du sikker på at du vil slette " + user.getName() + "?").get() == ButtonType.YES) {
                 personModel.deleteUser(user);
+                userTable.getItems().clear();
+                userTable.setItems(userEventModel.getObservableUsersFromEvents(event));
             }
         } else {
             errorMessage("Vælg den bruger du ønsker at slette");

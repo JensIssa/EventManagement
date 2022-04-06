@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="408.0" styleClass="backgroundColor" stylesheets="@../../CSS/EventmanagementCSS.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.AddGuestController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="408.0" styleClass="backgroundColor" stylesheets="@../../CSS/EventmanagementCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.AddGuestController">
    <bottom>
       <HBox BorderPane.alignment="CENTER">
          <children>
@@ -32,7 +32,7 @@
                                     <Insets left="20.0" />
                                  </padding>
                               </Label>
-                              <TextField fx:id="nameTxtField" prefHeight="26.0" prefWidth="258.0">
+                              <TextField id="AddOrEditTextField" fx:id="nameTxtField" alignment="CENTER" prefHeight="26.0" prefWidth="258.0">
                                  <VBox.margin>
                                     <Insets left="25.0" right="78.0" />
                                  </VBox.margin>

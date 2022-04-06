@@ -219,7 +219,7 @@ public class PersonDAO {
      */
     public void deleteUser(User userToBeDeleted) {
         try (Connection connection = dc.getConnection()) {
-            String sql = "DELETE FROM Ticket WHERE personID = ?";
+            String sql = "DELETE FROM Ticket WHERE guestId = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, userToBeDeleted.getId());
             preparedStatement.execute();
