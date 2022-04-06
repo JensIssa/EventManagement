@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="1085.0" styleClass="backgroundColor" stylesheets="@../../CSS/EventmanagementCSS.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EventManagerViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="1085.0" styleClass="backgroundColor" stylesheets="@../../CSS/EventmanagementCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.EventManagerViewController">
    <center>
       <VBox BorderPane.alignment="CENTER">
          <children>
@@ -182,7 +182,14 @@
                                                 </ImageView>
                                              </graphic>
                                           </TableColumn>
-                                          <TableColumn fx:id="tlfNumberColumn" prefWidth="75.0" text="Telf nr." />
+                                          <TableColumn fx:id="tlfNumberColumn" prefWidth="75.0" text="Telf nr.">
+                                             <graphic>
+                                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../../images/icons8-android-48.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic></TableColumn>
                                        </columns>
                                     </TableColumn>
                                 </columns>
