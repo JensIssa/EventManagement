@@ -4,20 +4,35 @@ import com.microsoft.sqlserver.jdbc.SQLServerException;
 import dk.easv.BE.Event;
 import dk.easv.BE.Person;
 import dk.easv.BE.User;
+import dk.easv.BLL.PostOffice;
 import dk.easv.GUI.Model.TicketModel;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-import java.io.IOException;
-import java.util.List;
 
-public class MailPreviewController extends SuperController implements IEventController {
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class MailPreviewController extends SuperController implements IEventController, Initializable {
 
     @FXML
     private Button closeBtn;
@@ -26,9 +41,16 @@ public class MailPreviewController extends SuperController implements IEventCont
     User user;
     Event event;
     TicketModel ticketModel;
+    PostOffice postOffice = new PostOffice();
 
     public MailPreviewController() throws IOException {
         ticketModel = new TicketModel();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        scrollPane.setFitToHeight(true);
+        scrollPane.setFitToWidth(true);
     }
 
     public void handleClose(ActionEvent actionEvent) {
@@ -36,6 +58,33 @@ public class MailPreviewController extends SuperController implements IEventCont
     }
 
     public void handleSendEmail(ActionEvent actionEvent) {
+        String[] mailingList = {user.getEmail()};
+        String subject = "Biletter til " + event.getName();
+        String attachmentPath;
+//TODO FIX - victor :))
+        createAttachment();
+    }
+
+    private String createAttachment(){
+        System.out.println("attachment click");
+        File pdfFile = new File("biletter",String.valueOf(user.getId()+".png"));
+
+            try {
+
+                int width = (int)scrollPane.getWidth();
+                int  height = (int) scrollPane.getHeight(); //TODO DEN SKAL IKKE VÆRE EN FAST STØRRELSE
+                //Pad the capture area
+                WritableImage writableImage = new WritableImage(width, height);
+                scrollPane.contentProperty().get().snapshot(null,writableImage);
+                scrollPane.snapshot(null, writableImage);
+                RenderedImage renderedImage = SwingFXUtils.fromFXImage(writableImage, null);
+                //Write the snapshot to the chosen file
+                ImageIO.write(renderedImage, "png", pdfFile);
+            } catch (IOException ex) { ex.printStackTrace(); }
+
+
+
+        return null;
     }
 
 
@@ -65,14 +114,14 @@ public class MailPreviewController extends SuperController implements IEventCont
                     ITicketAndEvent iTicketAndEvent = root.getController();
                     iTicketAndEvent.setEventAndTicketID(event, integer);
                     tickets.getChildren().add(ticket);
-
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
             }
             scrollPane.setContent(tickets);
 
         }
     }
+
+
 }

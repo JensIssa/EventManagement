@@ -7,6 +7,7 @@ import dk.easv.DAL.EventDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -33,7 +34,7 @@ public class EventBusinessManager {
 
 
     public void exportUserEmailsFromEvent(Event event) throws IOException {
-        FileWriter writer = new FileWriter(event.getName() + " EmailListe.txt");//måske .csv???
+        FileWriter writer = new FileWriter(new File("emailLister",event.getName() + " EmailListe.txt"));//måske .csv???
         for(String str: eventDAO.getEmailListFromEvent(event)) {
             writer.write(str +","+ System.lineSeparator());
         }
