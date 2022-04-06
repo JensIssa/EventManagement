@@ -98,7 +98,7 @@ public class AdminViewController extends SuperController implements Initializabl
      *
      * @param actionEvent
      */
-    public void handleRemoveButton(ActionEvent actionEvent) {
+    public void handleRemoveButton(ActionEvent actionEvent) throws SQLException {
         if (eventmanagerTable.getSelectionModel().getSelectedItem() == null) {
             error("Vælg hvilken person du vil slette");
         } else {
@@ -106,6 +106,8 @@ public class AdminViewController extends SuperController implements Initializabl
             if (confirmationBox("Er du sikker på at du vil slette " + eventManager.getName() + "?").get() == ButtonType.YES){
                 personModel.deleteEventmanager(eventManager);
                 eventmanagerTable.getItems().remove(eventManager);
+                eventInformationTable.getItems().clear();
+                eventInformationTable.setItems(eventModel.getObservableEvents());
             }
         }
     }

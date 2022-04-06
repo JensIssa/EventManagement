@@ -206,6 +206,7 @@ Alt generelt CSS, der tilhører datepicker
     -fx-text-alignment: right;
     -fx-font-family: "Lucida Sans";
     -fx-font-size: 16;
+    -fx-text-fill: black;
 }
 
 /**

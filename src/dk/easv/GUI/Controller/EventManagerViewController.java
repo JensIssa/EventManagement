@@ -104,7 +104,7 @@ public class EventManagerViewController extends SuperController implements Initi
         clearLabels();
     }
 
-    public void handleAddGuest(ActionEvent actionEvent) throws IOException, SQLServerException {
+    public void handleAddGuest(ActionEvent actionEvent) throws IOException, SQLException {
         event = eventComboBox.getSelectionModel().getSelectedItem();
         if (event != null){
             openNewSceneWithEventPerson(event,eventManager,"/dk/easv/GUI/View2/AddGuestView.fxml","skab gæst");
@@ -113,10 +113,11 @@ public class EventManagerViewController extends SuperController implements Initi
 
         if (event != null) {
             userTable.setItems(userEventModel.getObservableUsersFromEvents(event));
+            handleComboBoxClicked();
         }
     }
 
-    public void handleEditGuest(ActionEvent actionEvent) throws IOException {
+    public void handleEditGuest(ActionEvent actionEvent) throws IOException, SQLException {
         User user = (User) userTable.getSelectionModel().getSelectedItem();
         if (user != null) {
             openNewSceneWithPerson(user, "/dk/easv/GUI/View2/EditGuestView.fxml", "Rediger guest");
@@ -126,6 +127,7 @@ public class EventManagerViewController extends SuperController implements Initi
         }
         if (event != null) {
             userTable.setItems(userEventModel.getObservableUsersFromEvents(event));
+            handleComboBoxClicked();
         }
     }
 
@@ -151,13 +153,14 @@ public class EventManagerViewController extends SuperController implements Initi
         openScene("/dk/easv/GUI/View/LoginView.fxml", false, "Loginscreen", false);
     }
 
-    public void handleDeleteGuest(ActionEvent actionEvent) throws IOException {
+    public void handleDeleteGuest(ActionEvent actionEvent) throws IOException, SQLException {
         if (userTable.getSelectionModel().getSelectedItem() != null) {
             User user = userTable.getSelectionModel().getSelectedItem();
             if (confirmationBox("Er du sikker på at du vil slette " + user.getName() + "?").get() == ButtonType.YES) {
                 personModel.deleteUser(user);
                 userTable.getItems().clear();
                 userTable.setItems(userEventModel.getObservableUsersFromEvents(event));
+                handleComboBoxClicked();
             }
         } else {
             errorMessage("Vælg den bruger du ønsker at slette");
@@ -165,7 +168,7 @@ public class EventManagerViewController extends SuperController implements Initi
 
     }
 
-    public void handleComboBoxClicked(ActionEvent actionEvent) throws IOException, SQLException {
+    public void handleComboBoxClicked() throws IOException, SQLException {
         event = eventComboBox.getSelectionModel().getSelectedItem();
         if (event != null) {
             clearLabels();
