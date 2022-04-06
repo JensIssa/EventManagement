@@ -182,10 +182,7 @@
                                                 </ImageView>
                                              </graphic>
                                           </TableColumn>
-                                          <TableColumn prefWidth="75.0" text="Telf nr." />
-                                          <TableColumn fx:id="adultColumn" prefWidth="75.0" text="Voksne" />
-                                          <TableColumn fx:id="oldKidColumn" prefWidth="75.0" text="Ældre børn" />
-                                          <TableColumn fx:id="youngKidColumn" prefWidth="75.0" text="Yngre børn" />
+                                          <TableColumn fx:id="tlfNumberColumn" prefWidth="75.0" text="Telf nr." />
                                        </columns>
                                     </TableColumn>
                                 </columns>

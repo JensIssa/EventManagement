@@ -23,11 +23,7 @@ import java.util.ResourceBundle;
 
 public class EventManagerViewController extends SuperController implements Initializable, IController {
     @FXML
-    private TableColumn<User, Integer> adultColumn;
-    @FXML
-    private TableColumn<User, Integer> oldKidColumn;
-    @FXML
-    private TableColumn<User, Integer> youngKidColumn;
+    private TableColumn<User, Integer> tlfNumberColumn;
     @FXML
     private ComboBox<Event> eventComboBox;
     @FXML
@@ -78,6 +74,7 @@ public class EventManagerViewController extends SuperController implements Initi
     public void initialize(URL location, ResourceBundle resources) {
         nameColumnuser.setCellValueFactory(new PropertyValueFactory<>("Name"));
         emailColumnUser.setCellValueFactory(new PropertyValueFactory<>("Email"));
+        tlfNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
         infoTextArea.setWrapText(true);
         clearLabels();
         try {
