@@ -380,9 +380,7 @@ Generelle ID's
     -fx-text-fill: black;
     -fx-border-style: solid;
     -fx-border-color: black;
-    -fx-spacing: 0.10;
     -fx-border-width: 1 0 1 0;
-    -fx-border-radius: 0.15;
     -fx-font-family: "Eras Demi ITC";
 }
 
@@ -393,6 +391,6 @@ Generelle ID's
 #date2Label {
     -fx-text-fill: black;
     -fx-font-family: "Eras Demi ITC";
-    -fx-font-size: 20;
+    -fx-font-size: 16;
 }
 

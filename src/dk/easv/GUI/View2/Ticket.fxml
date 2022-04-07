@@ -1,18 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="Ticket" prefHeight="197.0" prefWidth="619.0" stylesheets="@../../CSS/EventmanagementCSS.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.TicketController">
+<AnchorPane id="Anchor" prefHeight="225.0" prefWidth="650.0" stylesheets="@../../CSS/EventmanagementCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.TicketController">
    <children>
-      <Label id="labelTicket" fx:id="nameOfEventLabel" layoutX="22.0" layoutY="14.0" prefHeight="86.0" prefWidth="376.0" text="Name of event" wrapText="true" />
-      <Label id="labelTicket" fx:id="locationOfEventLabel" layoutX="22.0" layoutY="104.0" prefHeight="78.0" prefWidth="376.0" text="Location" wrapText="true" />
-      <Label id="labelTicket" fx:id="dateOfEventLabel" layoutX="477.0" layoutY="66.0" prefHeight="30.0" prefWidth="128.0" text="Dato" />
-      <Label id="labelTicket" fx:id="startOfEventLabel" layoutX="477.0" layoutY="104.0" prefHeight="30.0" prefWidth="128.0" text="Start" />
-      <Label id="labelTicket" fx:id="endOfEventLabel" layoutX="477.0" layoutY="143.0" prefHeight="30.0" prefWidth="128.0" text="End" />
-      <Label id="labelTicket" alignment="CENTER" layoutX="418.0" layoutY="66.0" text="Dato:" />
-      <Label id="labelTicket" alignment="CENTER" layoutX="418.0" layoutY="104.0" text="Start:" />
-      <Label id="labelTicket" alignment="CENTER" layoutX="417.0" layoutY="143.0" prefHeight="30.0" prefWidth="41.0" text="Slut:" />
-      <Label id="labelTicketID" fx:id="ticketIdLbl" alignment="CENTER" layoutX="419.0" layoutY="14.0" prefHeight="37.0" prefWidth="186.0" text="ID" />
+      <Label id="Strippedline" layoutX="450.0" layoutY="80.0" prefHeight="30.0" prefWidth="260.0" text="----------------------------" />
+      <Label id="Label2Title" fx:id="nameOfEventLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="195.0" layoutY="53.0" prefHeight="52.0" prefWidth="370.0" text="Eventnavn" textAlignment="CENTER">
+         <font>
+            <Font name="Segoe Print Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label id="LabelLokation2" fx:id="locationOfEventLabel" alignment="CENTER" cacheShape="false" layoutX="224.0" layoutY="14.0" prefHeight="37.0" prefWidth="298.0" text="Lokation">
+         <font>
+            <Font name="Eras Demi ITC" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="607.0" layoutY="70.0" text="Label" />
+      <Label id="id2Label" fx:id="ticketIdLbl" alignment="CENTER" contentDisplay="CENTER" layoutX="581.0" prefHeight="226.0" prefWidth="173.0" text="ID">
+         <font>
+            <Font size="77.0" />
+         </font>
+      </Label>
+      <Label layoutX="264.0" layoutY="127.0" text="Label" />
+      <Label layoutX="278.0" layoutY="127.0" text="Label" />
+      <Label id="date2Label" fx:id="dateOfEventLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="332.0" layoutY="109.0" prefHeight="37.0" prefWidth="91.0" text="Dato" />
+      <Label id="date2Label" fx:id="startOfEventLabel" layoutX="270.0" layoutY="163.0" text="Start" />
+      <Label id="date2Label" layoutX="362.0" layoutY="163.0" text="Til" />
+      <Label id="date2Label" fx:id="endOfEventLabel" layoutX="446.0" layoutY="163.0" text="Slut" />
+      <ImageView fitHeight="225.0" fitWidth="242.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../images/klovnebillede.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
