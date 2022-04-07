@@ -18,6 +18,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 
 import javax.imageio.ImageIO;
@@ -28,6 +29,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Parameter;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -41,10 +43,12 @@ public class MailPreviewController extends SuperController implements IEventCont
     User user;
     Event event;
     TicketModel ticketModel;
-    PostOffice postOffice = new PostOffice();
+    PostOffice postOffice;
+    List<Integer> listTicket;
 
     public MailPreviewController() throws IOException {
         ticketModel = new TicketModel();
+        postOffice = new PostOffice();
     }
 
     @Override
@@ -59,29 +63,32 @@ public class MailPreviewController extends SuperController implements IEventCont
 
     public void handleSendEmail(ActionEvent actionEvent) {
         String[] mailingList = {user.getEmail()};
-        String subject = "Biletter til " + event.getName();
-        String attachmentPath;
-//TODO FIX - victor :))
-        createAttachment();
+        String subject = "Billetter til " + event.getName();
+        String attachmentPath = createAttachment();
+
+        postOffice.prepareOutlook(mailingList,subject,attachmentPath);
     }
 
-    private String createAttachment(){
+    private String createAttachment() {
         System.out.println("attachment click");
-        File pdfFile = new File("biletter",String.valueOf(user.getId()+".png"));
+        File pngFile = new File("biletter", String.valueOf(user.getId() + ".png"));
 
-            try {
+        try {
+            int ticketSize = 220;
+            int width = (int) scrollPane.getWidth();
+            int height = listTicket.size() * ticketSize;
+            //Pad the capture area
+            WritableImage writableImage = new WritableImage(width, height);
+            scrollPane.getContent().snapshot(null, writableImage);
 
-                int width = (int)scrollPane.getWidth();
-                int  height = (int) scrollPane.getHeight(); //TODO DEN SKAL IKKE VÆRE EN FAST STØRRELSE
-                //Pad the capture area
-                WritableImage writableImage = new WritableImage(width, height);
-                scrollPane.contentProperty().get().snapshot(null,writableImage);
-                scrollPane.snapshot(null, writableImage);
-                RenderedImage renderedImage = SwingFXUtils.fromFXImage(writableImage, null);
-                //Write the snapshot to the chosen file
-                ImageIO.write(renderedImage, "png", pdfFile);
-            } catch (IOException ex) { ex.printStackTrace(); }
+            RenderedImage renderedImage = SwingFXUtils.fromFXImage(writableImage, null);
+            //Write the snapshot to the chosen file
+            ImageIO.write(renderedImage, "png", pngFile);
 
+            return pngFile.getAbsolutePath();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
 
 
         return null;
@@ -101,12 +108,13 @@ public class MailPreviewController extends SuperController implements IEventCont
     }
 
     public void ticketPreview() throws SQLServerException {
-        List<Integer> listTicket = ticketModel.getTicketId(user);
+        int infoTextLinelength = 600;
+        listTicket = ticketModel.getTicketId(user);
         if (!listTicket.isEmpty()) {
             VBox tickets = new VBox(15);
-            Label infoTextLabel = new Label(event.getInfo());
-            infoTextLabel.setId("infoTextLabel");
-            tickets.getChildren().add(infoTextLabel);
+            Text text = new Text(event.getInfo());
+            text.setWrappingWidth(infoTextLinelength);
+            tickets.getChildren().add(text);
             for (Integer integer : listTicket) {
                 try {
                     FXMLLoader root = new FXMLLoader(getClass().getResource("/dk/easv/GUI/View2/Ticket.fxml"));

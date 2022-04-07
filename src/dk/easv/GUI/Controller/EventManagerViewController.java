@@ -108,8 +108,9 @@ public class EventManagerViewController extends SuperController implements Initi
         event = eventComboBox.getSelectionModel().getSelectedItem();
         if (event != null){
             openNewSceneWithEventPerson(event,eventManager,"/dk/easv/GUI/View2/AddGuestView.fxml","skab gæst");
+        }else{
+            errorMessage("vælg det event du ønsker at tilføje en bruger til");
         }
-
 
         if (event != null) {
             userTable.setItems(userEventModel.getObservableUsersFromEvents(event));
@@ -123,7 +124,7 @@ public class EventManagerViewController extends SuperController implements Initi
             openNewSceneWithPerson(user, "/dk/easv/GUI/View2/EditGuestView.fxml", "Rediger guest");
 
         } else {
-            errorMessage("Please pick a guest to edit");
+            errorMessage("vælg den gæst du ønsker at redigere");
         }
         if (event != null) {
             userTable.setItems(userEventModel.getObservableUsersFromEvents(event));
@@ -200,7 +201,14 @@ public class EventManagerViewController extends SuperController implements Initi
     }
 
     public void handleSendEmail(ActionEvent actionEvent) throws SQLServerException, IOException {
-        openNewSceneWithEventPerson(eventComboBox.getValue(), userTable.getSelectionModel().getSelectedItem(),"/dk/easv/GUI/View2/MailPreview.fxml","Send Billetter");
+        Event event = eventComboBox.getValue();
+        User user = userTable.getSelectionModel().getSelectedItem();
+        if (event != null && user != null){
+            openNewSceneWithEventPerson(event, user,"/dk/easv/GUI/View2/MailPreview.fxml","Send Billetter");
+        }
+        else{
+            errorMessage("vælg en event og en gæst og prøv igen");
+        }
 
     }
 }
