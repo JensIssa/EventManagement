@@ -202,12 +202,20 @@ Alt generelt CSS, der tilhører TextArea
 Alt generelt CSS, der tilhører datepicker
  */
 
-.datepicker {
+.date-picker {
     -fx-text-alignment: right;
     -fx-font-family: "Lucida Sans";
     -fx-font-size: 16;
     -fx-text-fill: black;
 }
+
+.date-picker {
+    -fx-font: 15px "Lucida Sans";
+    -fx-background-color: gray;
+}
+
+
+
 
 /**
 ID's Som hovedsageligt bliver benyttet i Add / Edit views, da bl.a. labels / textFields er anderledes
