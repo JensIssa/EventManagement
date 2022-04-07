@@ -197,6 +197,7 @@ public class EventManagerViewController extends SuperController implements Initi
         olderKidsLabel.setText("Ældre børn: ");
         youngerKidsLabel.setText("Yngre børn: ");
         allAttendeesLabel.setText("Samlet antal: ");
+        infoTextArea.clear();
         userTable.getItems().clear();
     }
 
