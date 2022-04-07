@@ -120,8 +120,9 @@ public class EventManagerViewController extends SuperController implements Initi
 
     public void handleEditGuest(ActionEvent actionEvent) throws IOException, SQLException {
         User user = (User) userTable.getSelectionModel().getSelectedItem();
+        Event event = eventComboBox.getSelectionModel().getSelectedItem();
         if (user != null) {
-            openNewSceneWithPerson(user, "/dk/easv/GUI/View2/EditGuestView.fxml", "Rediger guest");
+            openNewSceneWithEventPerson(event ,user, "/dk/easv/GUI/View2/EditGuestView.fxml", "Rediger guest");
 
         } else {
             errorMessage("vælg den gæst du ønsker at redigere");

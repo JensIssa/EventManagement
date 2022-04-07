@@ -42,4 +42,16 @@ public class TicketModel {
     public int countIndividualYoungKid(User user){
         return ticketManager.countIndividualYoungKid(user);
     }
+
+    public void updateTicketAdult(User user, Event event, int ticketAmount) throws SQLException {
+        ticketManager.updateTicketAdult(user, event, ticketAmount);
+    }
+
+    public void updateTicketOldKid(User user, Event event, int ticketAmount) throws SQLException {
+        ticketManager.updateTicketOldKid(user, event, ticketAmount);
+    }
+
+    public void updateTicketYoungKid(User user, Event event, int ticketAmount) throws SQLException {
+        ticketManager.updateTicketYoungKid(user, event, ticketAmount);
+    }
 }

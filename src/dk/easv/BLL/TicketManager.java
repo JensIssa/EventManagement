@@ -44,4 +44,15 @@ public class TicketManager {
     public int countIndividualYoungKid(User user){
         return ticketDAO.countIndividualGuestAttendees(user, AgeGroup.YOUNGERKID);
     }
+
+    public void updateTicketAdult(User user, Event event, int ticketAmount) throws SQLException {
+        ticketDAO.updateTicket(user, event, AgeGroup.ADULT,ticketAmount);
+    }
+    public void updateTicketOldKid(User user, Event event, int ticketAmount) throws SQLException {
+        ticketDAO.updateTicket(user, event, AgeGroup.OLDKID,ticketAmount);
+    }
+
+    public void updateTicketYoungKid(User user, Event event, int ticketAmount) throws SQLException {
+        ticketDAO.updateTicket(user, event, AgeGroup.YOUNGERKID,ticketAmount);
+    }
 }

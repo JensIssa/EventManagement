@@ -73,5 +73,26 @@ public class TicketDAO {
         }
         return 0;
     }
-    
+
+    public void updateTicket(User user, Event event, AgeGroup ageGroup, int ticketAmount) throws SQLException {
+        try(Connection connection = dc.getConnection()){
+            String sql = "DELETE FROM Ticket WHERE guestID=? AND age=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, user.getId());
+            preparedStatement.setInt(2, ageGroup.getI());
+            preparedStatement.execute();
+            String sqlAdd = "INSERT INTO Ticket (guestID, eventID, age) VALUES (?,?,?)";
+            PreparedStatement preparedStatement1 = connection.prepareStatement(sqlAdd);
+            preparedStatement1.setInt(1, user.getId());
+            preparedStatement1.setInt(2, event.getId());
+            preparedStatement1.setInt(3, ageGroup.getI());
+            for (int i = 0; i < ticketAmount; i++) {
+                preparedStatement1.addBatch();
+            }
+            preparedStatement1.executeBatch();
+        }
+        catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 }
