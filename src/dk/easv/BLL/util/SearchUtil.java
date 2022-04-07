@@ -54,21 +54,7 @@ public class SearchUtil {
             return searchResult;
         }
 
-//TODO FIX SO IT DOESN'T TAKE INPUT FROM A DAO
-    public List<User> searcUserEvent(ObservableList<User> searchBase, String query, Event event){
-        List<User> searchResult = new ArrayList<>();
-        if ( query.isEmpty()){
-            return eventDAO.getAllUsersFromEvent(event);
-        }
-        else {
-            for (User user : searchBase) {
-                if (compareToName(query, user)) {
-                    searchResult.add(user);
-                }
-            }
-        }
-        return searchResult;
-    }
+
 
     public List<Event> searchEvent(ObservableList<Event> searchBase, String query) throws SQLException {
         List<Event> searchResult = new ArrayList<>();
