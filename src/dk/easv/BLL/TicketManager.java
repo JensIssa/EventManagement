@@ -8,6 +8,7 @@ import dk.easv.DAL.TicketDAO;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 public class TicketManager {
     TicketDAO ticketDAO;
@@ -16,8 +17,8 @@ public class TicketManager {
         ticketDAO = new TicketDAO();
     }
 
-    public int getTicketId() throws SQLServerException {
-        return ticketDAO.getTicketId();
+    public List<Integer> getTicketId(User user) throws SQLServerException {
+        return ticketDAO.getTicketId(user);
     }
     public int countEventAttendees(Event event) throws SQLException {
        int total = ticketDAO.countEventAttendees(event, AgeGroup.ADULT) + ticketDAO.countEventAttendees(event, AgeGroup.OLDKID) + ticketDAO.countEventAttendees(event, AgeGroup.YOUNGERKID);
@@ -42,5 +43,16 @@ public class TicketManager {
     }
     public int countIndividualYoungKid(User user){
         return ticketDAO.countIndividualGuestAttendees(user, AgeGroup.YOUNGERKID);
+    }
+
+    public void updateTicketAdult(User user, Event event, int ticketAmount) throws SQLException {
+        ticketDAO.updateTicket(user, event, AgeGroup.ADULT,ticketAmount);
+    }
+    public void updateTicketOldKid(User user, Event event, int ticketAmount) throws SQLException {
+        ticketDAO.updateTicket(user, event, AgeGroup.OLDKID,ticketAmount);
+    }
+
+    public void updateTicketYoungKid(User user, Event event, int ticketAmount) throws SQLException {
+        ticketDAO.updateTicket(user, event, AgeGroup.YOUNGERKID,ticketAmount);
     }
 }

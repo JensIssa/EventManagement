@@ -9,8 +9,10 @@ import dk.easv.GUI.Model.EventModel;
 import dk.easv.GUI.Model.PersonModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -68,6 +70,9 @@ public class AddGuestController extends SuperController implements Initializable
     }
 
     public void handleSaveUser(ActionEvent actionEvent) throws SQLException {
+
+
+
         String userName = getName(nameTxtField);
         String userEmail = getEmail(emailTxtField);
         int userPhoneNumber = getPhoneNumber(phonenumberTxtField);
@@ -77,12 +82,14 @@ public class AddGuestController extends SuperController implements Initializable
         int bigChildCount = Integer.parseInt(labelOlderKids.getText());
         int smallChildCount = Integer.parseInt(labelYoungerKids.getText());
 
-        if (userName != null && userEmail != null) {
+        if (userName != null && userEmail != null && adultCount > 0) {
             personModel.createuser(userName, userEmail, userPhoneNumber);
             int id = personModel.getMostRecentId();
             User user = new User(id, userName, userEmail, "password", PersonType.USER, userPhoneNumber);
             eventModel.createTicket(event, user, adultCount, bigChildCount, smallChildCount);
             closeWindow(saveBtn);
+        } else {
+            errorMessage("Udfyld venligst alle felter. Billeten kan ikke oprettes hvis en voksen ikke er tilmeldt.");
         }
     }
 
@@ -130,7 +137,6 @@ public class AddGuestController extends SuperController implements Initializable
             labelAdult.setText(String.valueOf(count));
         }
     }
-
 
     @Override
     public void setPersonInfo(Person person) {

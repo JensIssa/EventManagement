@@ -97,7 +97,7 @@ public class EventDAO {
         ArrayList<String> emailList = new ArrayList<>();
         try(Connection connection = dc.getConnection()){
             /*make selecte distinct when testing is done*/
-            String sql = "SELECt  email from person inner join ticket on personID = Person.id where eventID = ?";
+            String sql = "SELECt distinct email from person inner join ticket on guestId = Person.id where eventID = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1,event.getId());
             ResultSet resultSet = ps.executeQuery();
@@ -151,7 +151,7 @@ public class EventDAO {
     public List<User> getAllUsersFromEvent(Event event){
         List<User> usersInEvent = new ArrayList<>();
         try (Connection connection = dc.getConnection()) {
-                String userSQL = "SELECT * FROM Person\n" +
+                String userSQL = "SELECT distinct person.id, [name],email,password,phonenumber FROM Person\n" +
                         "INNER JOIN Ticket ON Person.ID = Ticket.guestid\n" +
                         "WHERE Ticket.eventID = ?";
                 PreparedStatement psUserEvent = connection.prepareStatement(userSQL);

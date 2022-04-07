@@ -1,5 +1,6 @@
 package dk.easv.GUI.Controller;
 
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import dk.easv.BE.Person;
 import dk.easv.BE.PersonType;
 import dk.easv.GUI.Model.PersonModel;
@@ -27,7 +28,7 @@ public class LoginViewController extends SuperController{
         personModel = new PersonModel();
     }
 
-    public void handleLoginButton(ActionEvent actionEvent) throws IOException {
+    public void handleLoginButton(ActionEvent actionEvent) throws IOException, SQLServerException {
         String email = emailInput.getText();
         String password = passwordInput.getText();
 
@@ -56,7 +57,7 @@ public class LoginViewController extends SuperController{
      * @param actionEvent
      * @throws IOException
      */
-    private void openNewScene(Person person,String fxmlPath, String Title, ActionEvent actionEvent) throws IOException {
+    private void openNewScene(Person person,String fxmlPath, String Title, ActionEvent actionEvent) throws IOException, SQLServerException {
         FXMLLoader root = new FXMLLoader(getClass().getResource(fxmlPath));
         Scene scene = new Scene(root.load());
 

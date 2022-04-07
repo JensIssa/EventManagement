@@ -13,7 +13,7 @@ import javafx.scene.control.Label;
 
 import java.io.IOException;
 
-public class TicketController implements IEventController {
+public class TicketController implements ITicketAndEvent {
 
     @FXML
     private Label startOfEventLabel;
@@ -28,33 +28,26 @@ public class TicketController implements IEventController {
     @FXML
     private Label dateOfEventLabel;
 
-    private TicketModel ticketModel;
-    User user;
     Event event;
 
     public TicketController() throws IOException {
-        ticketModel = new TicketModel();
     }
 
 
 
-    public void setTicketInfo() throws SQLServerException {
+    public void setTicketInfo(int ticketId) throws SQLServerException {
         nameOfEventLabel.setText(event.getName());
         locationOfEventLabel.setText(event.getLoc());
-        ticketIdLbl.setText(String.valueOf(ticketModel.getTicketId()));
+        ticketIdLbl.setText(String.valueOf(ticketId));
         dateOfEventLabel.setText(event.getStartDate().toString());
         startOfEventLabel.setText(event.getStartTime());
         endOfEventLabel.setText(event.getEndTime());
     }
 
-    @Override
-    public void setPersonInfo(Person person) {
-        user = (User) person;
-    }
 
     @Override
-    public void setEventInfo(Event event) throws IOException, SQLServerException {
+    public void setEventAndTicketID(Event event, int ticketId) throws SQLServerException {
         this.event = event;
-        setTicketInfo();
+        setTicketInfo(ticketId);
     }
 }

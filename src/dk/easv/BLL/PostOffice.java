@@ -1,12 +1,18 @@
 package dk.easv.BLL;
 
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
+import dk.easv.BE.User;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.SnapshotParameters;
+import javafx.scene.image.WritableImage;
+import org.w3c.dom.Document;
 
 
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.sql.DataSource;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URI;
 import java.net.URLEncoder;
@@ -80,6 +86,7 @@ public class PostOffice {
         return rawSubject.trim()
                 .replace(" ","%20");
     }
+
 
     /**
      * åbner outlook og auto udfylder de relevante info

@@ -108,8 +108,9 @@ public class EventManagerViewController extends SuperController implements Initi
         event = eventComboBox.getSelectionModel().getSelectedItem();
         if (event != null){
             openNewSceneWithEventPerson(event,eventManager,"/dk/easv/GUI/View2/AddGuestView.fxml","skab gæst");
+        }else{
+            errorMessage("vælg det event du ønsker at tilføje en bruger til");
         }
-
 
         if (event != null) {
             userTable.setItems(userEventModel.getObservableUsersFromEvents(event));
@@ -119,18 +120,18 @@ public class EventManagerViewController extends SuperController implements Initi
 
     public void handleEditGuest(ActionEvent actionEvent) throws IOException, SQLException {
         User user = (User) userTable.getSelectionModel().getSelectedItem();
+        Event event = eventComboBox.getSelectionModel().getSelectedItem();
         if (user != null) {
-            openNewSceneWithPerson(user, "/dk/easv/GUI/View2/EditGuestView.fxml", "Rediger guest");
+            openNewSceneWithEventPerson(event ,user, "/dk/easv/GUI/View2/EditGuestView.fxml", "Rediger guest");
 
         } else {
-            errorMessage("Please pick a guest to edit");
+            errorMessage("vælg den gæst du ønsker at redigere");
         }
         if (event != null) {
             userTable.setItems(userEventModel.getObservableUsersFromEvents(event));
             handleComboBoxClicked();
         }
     }
-
 
     public void handleDeleteEvent(ActionEvent actionEvent) {
         if (eventComboBox.getSelectionModel().getSelectedItem() != null) {
@@ -197,5 +198,17 @@ public class EventManagerViewController extends SuperController implements Initi
         youngerKidsLabel.setText("Yngre børn: ");
         allAttendeesLabel.setText("Samlet antal: ");
         userTable.getItems().clear();
+    }
+
+    public void handleSendEmail(ActionEvent actionEvent) throws SQLServerException, IOException {
+        Event event = eventComboBox.getValue();
+        User user = userTable.getSelectionModel().getSelectedItem();
+        if (event != null && user != null){
+            openNewSceneWithEventPerson(event, user,"/dk/easv/GUI/View2/MailPreview.fxml","Send Billetter");
+        }
+        else{
+            errorMessage("vælg en event og en gæst og prøv igen");
+        }
+
     }
 }

@@ -18,7 +18,6 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class EditEventsController extends SuperController implements Initializable, IEventController {
-    public TextField usersInEventsSearchTxt;
     @FXML
     private TextField timeEndTxtField;
     @FXML
@@ -36,17 +35,9 @@ public class EditEventsController extends SuperController implements Initializab
     @FXML
     private TextField timeStartTxtField;
 
-    @FXML
-    private TableView<User> usersAtEventTable;
-    @FXML
-    private TableColumn<User, String> nameColumn;
-    @FXML
-    private TableColumn<User, String> emailColumn;
+    private final EventModel eventModel;
 
-    private EventModel eventModel;
-    private UserEventModel userEventModel;
     private EventManager eventManager;
-
     private Event event;
 
     public EditEventsController() throws SQLException, IOException {
@@ -58,14 +49,12 @@ public class EditEventsController extends SuperController implements Initializab
         addTimeListener(timeStartTxtField);
         maxLenghtListenerTxtArea(infoTxtArea);
         maxLenghtListener(nameTxtField, 60);
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        emailColumn.setCellValueFactory(new PropertyValueFactory<>("Email"));
+        maxLenghtListener(locationTxtField, 100);
         infoTxtArea.setWrapText(true);
     }
 
     @Override
     public void setEventInfo(Event event) throws IOException {
-        userEventModel = new UserEventModel();
         this.event = event;
         nameTxtField.setText(event.getName());
         dateStart.setValue(event.getStartDate());
@@ -73,16 +62,6 @@ public class EditEventsController extends SuperController implements Initializab
         timeEndTxtField.setText(event.getEndTime());
         infoTxtArea.setText(event.getInfo());
         locationTxtField.setText(event.getLoc());
-        usersAtEventTable.setItems(userEventModel.getObservableUsersFromEvents(event));
-    }
-
-    public void handleDeleteUserFromEvent(ActionEvent actionEvent) {
-        User user = usersAtEventTable.getSelectionModel().getSelectedItem();
-        if (confirmationBox("Er du sikker på at du vil slette " + user.getName() + " fra " + event.getName() + " ?").get() == ButtonType.YES) {
-            userEventModel.deleteUserFromEvent(user, event);
-            usersAtEventTable.getItems().clear();
-            usersAtEventTable.setItems(userEventModel.getObservableUsersFromEvents(event));
-        }
     }
 
     public void handleSaveChanges(ActionEvent actionEvent) {
@@ -101,7 +80,6 @@ public class EditEventsController extends SuperController implements Initializab
         }
     }
 
-
     @Override
     public void setPersonInfo(Person person) {
         this.eventManager = (EventManager) person;
@@ -109,17 +87,5 @@ public class EditEventsController extends SuperController implements Initializab
 
     public void handleClose(ActionEvent actionEvent) {
         closeWindow(closeBtn);
-    }
-
-    public void handleSearch(KeyEvent keyEvent) {
-        String searchParam = usersInEventsSearchTxt.getText();
-        ObservableList<User> foundUserList = eventModel.searchUsersInEvents(usersAtEventTable.getItems(), searchParam, event);
-        usersAtEventTable.setItems(foundUserList);
-    }
-
-    public void handleEksportEmails(ActionEvent actionEvent) throws IOException {
-        if (confirmationBox("Vil du eksportere en E-mail liste fra " + event.getName() + "?").get() == ButtonType.YES) {
-            eventModel.exportEmailsFromUsers(event);
-        }
     }
 }
