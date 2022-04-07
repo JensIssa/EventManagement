@@ -151,7 +151,7 @@ public class EventDAO {
     public List<User> getAllUsersFromEvent(Event event){
         List<User> usersInEvent = new ArrayList<>();
         try (Connection connection = dc.getConnection()) {
-                String userSQL = "SELECT * FROM Person\n" +
+                String userSQL = "SELECT distinct person.id, [name],email,password,phonenumber FROM Person\n" +
                         "INNER JOIN Ticket ON Person.ID = Ticket.guestid\n" +
                         "WHERE Ticket.eventID = ?";
                 PreparedStatement psUserEvent = connection.prepareStatement(userSQL);

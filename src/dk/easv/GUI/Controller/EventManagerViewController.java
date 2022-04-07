@@ -133,7 +133,6 @@ public class EventManagerViewController extends SuperController implements Initi
         }
     }
 
-
     public void handleDeleteEvent(ActionEvent actionEvent) {
         if (eventComboBox.getSelectionModel().getSelectedItem() != null) {
             Event event = eventComboBox.getSelectionModel().getSelectedItem();
