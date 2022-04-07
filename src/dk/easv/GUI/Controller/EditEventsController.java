@@ -49,6 +49,7 @@ public class EditEventsController extends SuperController implements Initializab
         addTimeListener(timeStartTxtField);
         maxLenghtListenerTxtArea(infoTxtArea);
         maxLenghtListener(nameTxtField, 60);
+        maxLenghtListener(locationTxtField, 100);
         infoTxtArea.setWrapText(true);
     }
 

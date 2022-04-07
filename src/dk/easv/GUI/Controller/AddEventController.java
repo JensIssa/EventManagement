@@ -49,7 +49,7 @@ public class AddEventController extends SuperController implements IController, 
         addTimeListener(eventStartTxtfield);
         addTimeListener(eventEndTxtfield);
         maxLenghtListenerTxtArea(txtAreaEmail);
-        maxLenghtListener(locationTxtfield, 101);
+        maxLenghtListener(locationTxtfield, 100);
     }
 
     public void handleSaveBtn(ActionEvent actionEvent) throws SQLServerException {
