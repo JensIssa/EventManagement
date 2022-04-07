@@ -58,6 +58,7 @@ public class EditEventsController extends SuperController implements Initializab
         addTimeListener(timeStartTxtField);
         maxLenghtListenerTxtArea(infoTxtArea);
         maxLenghtListener(nameTxtField, 60);
+        maxLenghtListener(locationTxtField, 100);
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("Email"));
         infoTxtArea.setWrapText(true);
