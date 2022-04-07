@@ -13,14 +13,14 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="497.0" prefWidth="840.0" styleClass="borderPane" stylesheets="@../../CSS/LoginCSS.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.LoginViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="497.0" prefWidth="840.0" styleClass="borderPane" stylesheets="@../../CSS/LoginCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.GUI.Controller.LoginViewController">
    <center>
       <VBox alignment="TOP_CENTER" prefHeight="497.0" prefWidth="394.0" spacing="20.0" BorderPane.alignment="TOP_CENTER">
          <children>
             <VBox alignment="CENTER">
                <children>
-                  <Label id="header" text="Billetmaskinen" />
-                  <Label id="underheader" text="Find biletter til paradis" />
+                  <Label id="header" text="Eventmaskinen" />
+                  <Label id="underheader" />
                </children>
                <VBox.margin>
                   <Insets bottom="50.0" />
