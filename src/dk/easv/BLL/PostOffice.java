@@ -105,7 +105,6 @@ public class PostOffice {
             System.out.println(file.getAbsolutePath());
             rt.exec(new String[]{"cmd.exe", "/c", outlook, "/m", mailString+"?subject="+subjectString, "/a", file.getAbsolutePath()});
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

@@ -74,7 +74,7 @@ public class MailPreviewController extends SuperController implements IEventCont
         File pngFile = new File("biletter", String.valueOf(user.getId() + ".png"));
 
         try {
-            int ticketSize = 220;
+            int ticketSize = 250;
             int width = (int) scrollPane.getWidth();
             int height = listTicket.size() * ticketSize;
             //Pad the capture area
