@@ -74,10 +74,10 @@ public abstract class SuperController {
     private boolean isValid(String email)
     {
         String emailRegex =
-                "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "^[a-zæøåA-ZÆØÅ0-9_+&*-]+(?:\\."+
                 "[a-zA-Z0-9_+&*-]+)*@" +
-                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
-                "A-Z]{2,7}$";
+                "(?:[a-zæøåA-ZÆØÅ0-9-]+\\.)+[a-zæøå" +
+                "A-ZÆØÅ]{2,7}$";
 
         Pattern pat = Pattern.compile(emailRegex);
         if (email == null)
