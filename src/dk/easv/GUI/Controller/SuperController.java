@@ -74,10 +74,10 @@ public abstract class SuperController {
     private boolean isValid(String email)
     {
         String emailRegex =
-                "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "^[a-zæøåA-ZÆØÅ0-9_+&*-]+(?:\\."+
                 "[a-zA-Z0-9_+&*-]+)*@" +
-                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
-                "A-Z]{2,7}$";
+                "(?:[a-zæøåA-ZÆØÅ0-9-]+\\.)+[a-zæøå" +
+                "A-ZÆØÅ]{2,7}$";
 
         Pattern pat = Pattern.compile(emailRegex);
         if (email == null)
@@ -243,14 +243,14 @@ public abstract class SuperController {
      * en karakterbegrænsning på 100 tegn
      * @param textField
      */
-    public void maxLenghtListener(TextField textField, int characterLimit){
+    public void maxLengthListener(TextField textField, int characterLimit){
         textField.textProperty().addListener((observable, oldValue, newValue) ->{
             if (newValue.length()>characterLimit){
                 textField.setText(oldValue);
             }
         } );
     }
-    public void maxLenghtListenerTxtArea(TextArea textArea){
+    public void maxLengthListenerTxtArea(TextArea textArea){
         textArea.textProperty().addListener((observable, oldValue, newValue) ->{
 
             if (newValue != null){

@@ -25,11 +25,11 @@ public class PersonManager {
 
 
     public void createEventManager(String name, String email, String password){
-        personDAO.createGuest(name,email,password,PersonType.EVENTMANAGER);
+        personDAO.createPerson(name,email,password,PersonType.EVENTMANAGER);
     }
 
     public void createAdmin(String name, String email, String password){
-        personDAO.createGuest(name,email,password,PersonType.ADMIN);
+        personDAO.createPerson(name,email,password,PersonType.ADMIN);
     }
 
     public void createUser(String name, String email, int phoneNumber){

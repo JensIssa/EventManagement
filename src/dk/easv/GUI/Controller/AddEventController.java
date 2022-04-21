@@ -45,11 +45,11 @@ public class AddEventController extends SuperController implements IController, 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        maxLenghtListener(nameTxtField, 60);
+        maxLengthListener(nameTxtField, 60);
         addTimeListener(eventStartTxtfield);
         addTimeListener(eventEndTxtfield);
-        maxLenghtListenerTxtArea(txtAreaEmail);
-        maxLenghtListener(locationTxtfield, 100);
+        maxLengthListenerTxtArea(txtAreaEmail);
+        maxLengthListener(locationTxtfield, 100);
     }
 
     public void handleSaveBtn(ActionEvent actionEvent) throws SQLServerException {

@@ -1,28 +1,16 @@
 package dk.easv.BLL;
 
-import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
-import dk.easv.BE.User;
-import javafx.embed.swing.SwingFXUtils;
-import javafx.scene.SnapshotParameters;
-import javafx.scene.image.WritableImage;
-import org.w3c.dom.Document;
-
-
-import javax.mail.*;
-import javax.mail.internet.*;
-import javax.sql.DataSource;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.*;
-import java.net.URI;
-import java.net.URLEncoder;
-import java.util.Properties;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class PostOffice {
     /**
      * finder hvor på computeren outlook er installeret
+     *
      * @return pathen til outlook.exe
      */
     private String getOutlook() {
@@ -66,12 +54,13 @@ public class PostOffice {
 
     /**
      * bygger en sammenhængede string af emails speraret af ;
+     *
      * @param mailingList arrayliste af emails
      * @return string af emails speraret af ;
      */
-    private String buildMailString(String[] mailingList){
+    private String buildMailString(String[] mailingList) {
         StringBuilder sb = new StringBuilder();
-        for (String s : mailingList){
+        for (String s : mailingList) {
             sb.append(s.trim()).append(";");
         }
         return sb.toString();
@@ -79,22 +68,24 @@ public class PostOffice {
 
     /**
      * fjerner ulovlige tegn i subject inputtet
+     *
      * @param rawSubject subject til email
-     * @return  en string der er encoded til at ikke indeholde ulovlige tegn til en mails
+     * @return en string der er encoded til at ikke indeholde ulovlige tegn til en mails
      */
-    private String buildSubjectString(String rawSubject){
+    private String buildSubjectString(String rawSubject) {
         return rawSubject.trim()
-                .replace(" ","%20");
+                .replace(" ", "%20");
     }
 
 
     /**
      * åbner outlook og auto udfylder de relevante info
-     * @param mailingList arrayliste af email adresser der skal modtage emailen
-     * @param subject Emnet til emailen
+     *
+     * @param mailingList    arrayliste af email adresser der skal modtage emailen
+     * @param subject        Emnet til emailen
      * @param attachmentPath pathen til den valgte attachment
      */
-    public void prepareOutlook(String[] mailingList,String subject, String attachmentPath) {
+    public void prepareOutlook(String[] mailingList, String subject, String attachmentPath) {
         String outlook = getOutlook();
         Runtime rt = Runtime.getRuntime();
 
@@ -103,7 +94,7 @@ public class PostOffice {
         try {
             File file = new File(attachmentPath);
             System.out.println(file.getAbsolutePath());
-            rt.exec(new String[]{"cmd.exe", "/c", outlook, "/m", mailString+"?subject="+subjectString, "/a", file.getAbsolutePath()});
+            rt.exec(new String[]{"cmd.exe", "/c", outlook, "/m", mailString + "?subject=" + subjectString, "/a", file.getAbsolutePath()});
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -77,7 +77,7 @@ public class PersonDAO {
      * @param password
      * @param usertype
      */
-    public void createGuest(String name, String email, String password, PersonType usertype) {
+    public void createPerson(String name, String email, String password, PersonType usertype) {
         try (Connection con = dc.getConnection()) {
             String sql = "INSERT INTO Person(Email,Password,roleID,Name) VALUES (?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
@@ -124,11 +124,11 @@ public class PersonDAO {
         try (Connection con = dc.getConnection()) {
             String sql =
                     "Select Person.id, email, password, type, [name]" +
-                            "from Person INNER JOIN Role ON Person.RoleID = Role.ID where email = ? and password = ?";
+                            "from Person INNER JOIN Role ON Person.RoleID = Role.ID"+
+                            " where email = ? and password = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, email);
             ps.setString(2, password);
-
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 PersonType type = PersonType.valueOf(rs.getString("type"));
@@ -144,7 +144,6 @@ public class PersonDAO {
                         return new EventManager(id, name, mail, pass, type);
                     }
                 }
-                ;
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
