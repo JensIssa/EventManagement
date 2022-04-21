@@ -45,8 +45,8 @@ public class EditGuestController extends SuperController implements Initializabl
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        maxLenghtListener(emailTxtField,150);
-        maxLenghtListener(nameTxtField,80);
+        maxLengthListener(emailTxtField,150);
+        maxLengthListener(nameTxtField,80);
         addPhoneNumberListener(phoneNumberTxtField);
     }
 

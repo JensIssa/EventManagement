@@ -2,14 +2,10 @@ package dk.easv.GUI.Controller;
 
 import dk.easv.BE.*;
 import dk.easv.GUI.Model.EventModel;
-import dk.easv.GUI.Model.UserEventModel;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -47,9 +43,9 @@ public class EditEventsController extends SuperController implements Initializab
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         addTimeListener(timeStartTxtField);
-        maxLenghtListenerTxtArea(infoTxtArea);
-        maxLenghtListener(nameTxtField, 60);
-        maxLenghtListener(locationTxtField, 100);
+        maxLengthListenerTxtArea(infoTxtArea);
+        maxLengthListener(nameTxtField, 60);
+        maxLengthListener(locationTxtField, 100);
         infoTxtArea.setWrapText(true);
     }
 
