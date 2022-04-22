@@ -230,10 +230,10 @@ public abstract class SuperController {
         });
     }
 
-    public void addPhoneNumberListener(TextField movieRatingTxt) {
-        movieRatingTxt.textProperty().addListener((observable, oldValue, newValue) -> {
+    public void addPhoneNumberListener(TextField textField) {
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d{0,8}")) {
-                movieRatingTxt.setText(oldValue);
+                textField.setText(oldValue);
             }
         });
     }
