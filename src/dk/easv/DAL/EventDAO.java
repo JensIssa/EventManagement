@@ -147,7 +147,11 @@ public class EventDAO {
         }
     }
 
-
+    /**
+     * Finder alle gæster som er tilknyttet et event
+     * @param event
+     * @return en List af Users
+     */
     public List<User> getAllUsersFromEvent(Event event){
         List<User> usersInEvent = new ArrayList<>();
         try (Connection connection = dc.getConnection()) {
@@ -174,6 +178,10 @@ public class EventDAO {
     }
 
 
+    /**
+     * Opdatere et events information i databasen
+     * @param event det nye event der skal overskrive det gamle
+     */
     public void updateEvent(Event event){
         try (Connection connection = dc.getConnection()){
             String sql = "UPDATE Event SET Name=?, startDate=?, startTime=?, info=?, endTime=?, loc=? WHERE ID=?";
@@ -212,6 +220,11 @@ public class EventDAO {
         }
     }
 
+    /**
+     * Finder alle events der er tilknyttet til en user
+     * @param user
+     * @return en List af events
+     */
     public List<Event> getAllEventsFromUser(User user){
         List<Event> eventList = new ArrayList<>();
         try (Connection connection = dc.getConnection()) {

@@ -10,7 +10,6 @@ import java.util.regex.Pattern;
 public class PostOffice {
     /**
      * finder hvor på computeren outlook er installeret
-     *
      * @return pathen til outlook.exe
      */
     private String getOutlook() {

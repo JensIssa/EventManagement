@@ -20,6 +20,12 @@ public class TicketDAO {
         dc = new DatabaseConnector();
     }
 
+    /**
+     * Finder alle billet Id'er der er bilknyttet en gæst
+     * @param user
+     * @return en list af Integers
+     * @throws SQLServerException
+     */
     public List<Integer> getTicketId(User user) throws SQLServerException {
         List<Integer> ticketList = new ArrayList<>();
 
@@ -39,6 +45,14 @@ public class TicketDAO {
         return ticketList;
     }
 
+    /**
+     * Finder hvor mange gæster der deltager i det inputtede event
+     * af den inputted alders gruppe
+     * @param event
+     * @param ageGroup
+     * @return en int
+     * @throws SQLException
+     */
     public int  countEventAttendees(Event event, AgeGroup ageGroup) throws SQLException {
         try (Connection connection = dc.getConnection()){
             String sql = "SELECT COUNT (age) AS amount\n" +
@@ -57,6 +71,13 @@ public class TicketDAO {
         return 0;
     }
 
+    /**
+     * finder hvor mange billetter den indputtede user
+     * har tilknyttet til sig af den indputtede aldersgruppe
+     * @param user
+     * @param ageGroup
+     * @return int
+     */
     public int countIndividualGuestAttendees(User user, AgeGroup ageGroup){
         try (Connection connection = dc.getConnection()){
             String sql = "SELECT COUNT (age) AS amount\n" +
@@ -74,6 +95,15 @@ public class TicketDAO {
         return 0;
     }
 
+    /**
+     * Opdatere hvor mange billetter der er tilknyttet til
+     * den givne gæst og event
+     * @param user
+     * @param event
+     * @param ageGroup
+     * @param ticketAmount
+     * @throws SQLException
+     */
     public void updateTicket(User user, Event event, AgeGroup ageGroup, int ticketAmount) throws SQLException {
         try(Connection connection = dc.getConnection()){
             String sql = "DELETE FROM Ticket WHERE guestID=? AND age=?";
